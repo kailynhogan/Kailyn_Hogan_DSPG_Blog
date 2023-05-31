@@ -1,0 +1,14 @@
+{
+  "hash": "31a4c8afe55429e0d6369dc7f8012e94",
+  "result": {
+    "markdown": "---\ntitle: \"Week One\"\nauthor: \"Kailyn Hogan\"\ndate: \"2023-05-31\"\ncategories: [Week One]\n---\n\n\n# Introduction\n\nThis is just a *simple* hello.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n#code chunk\nprint(\"This works.\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"This works.\"\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"This will not print.\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
