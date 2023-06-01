@@ -5,9 +5,16 @@ date: "2023-05-31"
 categories: [Week One]
 ---
 
-# Introduction
+# Week One of DSPG
 
-This is just a *simple* hello.
+## DataCamp Trainings
+
+1.  AI Fundamentals
+2.  GitHub Concepts
+3.  R Programming Assessment
+4.  Understanding and Interpreting Data Assessment
+5.  Introduction to R
+6.  Introduction to the Tidyverse
 
 ```{r}
 #code chunk

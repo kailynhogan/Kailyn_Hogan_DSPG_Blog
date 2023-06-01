@@ -3,5 +3,271 @@ title: "Week Two"
 author: "Kailyn Hogan"
 date: "2023-05-31"
 categories: [Week Two]
-images: 
 ---
+
+# Week Two of DSPG
+
+## TidyCensus Practice
+
+This week we were introduced to the TidyCensus package via the 2023 webinar series *Analyzing 2017-2021 ACS Data in R and Python* by Kyle Walker, Associate Professor at Texas Christian University and R developer.
+
+We watched the first two videos in the webinar series: *Working with the 2021 American Community Survey with R and Tidycensus* and *Mapping and spatial analysis with ACS data in R*.
+
+I created the following plots using the information I learned from the webinars and previous knowledge:
+
+```{r}
+library(tidycensus)
+library(tidyverse)
+library(ggthemes)
+
+##ONWER VS. RENTER OCCUPIED FOR EACH CITY
+own_iowa <- get_decennial(geography = "place",
+                          state = "IA",
+                          year = 2010,
+                          output = "wide",
+                          variable = c("H017003","H017004","H017005","H017006","H017007","H017008","H017009","H017010","H017011")) %>% 
+  mutate(tenure = "Owner") %>% 
+  rename(fifteentotwentyfour = H017003, twentyfivetothirtyfour = H017004, thirtyfivetofourtyfour = H017005, fourtyfivetofiftyfour = H017006, fiftyfivetofiftynine = H017007, sixtytosixtyfour = H017008, sixtyfivetoseventyfour = H017009, seventyfivetoeightyfour = H017010, overeightyfive = H017011)
+## Getting data from the 2010 decennial Census
+## Using Census Summary File 1
+rent_iowa <- get_decennial(geography = "place",
+                           state = "IA",
+                           year = 2010,
+                           output = "wide",
+                           variable = c("H017013","H017014", "H017015", "H017016", "H017017","H017018","H017019", "H017020","H017021")) %>% 
+  mutate(tenure = "Renter") %>% 
+  rename(fifteentotwentyfour = H017013, twentyfivetothirtyfour = H017014, thirtyfivetofourtyfour = H017015, fourtyfivetofiftyfour = H017016, fiftyfivetofiftynine = H017017, sixtytosixtyfour = H017018, sixtyfivetoseventyfour = H017019, seventyfivetoeightyfour = H017020, overeightyfive = H017021)
+## Getting data from the 2010 decennial Census
+## Using Census Summary File 1
+iowa <- rent_iowa %>% 
+  bind_rows(own_iowa)%>% 
+  pivot_longer(-c(NAME, GEOID, tenure),
+               names_to = "agegroups",
+               values_to = "count")
+
+###plots for grundy, independence and new hampton for age break downs by housing tenure
+iowa %>% 
+  filter(NAME == "New Hampton city, Iowa") %>% 
+  mutate(agegroups = fct_relevel(agegroups, c("fifteentotwentyfour", "twentyfivetothirtyfour","thirtyfivetofourtyfour","fourtyfivetofiftyfour","fiftyfivetofiftynine","sixtytosixtyfour","sixtyfivetoseventyfour","seventyfivetoeightyfour","overeightyfive"))) %>% 
+  ggplot(aes(x = agegroups, y = if_else(tenure == "Renter", count, -count))) +
+  geom_bar(aes(fill = tenure), stat = "identity") +
+  geom_text(aes(x = agegroups, y = if_else(tenure == "Renter", count +10, -count - 12), label = scales::comma(count))) +
+  coord_flip()+
+  scale_x_discrete(labels = c("15 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 59", "60 to 64", "65 to 74", "75 to 84", "85 and Older")) +
+  scale_y_continuous(label = abs)+
+  labs(x = "",
+       y = "Population",
+       fill = "",
+       title = "Population in New Hampton, IA \nby Age and Tenure",
+       subtitle = "2010 Decennial Census") +
+  theme_fivethirtyeight()+
+  theme(legend.position = "bottom") +
+  scale_fill_wsj()
+
+iowa %>% 
+  filter(NAME == "Grundy Center city, Iowa") %>% 
+  mutate(agegroups = fct_relevel(agegroups, c("fifteentotwentyfour", "twentyfivetothirtyfour","thirtyfivetofourtyfour","fourtyfivetofiftyfour","fiftyfivetofiftynine","sixtytosixtyfour","sixtyfivetoseventyfour","seventyfivetoeightyfour","overeightyfive"))) %>% 
+  ggplot(aes(x = agegroups, y = if_else(tenure == "Renter", count, -count))) +
+  geom_bar(aes(fill = tenure), stat = "identity") +
+  geom_text(aes(x = agegroups, y = if_else(tenure == "Renter", count +5, -count - 8), label = scales::comma(count))) +
+  coord_flip()+
+  scale_x_discrete(labels = c("15 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 59", "60 to 64", "65 to 74", "75 to 84", "85 and Older")) +
+  scale_y_continuous(label = abs)+
+  labs(x = "",
+       y = "Population",
+       fill = "",
+       title = "Population in Grundy Center, IA \nby Age and Tenure",
+       subtitle = "2010 Decennial Census") +
+  theme_fivethirtyeight()+
+  theme(legend.position = "bottom") +
+  scale_fill_wsj()
+
+iowa %>% 
+  filter(NAME == "Independence city, Iowa") %>% 
+  mutate(agegroups = fct_relevel(agegroups, c("fifteentotwentyfour", "twentyfivetothirtyfour","thirtyfivetofourtyfour","fourtyfivetofiftyfour","fiftyfivetofiftynine","sixtytosixtyfour","sixtyfivetoseventyfour","seventyfivetoeightyfour","overeightyfive"))) %>% 
+  ggplot(aes(x = agegroups, y = if_else(tenure == "Renter", count, -count))) +
+  geom_bar(aes(fill = tenure), stat = "identity") +
+  geom_text(aes(x = agegroups, y = if_else(tenure == "Renter", count +12, -count - 15), label = scales::comma(count))) +
+  coord_flip()+
+  scale_x_discrete(labels = c("15 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 59", "60 to 64", "65 to 74", "75 to 84", "85 and Older")) +
+  scale_y_continuous(label = abs)+
+  labs(x = "",
+       y = "Population",
+       fill = "",
+       title = "Population in Independence, IA by \nAge and Tenure",
+       subtitle = "2010 Decennial Census") +
+  theme_fivethirtyeight()+
+  theme(legend.position = "bottom") +
+  scale_fill_wsj()
+
+```
+
+```{r}
+##MEDIAN AGE
+
+medage <- c("medage" = "B01002_001")
+
+grundy <- get_acs(geography = "place",
+              state = "IA",
+              variable = medage,
+              year = 2021,
+              output = "tidy") %>% 
+  filter(NAME == "Grundy Center city, Iowa") %>% 
+  mutate(year = 2021) 
+## Getting data from the 2016-2020 5-year ACS
+inde <- get_acs(geography = "place",
+                state = "IA",
+                variable = medage,
+                year = 2021,
+                output = "tidy") %>% 
+  filter(NAME == "Independence city, Iowa") %>% 
+  mutate(year = 2021)
+new <- get_acs(geography = "place",
+                state = "IA",
+                variable = medage,
+                year = 2021,
+                output = "tidy") %>% 
+  filter(NAME == "New Hampton city, Iowa") %>% 
+  mutate(year = 2021)
+## Getting data from the 2016-2020 5-year ACS
+ia <- get_acs(geography = "state",
+              state = "IA",
+              variable = medage,
+              year = 2021,
+              output = "tidy") %>% 
+  mutate(year = 2021)
+## Getting data from the 2016-2020 5-year ACS
+medage16_20 <- grundy %>% 
+  bind_rows(ia,inde, new) %>% 
+  mutate(upper = estimate + moe,
+         lower = estimate - moe)
+
+medage16_20 %>% 
+  ggplot() +
+  geom_pointrange(aes(x = NAME, y = estimate, ymin = lower, ymax = upper))+
+  geom_line(aes(x = NAME, y = estimate))+
+  coord_flip()+
+  geom_text(aes(x = NAME, y = estimate, label = estimate), hjust = .5, vjust = -.8)+
+  scale_x_discrete(limits = c("Grundy Center city, Iowa", "Independence city, Iowa", "New Hampton city, Iowa", "Iowa"),labels = c("Grundy Center","Independence","New Hampton","Iowa"))+
+  labs(title = "Median Age of the Population",
+       subtitle = "Data aquired from 2017-2021 5-year ACS estimates.",
+       x = "",
+       y = " ",)+
+  theme_fivethirtyeight()
+```
+
+```{r}
+library(scales)
+
+#PERCENT FOREIGN BORN, NON-CITIZENS
+foreign <- c("foreign" = "B05012_003",
+             "pop" = "B05012_001")
+
+foreign <- get_acs(geography = "place",
+                   state = "IA",
+                   year = 2021,
+                   variable = foreign,
+                   output = "wide") %>% 
+  filter(NAME %in% c("Grundy Center city, Iowa", "Independence city, Iowa", "New Hampton city, Iowa"))
+## Getting data from the 2017-2021 5-year ACS
+foreign <- foreign %>% 
+  mutate(pct_foreign = foreignE/popE,
+         pct_foreign_moe = moe_prop(foreignE, popE, foreignM, popM))
+
+foreign %>% 
+  ggplot() +
+  geom_pointrange(aes(x = NAME, y = pct_foreign, ymin = pct_foreign - pct_foreign_moe, ymax = pct_foreign + pct_foreign_moe ))+
+  coord_flip() +
+  scale_y_continuous(label = scales::percent) +
+  theme_fivethirtyeight() +
+  labs( x = " ",
+        y = "Pct Foreign",
+        title = "Percent of Foreign-Born, Non-Citzen",
+        subtitle = "2017-2021 5-Year ACS Estimates")+
+  scale_x_discrete(labels = c("Grundy Center", "Independence", "New Hampton"))+
+  geom_text(aes(x = NAME, y = pct_foreign, label = percent(pct_foreign)), hjust = .5, vjust = -.8)
+```
+
+```{r}
+##MEDIAN INCOME BY HOUSEHOLD
+grundy_acs <- get_acs(state = "IA", 
+                       geography = "place",
+                       year = 2021,
+                       variable = c(med_house = "B19013_001"),
+                       output = "tidy") %>% 
+  filter(NAME == "Grundy Center city, Iowa")
+inde_acs <- get_acs(state = "IA", 
+                      geography = "place",
+                      year = 2021,
+                      variable = c(med_house = "B19013_001"),
+                      output = "tidy") %>% 
+  filter(NAME == "Independence city, Iowa")
+new_acs <- get_acs(state = "IA", 
+                      geography = "place",
+                      year = 2021,
+                      variable = c(med_house = "B19013_001"),
+                      output = "tidy") %>% 
+  filter(NAME == "New Hampton city, Iowa")
+
+## Getting data from the 2016-2020 5-year ACS
+med_house <- grundy_acs %>% 
+  bind_rows(inde_acs,new_acs)
+med_house %>%  
+  ggplot(aes(x = NAME, y = estimate))+
+  geom_pointrange(aes(ymin = estimate - moe, ymax = estimate +moe))+
+  geom_text(aes(label = scales::dollar(estimate)), hjust = -.2)+
+  scale_x_discrete(labels = c("Grundy Center", "Independence", "New Hampton"))+
+  scale_y_continuous(label = scales::dollar)+
+  labs(y = "",
+       title = "Estimated Median Income by Household",
+       subtitle = "Data acquired from 2017-2021 5-year ACS estimates.")+
+  theme_fivethirtyeight()
+```
+
+```{r}
+# % LABOR FORCE UNEMPLOYED
+grundy_un <- get_acs(state = "IA", 
+                      geography = "place",
+                      year = 2021,
+                      variable = c("total" = "B23025_003",
+                                   "unemployed" = "B23025_005"),
+                      output = "wide") %>% 
+  filter(NAME == "Grundy Center city, Iowa") %>% 
+  mutate(pct = unemployedE / totalE,
+         moe = moe_ratio(unemployedE, totalE, unemployedM, totalM))
+inde_un <- get_acs(state = "IA", 
+                     geography = "place",
+                     year = 2021,
+                     variable = c("total" = "B23025_003",
+                                  "unemployed" = "B23025_005"),
+                     output = "wide") %>% 
+  filter(NAME == "Independence city, Iowa") %>% 
+  mutate(pct = unemployedE / totalE,
+         moe = moe_ratio(unemployedE, totalE, unemployedM, totalM))
+new_un <- get_acs(state = "IA", 
+                     geography = "place",
+                     year = 2021,
+                     variable = c("total" = "B23025_003",
+                                  "unemployed" = "B23025_005"),
+                     output = "wide") %>% 
+  filter(NAME == "New Hampton city, Iowa") %>% 
+  mutate(pct = unemployedE / totalE,
+         moe = moe_ratio(unemployedE, totalE, unemployedM, totalM))
+
+## Getting data from the 2016-2020 5-year ACS
+pct_un <- grundy_un %>% 
+  bind_rows(inde_un,new_un)
+pct_un %>%  
+  ggplot(aes(x = NAME, y = pct))+
+  geom_pointrange(aes(ymin = pct - moe, ymax = pct +moe))+
+  geom_text(aes(label = scales::percent(pct)), hjust = -.2)+
+  scale_y_continuous(label = scales::percent)+
+  scale_x_discrete(labels = c("Grundy Center", "Independence", "New Hampton"))+
+  labs(y = "",
+       x = "",
+       title = "Estimated % of Population Unemployed",
+       subtitle = "Data acquired from 2017-2021 5-year ACS estimates.")+
+  theme_fivethirtyeight()
+```
+
+We also had our first client meeting for the Housing and AI project this week on Thursday, May 25th. We gained clarity for which direction we should be heading in the project from our stakeholders.
