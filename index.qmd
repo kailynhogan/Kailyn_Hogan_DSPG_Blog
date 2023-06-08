@@ -1,5 +1,5 @@
 ---
-title: "Kailyn_Hogan_DSPG_Blog"
+title: "Kailyn Hogan's DSPG Blog"
 listing:
   contents: posts
   sort: "date desc"

@@ -1,0 +1,14 @@
+{
+  "hash": "5efcd8c4954c96eae951dfc6f21fe939",
+  "result": {
+    "markdown": "::: {.cell}\n\n```{.r .cell-code}\ntitle <-  \"Week Three\"\nauthor<- \"Kailyn Hogan\"\ndate<-  \"2023-06-01\"\n```\n:::\n\n\n# Week Three of DSPG\n\nThis week my team has been trying to gather resources to use in our AI model. We are trying to scrape data from multiple different sources including Beacon, Vanguard, and Trulia to compile photos and train our AI model.\n\nI have been learning how to web scrape, and I have completed the following DataCamp trainings:\n\n## DataCamp Trainings\n\n1.  Intermediate R\n2.  Web Scraping in R\n\nI have also created an R Markdown file to document my web scraping practice.\n\nI did a quick Google search for a web scraper for Beacon before I attempted it myself, and I found a GitHub page dedicated to one:\n\nhttps://github.com/openaddresses/machine/issues/580\n\nI am not sure it is relevant to the data I am trying to scrape from Beacon.\n\nI also learned how to create a quarto blog this week!\n\n#### AI Modeling\n\nTo better understand the AI model my group is trying to create, I am watching the following YouTube videos:\n\n1.  <https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte>\n2.  [[https://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte]{.underline}](https://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte \"https://www.youtube.com/watch?v=jztwpsizegc&ab_channel=nicholasrenotte\")\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
