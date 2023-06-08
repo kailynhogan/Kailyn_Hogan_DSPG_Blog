@@ -9,7 +9,7 @@ categories: [Week Four]
 
 The main focus for week four on the housing team was web scraping. I did the DataCamp training for web scraping in R about a week and a half ago, which was understandable then. It could have been better when applying it in real-world scenarios. Angelina and I have done a lot of Googleing to find other examples to help us. We were tasked with scraping county housing assessor data. Independence in Buchanan County is on Vanguard. Slater in Story County, Grundy Center in Grundy County, and New Hampton in Chickasaw County are all on Beacon. We needed help figuring out how to scrape from these sites this week.
 
-I successfully scrape the categories of shoes from my favorite shoe site, Jonak, though.
+I successfully scraped the categories of shoes from my favorite shoe site, Jonak, though.
 
 ```{r}
 library(rvest)
