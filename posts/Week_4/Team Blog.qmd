@@ -5,7 +5,7 @@ date: "2023-06-09"
 categories: [Week Four]
 ---
 
-# Week Four for the Housing Team
+## Week Four for the Housing Team
 
 # AI-Driven Housing Evaluation for Rural Community Development
 
@@ -105,37 +105,51 @@ The next step was creating an AI Model. We decided to create an AI Model early i
 
 On Tuesday this week, the entire DSPG program went to Slater to practice data collection in person. The housing group took this as an opportunity to collect some housing photos on the ground to use in our AI Model later on.
 
-[Do we have photos to use here?]{.underline}
-
 #### Google Street View and URLs
 
 We are getting the majority of our photos for the AI to use from Google Street View. Google has an API key that you can use to generate an image for a specific address. We spent the first half of this week pulling addresses from each of our cities and creating URLs to pull the images from Google Street View.
 
 We ran into a couple of problems when doing this, the biggest of which is displayed in the images below. Because we are working with cities in rural areas, there is not Google Street View images available for every street in our cities.
 
-![Google Street View information for Grundy Center, Iowa. For reference, population was 2,811 as of 2023.](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(1).png){fig-align="center" width="584"}
+![Google Street View information for Grundy Center, Iowa. For reference, population was 2,811 as of 2023.](Week%20Four%20Team%20Blog%20Images/Google%20Street%20View%20images/MicrosoftTeams-image%20(1).png){fig-align="center" width="775"}
 
-![Google Street View information for Slater, Iowa. For reference, population was 1,639 as of 2023.](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(2).png){fig-align="center" width="584"}
+![Google Street View information for Slater, Iowa. For reference, population was 1,639 as of 2023.](Week%20Four%20Team%20Blog%20Images/Google%20Street%20View%20images/MicrosoftTeams-image%20(2).png){fig-align="center" width="775"}
 
-![Google Street View information for Independence, Iowa. For reference, population was 6,307 as of 2023.](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(3).png){fig-align="center" width="584"}
+![Google Street View information for Independence, Iowa. For reference, population was 6,307 as of 2023.](Week%20Four%20Team%20Blog%20Images/Google%20Street%20View%20images/MicrosoftTeams-image%20(3).png){fig-align="center" width="775"}
 
-![Google Street View information for New Hampton, Iowa. For reference, population was 3,368 as of 2023.](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(4).png){fig-align="center" width="584"}
+![Google Street View information for New Hampton, Iowa. For reference, population was 3,368 as of 2023.](Week%20Four%20Team%20Blog%20Images/Google%20Street%20View%20images/MicrosoftTeams-image%20(4).png){fig-align="center" width="775"}
 
 Below is a sample from the tables we created containing the URLs to grab the images from Google Street View.
 
-| Parcel ID  | Street         | City State  | Full Address                | Front URL                   | Back URL                                                               | Full URL                                                                                          |
-|---------|---------|---------|---------|---------|----------|-----------------|
-| 1331228310 | 701 BENTON CIR | SLATER IOWA | 701 BENTON CIR, SLATER IOWA | 701+BENTON+CIR,+SLATER+IOWA | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=701+BENTON+CIR,+SLATER+IOWA |
-| 1331210210 | 637 GREENE ST  | SLATER IOWA | 637 GREENE ST, SLATER IOWA  | 637+GREENE+ST,+SLATER+IOWA  | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=637+GREENE+ST,+SLATER+IOWA  |
-| 1331228210 | 705 TAMA CIR   | SLATER IOWA | 705 TAMA CIR, SLATER IOWA   | 705+TAMA+CIR,+SLATER+IOWA   | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=705+TAMA+CIR,+SLATER+IOWA   |
-| 1331220100 | 608 8TH AVE    | SLATER IOWA | 608 8TH AVE, SLATER IOWA    | 608+8TH+AVE,+SLATER+IOWA    | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=608+8TH+AVE,+SLATER+IOWA    |
-| 1331220080 | 604 8TH AVE    | SLATER IOWA | 604 8TH AVE, SLATER IOWA    | 604+8TH+AVE,+SLATER+IOWA    | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=604+8TH+AVE,+SLATER+IOWA    |
+![](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(3).png)
+
+![](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(4).png)
 
 #### Web Scraping
 
 Once we were finished collecting addresses and generating URLs, we moved on to scraping the web for more images. We decided to grab images from Zillow, Realtors.com, and the county assessor pages for our cities. We were able to successfully scrape images from Zillow this week.
 
-[insert images of web scraping progress after today]{.underline}
+![](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(1).png){fig-align="center"}
+
+![](Week%20Four%20Team%20Blog%20Images/zillow%20dataframe.png){fig-align="center"}
+
+#### Happies
+
+-   had a great meeting with Erin Olson-Douglas
+
+-   finished collecting and creating URL addresses for Google Street View images
+
+-   Zillow owns Trulia so we don't have to web scrape both sites :)
+
+-   able to successfully scrape some things from Zillow !
+
+#### Crappies
+
+-   ***Web Scraping***
+
+-   Beacon and Vanguard have anti-web scraping protections
+
+-   Angelina's Excel is stupid
 
 ## Future Plans and Next Steps
 

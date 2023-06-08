@@ -101,3 +101,13 @@ Here is the output of the cleaned Slater data:
 ![](Slater%20urls.png){fig-align="center"}
 
 Next week, I will get around the anti-web scraping protections Beacon and Vanguard have on their sites. Beacon and Vanguard have information on houses that aren't listed on Zillow, and more pictures aren't listed on Zillow or Google Street View.
+
+Notes to self:
+
+> git pull
+>
+> git add .
+>
+> git commit -m "message"
+>
+> git push
