@@ -124,7 +124,7 @@ We ran into a couple of problems when doing this, the biggest of which is displa
 Below is a sample from the tables we created containing the URLs to grab the images from Google Street View.
 
 | Parcel ID  | Street         | City State  | Full Address                | Front URL                   | Back URL                                                               | Full URL                                                                                          |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|------------|----------------|-------------|-----------------------------|-----------------------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
 | 1331228310 | 701 BENTON CIR | SLATER IOWA | 701 BENTON CIR, SLATER IOWA | 701+BENTON+CIR,+SLATER+IOWA | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=701+BENTON+CIR,+SLATER+IOWA |
 | 1331210210 | 637 GREENE ST  | SLATER IOWA | 637 GREENE ST, SLATER IOWA  | 637+GREENE+ST,+SLATER+IOWA  | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=637+GREENE+ST,+SLATER+IOWA  |
 | 1331228210 | 705 TAMA CIR   | SLATER IOWA | 705 TAMA CIR, SLATER IOWA   | 705+TAMA+CIR,+SLATER+IOWA   | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=705+TAMA+CIR,+SLATER+IOWA   |
