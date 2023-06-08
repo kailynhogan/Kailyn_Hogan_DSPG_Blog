@@ -15,7 +15,8 @@ This blog outlines where the Housing Team is at after week four of DSPG. We have
 
 This is the project plan we came up with the first week of DSPG. This project is intended to span over three years with DPSG, and different interns will be working on it in the coming years. Thus, the project plan is ambitious for this summer.
 
-![](Week%20Four%20Team%20Blog%20Images/Project%20Outline.png){fig-align="center"}
+
+[](Week%20Four%20Team%20Blog%20Images/Project%20Outline.png){fig-align="center"}
 
 ## Problem Statement
 
@@ -41,9 +42,10 @@ Utilizing web scraping techniques to collect images of houses from various asses
 
 -   Create AI models
 
+
 ## Our Progress
 
-We have been making good progress to complete the goals and objectives we outlined above. Since the beginning of the Data Science for the Public Good Program, we have been expanding our knowledge of data science, particularly in areas that relate to this housing project. We have been learning and covering new concepts through DataCamp. We have also watched two webinars on TidyCensus training, as well as started creating AI Models to practice with.
+We have been making good progress to complete the goals and objectives we outlined above. Since the beginning of the Data Science for the Public Good Program, we have been expanding our knowledge of data science, particularly in areas that relate to this housing project. We have been learning and covering new concepts through Data Camp. We have also watched two webinars on TidyCensus training, as well as started creating AI Models to practice with.
 
 ### Data Camp Training:
 
@@ -83,6 +85,7 @@ One of the first steps in our project was to explore the available demographic d
 
 ![](Week%20Four%20Team%20Blog%20Images/TidyCensus%20Training/Population%20by%20Age%20and%20Tenure,%20Grundy%20Center.png){fig-align="center" width="500"}
 
+
 ### Creating Test AI Models:
 
 The next step was creating an AI Model. We decided to create an AI Model early in the project before finishing the housing data collection so that we had a better understanding when it came to putting everything together. The AI Model below tests for vegetation in front of houses.
@@ -99,7 +102,9 @@ The next step was creating an AI Model. We decided to create an AI Model early i
 
 ![](Week%20Four%20Team%20Blog%20Images/Gavin's%20First%20AI%20Model%20images/MicrosoftTeams-image%20(2).png){fig-align="center"}
 
+
 ### This Week:
+
 
 #### In-Person Data Collection
 
@@ -121,6 +126,7 @@ We ran into a couple of problems when doing this, the biggest of which is displa
 
 ![Google Street View information for New Hampton, Iowa. For reference, population was 3,368 as of 2023.](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(4).png){fig-align="center" width="584"}
 
+
 Below is a sample from the tables we created containing the URLs to grab the images from Google Street View.
 
 | Parcel ID  | Street         | City State  | Full Address                | Front URL                   | Back URL                                                               | Full URL                                                                                          |
@@ -131,14 +137,17 @@ Below is a sample from the tables we created containing the URLs to grab the ima
 | 1331220100 | 608 8TH AVE    | SLATER IOWA | 608 8TH AVE, SLATER IOWA    | 608+8TH+AVE,+SLATER+IOWA    | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=608+8TH+AVE,+SLATER+IOWA    |
 | 1331220080 | 604 8TH AVE    | SLATER IOWA | 604 8TH AVE, SLATER IOWA    | 604+8TH+AVE,+SLATER+IOWA    | https://maps.googleapis.com/maps/api/streetview?size=800x800&location= | https://maps.googleapis.com/maps/api/streetview?size=800x800&location=604+8TH+AVE,+SLATER+IOWA    |
 
+
 #### Web Scraping
 
 Once we were finished collecting addresses and generating URLs, we moved on to scraping the web for more images. We decided to grab images from Zillow, Realtors.com, and the county assessor pages for our cities. We were able to successfully scrape images from Zillow this week.
 
 [insert images of web scraping progress after today]{.underline}
 
+
 ## Future Plans and Next Steps
 
 Once we are able to scrape enough images off of Zillow, Realtors.com, and the assessor pages, we will be able to move on with creating AI Models. The diagram below outlines how the AI Models will work in the next steps of out project.
+
 
 ![](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image.png){fig-align="center"}
