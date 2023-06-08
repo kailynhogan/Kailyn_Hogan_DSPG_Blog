@@ -1,0 +1,12 @@
+---
+title: "Week Four"
+author: "Kailyn Hogan"
+date: "2023-06-09"
+categories: [Week Four]
+---
+
+# Week Four of DSPG
+
+## DataCamp Trainings
+
+1.  Introduction to Deep Learning with Keras

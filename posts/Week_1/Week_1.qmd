@@ -1,11 +1,14 @@
 ---
 title: "Week One"
 author: "Kailyn Hogan"
-date: "2023-05-31"
+date: "2023-05-19"
 categories: [Week One]
+image: "datacamp.jpg"
 ---
 
 # Week One of DSPG
+
+The priority for week one of Data Science for the Public Good was DataCamp training. I completed the following list of DataCamp courses this week.
 
 ## DataCamp Trainings
 
@@ -15,12 +18,3 @@ categories: [Week One]
 4.  Understanding and Interpreting Data Assessment
 5.  Introduction to R
 6.  Introduction to the Tidyverse
-
-```{r}
-#code chunk
-print("This works.")
-```
-
-```{r, eval = FALSE}
-print("This will not print.")
-```

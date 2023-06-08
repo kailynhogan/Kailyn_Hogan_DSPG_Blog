@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Kailyn_Hogan_DSPG_Blog"
+  title: "Kailyn Hogan's DSPG Blog"
   navbar:
     right:
       - about.qmd
@@ -13,7 +13,7 @@ website:
         href: https://twitter.com
 format:
   html:
-    theme: cosmo
+    theme: lumen
     css: styles.css
 
 editor: visual

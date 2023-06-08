@@ -1,7 +1,7 @@
 ---
 title: "Week Two"
 author: "Kailyn Hogan"
-date: "2023-05-31"
+date: "2023-05-26"
 categories: [Week Two]
 ---
 
@@ -19,6 +19,10 @@ I created the following plots using the information I learned from the webinars 
 library(tidycensus)
 library(tidyverse)
 library(ggthemes)
+library(scales)
+```
+
+```{r}
 
 ##ONWER VS. RENTER OCCUPIED FOR EACH CITY
 own_iowa <- get_decennial(geography = "place",
@@ -157,7 +161,6 @@ medage16_20 %>%
 ```
 
 ```{r}
-library(scales)
 
 #PERCENT FOREIGN BORN, NON-CITIZENS
 foreign <- c("foreign" = "B05012_003",
@@ -271,3 +274,9 @@ pct_un %>%
 ```
 
 We also had our first client meeting for the Housing and AI project this week on Thursday, May 25th. We gained clarity for which direction we should be heading in the project from our stakeholders.
+
+git_add
+
+git_commit
+
+git_push
