@@ -1,0 +1,11 @@
+---
+title: "Collecting Address Data in the United States"
+author: "Kailyn Hogan"
+date: "2023-06-02"
+categories: [Little Things][Data Collection]
+---
+
+# Address Data Collection
+
+1.  the .csv file that Liesl found early on that holds all of the addresses in the United States
+2.  Spatial address collection from Beacon and Vanguard GIS data
