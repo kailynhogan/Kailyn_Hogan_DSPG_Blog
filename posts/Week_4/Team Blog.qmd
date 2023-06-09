@@ -129,6 +129,8 @@ Below is a sample from the tables we created containing the URLs to grab the ima
 
 Once we were finished collecting addresses and generating URLs, we moved on to scraping the web for more images. We decided to grab images from Zillow, Realtors.com, and the county assessor pages for our cities. We were able to successfully scrape images from Zillow this week.
 
+![](images/MicrosoftTeams-image%20(2).png){fig-align="center" width="1910"}
+
 ![](Week%20Four%20Team%20Blog%20Images/MicrosoftTeams-image%20(1).png){fig-align="center"}
 
 ![](Week%20Four%20Team%20Blog%20Images/zillow%20dataframe.png){fig-align="center"}
