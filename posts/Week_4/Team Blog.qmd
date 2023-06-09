@@ -203,6 +203,10 @@ results <- res_pg %>% bind_rows(res_ss)
 view(results)
 ```
 
+### Web Scraping Issues
+
+Independence had issues where the house number was listed as 100/101 and also had 100 1/2. Thankfully the function to grab the Google images ran all the way but said there were 50 errors including both addresses with two house numbers and with half signs. If you remove one of the address numbers or remove the 1/2 (basically removing the / sign) the image url still brings you to a Google image. We could possibly go back through and grab these URL's and alter them to try and grab these addresses if necessary.
+
 #### Happies
 
 -   had a great meeting with Erin Olson-Douglas
