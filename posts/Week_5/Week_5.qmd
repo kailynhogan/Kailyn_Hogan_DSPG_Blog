@@ -3,6 +3,7 @@ title: "Week Five"
 author: "Kailyn Hogan"
 date: "2023-06-016"
 categories: [Week Five]
+toc: True
 ---
 
 # Week Five of DSPG
@@ -48,7 +49,7 @@ We also started sorting the Google Street View images to train our AI Models on 
 
 When we started sorting the images, I noticed an error with an Independence image. The image on the left below is the one that we downloaded from Google Street View. Because I have been in Independence before, I could tell that this was not a photo of Independence. The photo on the left is from a different place, and the photo on the right is the same address but actually in Independence.
 
-I checked the URL we used to generate the Google Street View image on the left, and I noticed that we did not specify the city and state. In fact, we didn't specify the city and state for any of the Independence URLs or the New Hampton URLs. Thankfully this was a quick fix and the images download quickly.
+I checked the URL we used to generate the Google Street View image on the left, and I noticed that we did not specify the city and state. In fact, we didn't specify the city and state for any of the Independence URLs or the New Hampton URLs. Thankfully this was a quick fix. We just added the city and state to the URL files, and the images downloaded quickly.
 
 ![Error in Independence Address for Google Image API](images/Independence_google_image_error.png){fig-align="center"}
 
@@ -60,7 +61,7 @@ The address data is stored differently on Realtor.com, and I was not successful 
 
 ## Tuesday
 
-## Wednesday 
+## Wednesday
 
 ## Thursday
 
