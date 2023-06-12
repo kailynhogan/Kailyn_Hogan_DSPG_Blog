@@ -14,7 +14,7 @@ website:
         href: https://www.linkedin.com/in/kailynjhogan/
 format:
   html:
-    backgroundcolor: "#F7A399"
+    backgroundcolor: "#FFEFF4"
     css: styles.css
 
 editor: visual
