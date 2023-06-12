@@ -153,6 +153,10 @@ When web scraping, we ran into a problem with blurred houses. Upon some research
 
 ![](images/Example_of_Blurry_House.png){fig-align="center"}
 
+The next websites we are scraping hold the Iowa Assessors housing data for our four cities. We found a webpage that has links to every counties assessor website. The key at the bottom shows where the data is held. Yellow means the data is held by Vanguard. Blue means the data is online. For most of Iowa's counties, this means that it is held by Beacon Schneider.
+
+![](images/iowa_assessors_page.png){fig-align="center"}
+
 ### Web Scraping Issues
 
 Independence had issues where the house number was listed as 100/101 and also had 100 1/2. Thankfully the function to grab the Google images ran all the way but said there were 50 errors including both addresses with two house numbers and with half signs. If you remove one of the address numbers or remove the 1/2 (basically removing the / sign) the image url still brings you to a Google image. We could possibly go back through and grab these URL's and alter them to try and grab these addresses if necessary.
