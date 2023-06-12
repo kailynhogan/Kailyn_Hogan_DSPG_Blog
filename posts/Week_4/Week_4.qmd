@@ -4,6 +4,7 @@ subtitle: "Gathering addresses and images for our AI Models!"
 author: "Kailyn Hogan"
 date: "2023-06-09"
 categories: [Week Four]
+toc: true
 ---
 
 ## Monday

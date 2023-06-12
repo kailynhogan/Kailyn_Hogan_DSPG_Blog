@@ -15,9 +15,6 @@ website:
 format:
   html:
     backgroundcolor: "#F7A399"
-    toc: True
-    anchor-sections: false
-    link-external-icon: true
     css: styles.css
 
 editor: visual

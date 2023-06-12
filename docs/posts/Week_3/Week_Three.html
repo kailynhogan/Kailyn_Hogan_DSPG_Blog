@@ -35,6 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -64,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -138,17 +139,7 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#datacamp-trainings" id="toc-datacamp-trainings" class="nav-link active" data-scroll-target="#datacamp-trainings">DataCamp Trainings</a></li>
-  <li><a href="#ai-modeling" id="toc-ai-modeling" class="nav-link" data-scroll-target="#ai-modeling">AI Modeling</a></li>
-  <li><a href="#morning-coffee-talk" id="toc-morning-coffee-talk" class="nav-link" data-scroll-target="#morning-coffee-talk">Morning Coffee Talk</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -158,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This week my team has been trying to gather resources to use in our AI model. We are trying to scrape data from multiple different sources including Beacon, Vanguard, and Trulia to compile photos and train our AI model.</p>
 <p>I have been learning how to web scrape, and I have completed the following DataCamp trainings:</p>
 <section id="datacamp-trainings" class="level2">
-<h2 data-anchor-id="datacamp-trainings">DataCamp Trainings</h2>
+<h2 class="anchored" data-anchor-id="datacamp-trainings">DataCamp Trainings</h2>
 <ol type="1">
 <li>Intermediate R</li>
 <li>Web Scraping in R</li>
@@ -170,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I also learned how to create a quarto blog this week!</p>
 </section>
 <section id="ai-modeling" class="level2">
-<h2 data-anchor-id="ai-modeling">AI Modeling</h2>
+<h2 class="anchored" data-anchor-id="ai-modeling">AI Modeling</h2>
 <p>To better understand the AI model my group is trying to create, I am watching the following YouTube videos:</p>
 <ol type="1">
 <li><a href="https://www.youtube.com/watch?v=19LQRx78QVU&amp;list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&amp;index=1&amp;ab_channel=NicholasRenotte" class="uri">https://www.youtube.com/watch?v=19LQRx78QVU&amp;list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&amp;index=1&amp;ab_channel=NicholasRenotte</a></li>
@@ -178,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </section>
 <section id="morning-coffee-talk" class="level2">
-<h2 data-anchor-id="morning-coffee-talk">Morning Coffee Talk</h2>
+<h2 class="anchored" data-anchor-id="morning-coffee-talk">Morning Coffee Talk</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="IMG_1908.png" class="img-fluid figure-img"></p>
@@ -211,6 +202,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -415,20 +413,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
