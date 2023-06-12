@@ -2,7 +2,7 @@
 title: "Collecting Address Data in the United States"
 author: "Kailyn Hogan"
 date: "2023-06-02"
-categories: [Little Things][Data Collection]
+categories: [Little Things]
 ---
 
 # Address Data Collection
