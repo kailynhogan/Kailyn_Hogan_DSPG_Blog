@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Kailyn Hogan’s DSPG Blog",
     "section": "",
-    "text": "Week Five\n\n\n\n\n\n\n\nWeek Five\n\n\n\n\n\n\n\n\n\n\n\nJun 16, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nTeam Blog: Week Four\n\n\n\n\n\n\n\nWeek Four\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek Four\n\n\n\n\n\n\n\nWeek Four\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nCollecting Address Data in the United States\n\n\n\n\n\n\n\nLittle Things\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek Three\n\n\n\n\n\n\n\nWeek Three\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek One\n\n\n\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 19, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\nNo matching items"
+    "text": "Week Five of Data Science for the Public Good\n\n\n\n\n\n\n\nWeek Five\n\n\n\n\n\n\n\n\n\n\n\nJun 16, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nTeam Blog: Week Four\n\n\n\n\n\n\n\nWeek Four\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek Four of Data Science for the Public Good\n\n\nGathering addresses and images for our AI Models!\n\n\n\n\nWeek Four\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nCollecting Address Data in the United States\n\n\n\n\n\n\n\nLittle Things\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek Three of Data Science for the Public Good\n\n\nI gave a Morning Coffee Talk!\n\n\n\n\nWeek Three\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two of Data Science for the Public Good\n\n\nRelearning TidyCensus in Vegas!\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\n  \n\n\n\n\nWeek One of Data Science for the Public Good\n\n\nDataCamp! DataCamp! DataCamp!\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 19, 2023\n\n\nKailyn Hogan\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Little Things/WaysToGetAddresses.html",
@@ -21,18 +21,53 @@
     "text": "Address Data Collection\n\nthe .csv file that Liesl found early on that holds all of the addresses in the United States\nSpatial address collection from Beacon and Vanguard GIS data"
   },
   {
+    "objectID": "posts/Team_Blog_Week4/Team Blog.html#project-overview",
+    "href": "posts/Team_Blog_Week4/Team Blog.html#project-overview",
+    "title": "Team Blog: Week Four",
+    "section": "Project Overview",
+    "text": "Project Overview\nThis is the project plan we came up with the first week of DSPG. This project is intended to span over three years with DPSG, and different interns will be working on it in the coming years. Thus, the project plan is ambitious for this summer."
+  },
+  {
+    "objectID": "posts/Team_Blog_Week4/Team Blog.html#problem-statement",
+    "href": "posts/Team_Blog_Week4/Team Blog.html#problem-statement",
+    "title": "Team Blog: Week Four",
+    "section": "Problem Statement",
+    "text": "Problem Statement\nThe absence of a comprehensive and unbiased assessment of housing quality in rural communities poses challenges in identifying financing gaps and effectively allocating resources for housing improvement. Consequently, this hinders the overall well-being and health of residents, impacts workforce stability, diminishes rural vitality, and undermines the economic growth of Iowa. Moreover, the subjective nature of evaluating existing housing conditions and the limited availability of resources for thorough investigations further compound the problem. To address these challenges, there is a pressing need for an AI-driven approach that can provide a more accurate and objective evaluation of housing quality, identify financing gaps, and optimize the allocation of local, state, and federal funds to maximize community benefits.\nUtilizing web scraping techniques to collect images of houses from various assessor websites, an AI model can be developed to analyze and categorize housing features into good or poor quality. This can enable targeted investment strategies. It allows for the identification of houses in need of improvement and determines the areas where financial resources should be directed. By leveraging AI technology in this manner, the project seeks to streamline the housing evaluation process, eliminate subjective biases, and facilitate informed decision-making for housing investment and development initiatives in rural communities"
+  },
+  {
+    "objectID": "posts/Team_Blog_Week4/Team Blog.html#goals-and-objectives",
+    "href": "posts/Team_Blog_Week4/Team Blog.html#goals-and-objectives",
+    "title": "Team Blog: Week Four",
+    "section": "Goals and Objectives",
+    "text": "Goals and Objectives\n\nImage Gathering\n\nZillow\nRealtors.com\nCounty Assessor Pages\n\nVangaurd: Independence\nBeacon Schneider: Slater, New Hampton, and Grundy Center\n\n\nBuild, Train, and Test AI Models\n\nVegetation Model\nSiding Model\nGutter Model\n\nCreate Database of Housing Information\n\nZillow\nRealtors.com\nCounty Assessor Pages\n\nVanguard: Independence\nBeacon Schneider: Slater, New Hampton, and Grundy Center"
+  },
+  {
+    "objectID": "posts/Team_Blog_Week4/Team Blog.html#our-progress",
+    "href": "posts/Team_Blog_Week4/Team Blog.html#our-progress",
+    "title": "Team Blog: Week Four",
+    "section": "Our Progress",
+    "text": "Our Progress\nWe have been making good progress to complete the goals and objectives we outlined above. Since the beginning of the Data Science for the Public Good Program, we have been expanding our knowledge of data science, particularly in areas that relate to this housing project. We have been learning and covering new concepts through Data Camp. We have also watched two webinars on TidyCensus training, as well as started creating AI Models to practice with.\n\nData Camp Training:\n\nGitHub Concepts\nAI Fundamentals\nIntroduction to R\nIntermediate R\nIntroduction to the Tidyverse\nWeb Scraping in R\nIntroduction to Deep Learning with Keras\n\n\n\nTidyCensus Demographic Data Collection:\nOne of the first steps in our project was to explore the available demographic data in our selected cities and counties. We thought it valuable to understand the demographic data, and we have represented in the plots below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreating Test AI Models:\nThe next step was creating an AI Model. We decided to create an AI Model early in the project before finishing the housing data collection so that we had a better understanding when it came to putting everything together. The AI Model below tests for vegetation in front of houses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis Week:\n\nIn-Person Data Collection\nOn Tuesday this week, the entire DSPG program went to Slater to practice data collection in person. The housing group took this as an opportunity to collect some housing photos on the ground to use in our AI Model later on.\n\n\nGoogle Street View and URLs\nWe are getting the majority of our photos for the AI to use from Google Street View. Google has an API key that you can use to generate an image for a specific address. We spent the first half of this week pulling addresses from each of our cities and creating URLs to pull the images from Google Street View.\nWe ran into a couple of problems when doing this, the biggest of which is displayed in the images below. Because we are working with cities in rural areas, there is not Google Street View images available for every street in our cities.\n\n\n\nGoogle Street View information for Grundy Center, Iowa. For reference, population was 2,811 as of 2023.\n\n\n\n\n\nGoogle Street View information for Slater, Iowa. For reference, population was 1,639 as of 2023.\n\n\n\n\n\nGoogle Street View information for Independence, Iowa. For reference, population was 6,307 as of 2023.\n\n\n\n\n\nGoogle Street View information for New Hampton, Iowa. For reference, population was 3,368 as of 2023.\n\n\nBelow is a sample from the tables we created containing the URLs to grab the images from Google Street View.\n\n\n\n\nWeb Scraping\nOnce we were finished collecting addresses and generating URLs, we moved on to scraping the web for more images. We decided to grab images from Zillow, Realtors.com, and the County Assessor pages for our cities. We were able to successfully scrape images from Zillow this week.\n\n\n\n\n\n\n\n\n\n\nWhen web scraping, we ran into a problem with blurred houses. Upon some research, we found out that some home owners pay Google to have their home blurred for Google Street View.\n\n\n\n\n\nThe next websites we are scraping hold the Iowa Assessors housing data for our four cities. We found a webpage that has links to every counties assessor website. The key at the bottom shows where the data is held. Yellow means the data is held by Vanguard. Blue means the data is online. For most of Iowa’s counties, this means that it is held by Beacon Schneider.\n\n\n\n\n\n\n\n\nWeb Scraping Issues\nIndependence had issues where the house number was listed as 100/101 and also had 100 1/2. Thankfully the function to grab the Google images ran all the way but said there were 50 errors including both addresses with two house numbers and with half signs. If you remove one of the address numbers or remove the 1/2 (basically removing the / sign) the image url still brings you to a Google image. We could possibly go back through and grab these URL’s and alter them to try and grab these addresses if necessary.\n\nHappies\n\nhad a great meeting with Erin Olson-Douglas\nfinished collecting and creating URL addresses for Google Street View images\nZillow owns Trulia so we don’t have to web scrape both sites :)\nable to successfully scrape some things from Zillow !\n\n\n\nCrappies\n\nWeb Scraping\nBeacon and Vanguard have anti-web scraping protections\nAngelina’s Excel is stupid"
+  },
+  {
+    "objectID": "posts/Team_Blog_Week4/Team Blog.html#future-plans-and-next-steps",
+    "href": "posts/Team_Blog_Week4/Team Blog.html#future-plans-and-next-steps",
+    "title": "Team Blog: Week Four",
+    "section": "Future Plans and Next Steps",
+    "text": "Future Plans and Next Steps\nOnce we are able to scrape enough images off of Zillow, Realtors.com, and the assessor pages, we will be able to move on with creating AI Models. The diagram below outlines how the AI Models will work in the next steps of out project."
+  },
+  {
     "objectID": "posts/Week_1/Week_1.html",
     "href": "posts/Week_1/Week_1.html",
-    "title": "Week One",
+    "title": "Week One of Data Science for the Public Good",
     "section": "",
-    "text": "The priority for week one of Data Science for the Public Good was DataCamp training. I completed the following list of DataCamp courses this week.\n\n\n\nAI Fundamentals\nGitHub Concepts\nR Programming Assessment\nUnderstanding and Interpreting Data Assessment\nIntroduction to R\nIntroduction to the Tidyverse"
+    "text": "The priority for week one of Data Science for the Public Good was DataCamp training. I completed the following list of DataCamp courses this week."
   },
   {
     "objectID": "posts/Week_1/Week_1.html#datacamp-trainings",
     "href": "posts/Week_1/Week_1.html#datacamp-trainings",
-    "title": "Week One",
-    "section": "",
-    "text": "AI Fundamentals\nGitHub Concepts\nR Programming Assessment\nUnderstanding and Interpreting Data Assessment\nIntroduction to R\nIntroduction to the Tidyverse"
+    "title": "Week One of Data Science for the Public Good",
+    "section": "DataCamp Trainings",
+    "text": "DataCamp Trainings\n\nAI Fundamentals\nGitHub Concepts\nR Programming Assessment\nUnderstanding and Interpreting Data Assessment\nIntroduction to R\nIntroduction to the Tidyverse"
   },
   {
     "objectID": "posts/Week_2/Week_2.html",
@@ -51,65 +86,30 @@
   {
     "objectID": "posts/Week_3/Week_Three.html",
     "href": "posts/Week_3/Week_Three.html",
-    "title": "Week Three",
+    "title": "Week Three of Data Science for the Public Good",
     "section": "",
-    "text": "This week my team has been trying to gather resources to use in our AI model. We are trying to scrape data from multiple different sources including Beacon, Vanguard, and Trulia to compile photos and train our AI model.\nI have been learning how to web scrape, and I have completed the following DataCamp trainings:\n\n\n\nIntermediate R\nWeb Scraping in R\n\nI have also created an R Markdown file to document my web scraping practice.\nI did a quick Google search for a web scraper for Beacon before I attempted it myself, and I found a GitHub page dedicated to one:\nhttps://github.com/openaddresses/machine/issues/580\nI am not sure it is relevant to the data I am trying to scrape from Beacon.\nI also learned how to create a quarto blog this week!\n\n\n\nTo better understand the AI model my group is trying to create, I am watching the following YouTube videos:\n\nhttps://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte\nhttps://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte\n\n\n\n\n\n\n\nShowing the rating scale for the DSM housing project.\n\n\nI also gave the Morning Coffee Talk on Thursday this week over the Des Moines Housing Project I was a part of. The Des Moines Housing Project was conducted by czb, a firm located in Bath, Maine. I was hired as a student researcher for them this past spring, and I conducted housing surveys on roughly 6,000 properties in Southwestern Des Moines."
+    "text": "This week my team has been trying to gather resources to use in our AI model. We are trying to scrape data from multiple different sources including Beacon, Vanguard, and Trulia to compile photos and train our AI model.\nI have been learning how to web scrape, and I have completed the following DataCamp trainings:"
   },
   {
     "objectID": "posts/Week_3/Week_Three.html#datacamp-trainings",
     "href": "posts/Week_3/Week_Three.html#datacamp-trainings",
-    "title": "Week Three",
-    "section": "",
-    "text": "Intermediate R\nWeb Scraping in R\n\nI have also created an R Markdown file to document my web scraping practice.\nI did a quick Google search for a web scraper for Beacon before I attempted it myself, and I found a GitHub page dedicated to one:\nhttps://github.com/openaddresses/machine/issues/580\nI am not sure it is relevant to the data I am trying to scrape from Beacon.\nI also learned how to create a quarto blog this week!"
+    "title": "Week Three of Data Science for the Public Good",
+    "section": "DataCamp Trainings",
+    "text": "DataCamp Trainings\n\nIntermediate R\nWeb Scraping in R\n\nI have also created an R Markdown file to document my web scraping practice.\nI did a quick Google search for a web scraper for Beacon before I attempted it myself, and I found a GitHub page dedicated to one:\nhttps://github.com/openaddresses/machine/issues/580\nI am not sure it is relevant to the data I am trying to scrape from Beacon.\nI also learned how to create a quarto blog this week!"
   },
   {
     "objectID": "posts/Week_3/Week_Three.html#ai-modeling",
     "href": "posts/Week_3/Week_Three.html#ai-modeling",
-    "title": "Week Three",
-    "section": "",
-    "text": "To better understand the AI model my group is trying to create, I am watching the following YouTube videos:\n\nhttps://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte\nhttps://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte"
+    "title": "Week Three of Data Science for the Public Good",
+    "section": "AI Modeling",
+    "text": "AI Modeling\nTo better understand the AI model my group is trying to create, I am watching the following YouTube videos:\n\nhttps://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte\nhttps://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte"
   },
   {
     "objectID": "posts/Week_3/Week_Three.html#morning-coffee-talk",
     "href": "posts/Week_3/Week_Three.html#morning-coffee-talk",
-    "title": "Week Three",
-    "section": "",
-    "text": "Showing the rating scale for the DSM housing project.\n\n\nI also gave the Morning Coffee Talk on Thursday this week over the Des Moines Housing Project I was a part of. The Des Moines Housing Project was conducted by czb, a firm located in Bath, Maine. I was hired as a student researcher for them this past spring, and I conducted housing surveys on roughly 6,000 properties in Southwestern Des Moines."
-  },
-  {
-    "objectID": "posts/Week_4/Team Blog.html#project-overview",
-    "href": "posts/Week_4/Team Blog.html#project-overview",
-    "title": "Team Blog: Week Four",
-    "section": "Project Overview",
-    "text": "Project Overview\nThis is the project plan we came up with the first week of DSPG. This project is intended to span over three years with DPSG, and different interns will be working on it in the coming years. Thus, the project plan is ambitious for this summer."
-  },
-  {
-    "objectID": "posts/Week_4/Team Blog.html#problem-statement",
-    "href": "posts/Week_4/Team Blog.html#problem-statement",
-    "title": "Team Blog: Week Four",
-    "section": "Problem Statement",
-    "text": "Problem Statement\nThe absence of a comprehensive and unbiased assessment of housing quality in rural communities poses challenges in identifying financing gaps and effectively allocating resources for housing improvement. Consequently, this hinders the overall well-being and health of residents, impacts workforce stability, diminishes rural vitality, and undermines the economic growth of Iowa. Moreover, the subjective nature of evaluating existing housing conditions and the limited availability of resources for thorough investigations further compound the problem. To address these challenges, there is a pressing need for an AI-driven approach that can provide a more accurate and objective evaluation of housing quality, identify financing gaps, and optimize the allocation of local, state, and federal funds to maximize community benefits.\nUtilizing web scraping techniques to collect images of houses from various assessor websites, an AI model can be developed to analyze and categorize housing features into good or poor quality. This can enable targeted investment strategies. It allows for the identification of houses in need of improvement and determines the areas where financial resources should be directed. By leveraging AI technology in this manner, the project seeks to streamline the housing evaluation process, eliminate subjective biases, and facilitate informed decision-making for housing investment and development initiatives in rural communities"
-  },
-  {
-    "objectID": "posts/Week_4/Team Blog.html#goals-and-objectives",
-    "href": "posts/Week_4/Team Blog.html#goals-and-objectives",
-    "title": "Team Blog: Week Four",
-    "section": "Goals and Objectives",
-    "text": "Goals and Objectives\n\nImage Gathering\n\nZillow\nRealtors.com\nCounty Assessor Pages\n\nVangaurd: Independence\nBeacon Schneider: Slater, New Hampton, and Grundy Center\n\n\nBuild, Train, and Test AI Models\n\nVegetation Model\nSiding Model\nGutter Model\n\nCreate Database of Housing Information\n\nZillow\nRealtors.com\nCounty Assessor Pages\n\nVanguard: Independence\nBeacon Schneider: Slater, New Hampton, and Grundy Center"
-  },
-  {
-    "objectID": "posts/Week_4/Team Blog.html#our-progress",
-    "href": "posts/Week_4/Team Blog.html#our-progress",
-    "title": "Team Blog: Week Four",
-    "section": "Our Progress",
-    "text": "Our Progress\nWe have been making good progress to complete the goals and objectives we outlined above. Since the beginning of the Data Science for the Public Good Program, we have been expanding our knowledge of data science, particularly in areas that relate to this housing project. We have been learning and covering new concepts through Data Camp. We have also watched two webinars on TidyCensus training, as well as started creating AI Models to practice with.\n\nData Camp Training:\n\nGitHub Concepts\nAI Fundamentals\nIntroduction to R\nIntermediate R\nIntroduction to the Tidyverse\nWeb Scraping in R\nIntroduction to Deep Learning with Keras\n\n\n\nTidyCensus Demographic Data Collection:\nOne of the first steps in our project was to explore the available demographic data in our selected cities and counties. We thought it valuable to understand the demographic data, and we have represented in the plots below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreating Test AI Models:\nThe next step was creating an AI Model. We decided to create an AI Model early in the project before finishing the housing data collection so that we had a better understanding when it came to putting everything together. The AI Model below tests for vegetation in front of houses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis Week:\n\nIn-Person Data Collection\nOn Tuesday this week, the entire DSPG program went to Slater to practice data collection in person. The housing group took this as an opportunity to collect some housing photos on the ground to use in our AI Model later on.\n\n\nGoogle Street View and URLs\nWe are getting the majority of our photos for the AI to use from Google Street View. Google has an API key that you can use to generate an image for a specific address. We spent the first half of this week pulling addresses from each of our cities and creating URLs to pull the images from Google Street View.\nWe ran into a couple of problems when doing this, the biggest of which is displayed in the images below. Because we are working with cities in rural areas, there is not Google Street View images available for every street in our cities.\n\n\n\nGoogle Street View information for Grundy Center, Iowa. For reference, population was 2,811 as of 2023.\n\n\n\n\n\nGoogle Street View information for Slater, Iowa. For reference, population was 1,639 as of 2023.\n\n\n\n\n\nGoogle Street View information for Independence, Iowa. For reference, population was 6,307 as of 2023.\n\n\n\n\n\nGoogle Street View information for New Hampton, Iowa. For reference, population was 3,368 as of 2023.\n\n\nBelow is a sample from the tables we created containing the URLs to grab the images from Google Street View.\n\n\n\n\nWeb Scraping\nOnce we were finished collecting addresses and generating URLs, we moved on to scraping the web for more images. We decided to grab images from Zillow, Realtors.com, and the County Assessor pages for our cities. We were able to successfully scrape images from Zillow this week.\n\n\n\n\n\n\n\n\n\n\nWhen web scraping, we ran into a problem with blurred houses. Upon some research, we found out that some home owners pay Google to have their home blurred for Google Street View.\n\n\n\n\n\nThe next websites we are scraping hold the Iowa Assessors housing data for our four cities. We found a webpage that has links to every counties assessor website. The key at the bottom shows where the data is held. Yellow means the data is held by Vanguard. Blue means the data is online. For most of Iowa’s counties, this means that it is held by Beacon Schneider.\n\n\n\n\n\n\n\n\nWeb Scraping Issues\nIndependence had issues where the house number was listed as 100/101 and also had 100 1/2. Thankfully the function to grab the Google images ran all the way but said there were 50 errors including both addresses with two house numbers and with half signs. If you remove one of the address numbers or remove the 1/2 (basically removing the / sign) the image url still brings you to a Google image. We could possibly go back through and grab these URL’s and alter them to try and grab these addresses if necessary.\n\nHappies\n\nhad a great meeting with Erin Olson-Douglas\nfinished collecting and creating URL addresses for Google Street View images\nZillow owns Trulia so we don’t have to web scrape both sites :)\nable to successfully scrape some things from Zillow !\n\n\n\nCrappies\n\nWeb Scraping\nBeacon and Vanguard have anti-web scraping protections\nAngelina’s Excel is stupid"
-  },
-  {
-    "objectID": "posts/Week_4/Team Blog.html#future-plans-and-next-steps",
-    "href": "posts/Week_4/Team Blog.html#future-plans-and-next-steps",
-    "title": "Team Blog: Week Four",
-    "section": "Future Plans and Next Steps",
-    "text": "Future Plans and Next Steps\nOnce we are able to scrape enough images off of Zillow, Realtors.com, and the assessor pages, we will be able to move on with creating AI Models. The diagram below outlines how the AI Models will work in the next steps of out project."
+    "title": "Week Three of Data Science for the Public Good",
+    "section": "Morning Coffee Talk",
+    "text": "Morning Coffee Talk\n\n\n\nShowing the rating scale for the DSM housing project.\n\n\nI also gave the Morning Coffee Talk on Thursday this week over the Des Moines Housing Project I was a part of. The Des Moines Housing Project was conducted by czb, a firm located in Bath, Maine. I was hired as a student researcher for them this past spring, and I conducted housing surveys on roughly 6,000 properties in Southwestern Des Moines."
   },
   {
     "objectID": "posts/Week_4/Week_4.html",
@@ -121,15 +121,43 @@
   {
     "objectID": "posts/Week_5/Week_5.html",
     "href": "posts/Week_5/Week_5.html",
-    "title": "Week Five",
+    "title": "Week Five of Data Science for the Public Good",
     "section": "",
     "text": "Chris informed us this morning that we need to include a demographic analysis or report in our project. We reviewed the initial project brief, and I realized that my group had skipped to the end of Year 1 when we started with AI Models. Whoops!\nWe need to go back at some point and work with demographics. I started a little bit of it today. We need to include the following:\n\nIdentify communities with populations between 500 and 10,000\nChange in population\nPresence of schools\nMean age of residents (I wonder if we should discuss changing this to median because it is less influenced by outliers)\nIndustry report\nAg Census data:\n\nNumber of Operators\nOperator Owned\netc.\n\nHousing appreciation and depreciation vs. inflation\n\nWe also started sorting the Google Street View images to train our AI Models on Monday. We need to sort based on six different models. We started with our first three.\n\nIs a house present?\n\nYes\nNo\n\nIs it a clear image of a house?\n\nObstructed\nPartially obstructed\nNot obstructed\n\nAre there multiple houses?\n\nOne House\nMore than one house\n\n\nWhen we started sorting the images, I noticed an error with an Independence image. The image on the left below is the one that we downloaded from Google Street View. Because I have been in Independence before, I could tell that this was not a photo of Independence. The photo on the left is from a different place, and the photo on the right is the same address but actually in Independence.\nI checked the URL we used to generate the Google Street View image on the left, and I noticed that we did not specify the city and state. In fact, we didn’t specify the city and state for any of the Independence URLs or the New Hampton URLs. Thankfully this was a quick fix. We just added the city and state to the URL files, and the images downloaded quickly.\n\n\n\nError in Independence Address for Google Image API\n\n\nWhile I was waiting for images to download on Monday, I started working on scraping Realtor.com. NOTE: it is Realtor.com not Realtors.com. I definitely have been misspelling it. From the brief look I took at web scraping Realtor.com, it looks like it might be slightly more complicated than Zillow.\nThe address data is stored differently on Realtor.com, and I was not successful in scraping it. Instead of being on one line of HTML, it is split up on multiple.\n\n\n\nRealtor.com address HTML"
   },
   {
     "objectID": "posts/Week_5/Week_5.html#monday",
     "href": "posts/Week_5/Week_5.html#monday",
-    "title": "Week Five",
+    "title": "Week Five of Data Science for the Public Good",
     "section": "",
     "text": "Chris informed us this morning that we need to include a demographic analysis or report in our project. We reviewed the initial project brief, and I realized that my group had skipped to the end of Year 1 when we started with AI Models. Whoops!\nWe need to go back at some point and work with demographics. I started a little bit of it today. We need to include the following:\n\nIdentify communities with populations between 500 and 10,000\nChange in population\nPresence of schools\nMean age of residents (I wonder if we should discuss changing this to median because it is less influenced by outliers)\nIndustry report\nAg Census data:\n\nNumber of Operators\nOperator Owned\netc.\n\nHousing appreciation and depreciation vs. inflation\n\nWe also started sorting the Google Street View images to train our AI Models on Monday. We need to sort based on six different models. We started with our first three.\n\nIs a house present?\n\nYes\nNo\n\nIs it a clear image of a house?\n\nObstructed\nPartially obstructed\nNot obstructed\n\nAre there multiple houses?\n\nOne House\nMore than one house\n\n\nWhen we started sorting the images, I noticed an error with an Independence image. The image on the left below is the one that we downloaded from Google Street View. Because I have been in Independence before, I could tell that this was not a photo of Independence. The photo on the left is from a different place, and the photo on the right is the same address but actually in Independence.\nI checked the URL we used to generate the Google Street View image on the left, and I noticed that we did not specify the city and state. In fact, we didn’t specify the city and state for any of the Independence URLs or the New Hampton URLs. Thankfully this was a quick fix. We just added the city and state to the URL files, and the images downloaded quickly.\n\n\n\nError in Independence Address for Google Image API\n\n\nWhile I was waiting for images to download on Monday, I started working on scraping Realtor.com. NOTE: it is Realtor.com not Realtors.com. I definitely have been misspelling it. From the brief look I took at web scraping Realtor.com, it looks like it might be slightly more complicated than Zillow.\nThe address data is stored differently on Realtor.com, and I was not successful in scraping it. Instead of being on one line of HTML, it is split up on multiple.\n\n\n\nRealtor.com address HTML"
+  },
+  {
+    "objectID": "posts/Week_5/Week_5.html#tuesday",
+    "href": "posts/Week_5/Week_5.html#tuesday",
+    "title": "Week Five of Data Science for the Public Good",
+    "section": "Tuesday",
+    "text": "Tuesday"
+  },
+  {
+    "objectID": "posts/Week_5/Week_5.html#wednesday",
+    "href": "posts/Week_5/Week_5.html#wednesday",
+    "title": "Week Five of Data Science for the Public Good",
+    "section": "Wednesday",
+    "text": "Wednesday"
+  },
+  {
+    "objectID": "posts/Week_5/Week_5.html#thursday",
+    "href": "posts/Week_5/Week_5.html#thursday",
+    "title": "Week Five of Data Science for the Public Good",
+    "section": "Thursday",
+    "text": "Thursday"
+  },
+  {
+    "objectID": "posts/Week_5/Week_5.html#friday",
+    "href": "posts/Week_5/Week_5.html#friday",
+    "title": "Week Five of Data Science for the Public Good",
+    "section": "Friday",
+    "text": "Friday"
   }
 ]

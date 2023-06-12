@@ -1,11 +1,10 @@
 ---
-title: "Week Two"
+title: "Week Two of Data Science for the Public Good"
+subtitle: "Relearning TidyCensus in Vegas!"
 author: "Kailyn Hogan"
 date: "2023-05-26"
 categories: [Week Two]
 ---
-
-# Week Two of DSPG
 
 ## TidyCensus Practice
 
@@ -273,10 +272,6 @@ pct_un %>%
   theme_fivethirtyeight()
 ```
 
+I wish I would've gotten to dig deeper into TidyCensus this week, but I was on vacation in Vegas. I learned a lot about TidyCensus considering though.
+
 We also had our first client meeting for the Housing and AI project this week on Thursday, May 25th. We gained clarity for which direction we should be heading in the project from our stakeholders.
-
-git_add
-
-git_commit
-
-git_push

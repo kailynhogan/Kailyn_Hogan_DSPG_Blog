@@ -9,7 +9,7 @@
 <meta name="author" content="Kailyn Hogan">
 <meta name="dcterms.date" content="2023-06-16">
 
-<title>Kailyn Hogan’s DSPG Blog - Week Five</title>
+<title>Kailyn Hogan’s DSPG Blog - Week Five of Data Science for the Public Good</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -87,12 +86,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/kailynhogan" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/kailyn-hogan-760095256/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/kailynjhogan/" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -107,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week Five</h1>
+      <h1 class="title">Week Five of Data Science for the Public Good</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Week Five</div>
               </div>
@@ -143,14 +142,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-five-of-dspg" id="toc-week-five-of-dspg" class="nav-link active" data-scroll-target="#week-five-of-dspg">Week Five of DSPG</a>
-  <ul class="collapse">
-  <li><a href="#monday" id="toc-monday" class="nav-link" data-scroll-target="#monday">Monday</a></li>
+  <li><a href="#monday" id="toc-monday" class="nav-link active" data-scroll-target="#monday">Monday</a></li>
   <li><a href="#tuesday" id="toc-tuesday" class="nav-link" data-scroll-target="#tuesday">Tuesday</a></li>
   <li><a href="#wednesday" id="toc-wednesday" class="nav-link" data-scroll-target="#wednesday">Wednesday</a></li>
   <li><a href="#thursday" id="toc-thursday" class="nav-link" data-scroll-target="#thursday">Thursday</a></li>
   <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">Friday</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -160,10 +156,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="week-five-of-dspg" class="level1">
-<h1>Week Five of DSPG</h1>
 <section id="monday" class="level2">
-<h2 class="anchored" data-anchor-id="monday">Monday</h2>
+<h2 data-anchor-id="monday">Monday</h2>
 <p>Chris informed us this morning that we need to include a demographic analysis or report in our project. We reviewed the initial project brief, and I realized that my group had skipped to the end of Year 1 when we started with AI Models. Whoops!</p>
 <p>We need to go back at some point and work with demographics. I started a little bit of it today. We need to include the following:</p>
 <ul>
@@ -217,19 +211,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="tuesday" class="level2">
-<h2 class="anchored" data-anchor-id="tuesday">Tuesday</h2>
+<h2 data-anchor-id="tuesday">Tuesday</h2>
 </section>
 <section id="wednesday" class="level2">
-<h2 class="anchored" data-anchor-id="wednesday">Wednesday</h2>
+<h2 data-anchor-id="wednesday">Wednesday</h2>
 </section>
 <section id="thursday" class="level2">
-<h2 class="anchored" data-anchor-id="thursday">Thursday</h2>
+<h2 data-anchor-id="thursday">Thursday</h2>
 </section>
 <section id="friday" class="level2">
-<h2 class="anchored" data-anchor-id="friday">Friday</h2>
+<h2 data-anchor-id="friday">Friday</h2>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -253,13 +246,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -464,6 +450,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->

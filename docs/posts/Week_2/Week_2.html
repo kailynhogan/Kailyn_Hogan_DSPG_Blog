@@ -9,7 +9,7 @@
 <meta name="author" content="Kailyn Hogan">
 <meta name="dcterms.date" content="2023-05-26">
 
-<title>Kailyn Hogan’s DSPG Blog - Week Two</title>
+<title>Kailyn Hogan’s DSPG Blog - Week Two of Data Science for the Public Good</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,7 +69,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -99,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -121,12 +120,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/kailynhogan" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/kailyn-hogan-760095256/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/kailynjhogan/" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -142,6 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Week Two</h1>
+            <p class="subtitle lead">Relearning TidyCensus in Vegas!</p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Week Two</div>
               </div>
@@ -172,7 +172,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-two-of-dspg" id="toc-week-two-of-dspg" class="nav-link active" data-scroll-target="#week-two-of-dspg">Week Two of DSPG</a>
+  <ul class="collapse">
+  <li><a href="#tidycensus-practice" id="toc-tidycensus-practice" class="nav-link" data-scroll-target="#tidycensus-practice">TidyCensus Practice</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -182,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="week-two-of-dspg" class="level1">
 <h1>Week Two of DSPG</h1>
 <section id="tidycensus-practice" class="level2">
-<h2 class="anchored" data-anchor-id="tidycensus-practice">TidyCensus Practice</h2>
+<h2 data-anchor-id="tidycensus-practice">TidyCensus Practice</h2>
 <p>This week we were introduced to the TidyCensus package via the 2023 webinar series <em>Analyzing 2017-2021 ACS Data in R and Python</em> by Kyle Walker, Associate Professor at Texas Christian University and R developer.</p>
 <p>We watched the first two videos in the webinar series: <em>Working with the 2021 American Community Survey with R and Tidycensus</em> and <em>Mapping and spatial analysis with ACS data in R</em>.</p>
 <p>I created the following plots using the information I learned from the webinars and previous knowledge:</p>
@@ -586,13 +597,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -797,6 +801,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->

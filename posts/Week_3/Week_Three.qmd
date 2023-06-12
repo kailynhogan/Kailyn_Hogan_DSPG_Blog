@@ -1,11 +1,10 @@
 ---
-title: "Week Three"
+title: "Week Three of Data Science for the Public Good"
+subtitle: "I gave a Morning Coffee Talk!"
 author: "Kailyn Hogan"
 date: "2023-06-02"
 categories: [Week Three]
 ---
-
-# Week Three of DSPG
 
 This week my team has been trying to gather resources to use in our AI model. We are trying to scrape data from multiple different sources including Beacon, Vanguard, and Trulia to compile photos and train our AI model.
 

@@ -1,12 +1,11 @@
 ---
-title: "Week Five"
+title: "Week Five of Data Science for the Public Good"
+subtitle: ""
 author: "Kailyn Hogan"
 date: "2023-06-016"
 categories: [Week Five]
 toc: True
 ---
-
-# Week Five of DSPG
 
 ## Monday
 
