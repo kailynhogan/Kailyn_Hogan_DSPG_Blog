@@ -38,17 +38,17 @@ We needed to first gather the addresses for each city. Gavin and Angelina used a
 
 Gavin used a web scraper attached to a Chrome Extension to then scrape the parcel information listed in "Results" from Beacon. Angelina was lucky and could download the parcel information as a .csv file from Vanguard.
 
-![](/posts/Week_4/images/spatial_selector_tool.png){fig-align="center"}
+![](images/spatial_selector_tool.png){fig-align="center"}
 
 Once the parcel information was scraped for Beacon, we had to go in and clean the data. Below is a sample of what the .csv file looked like after Gavin scraped it. The first thing we had to do was get the data all on one line. We used the following function in Excel to transform the street addresses onto one line:
 
 > =TRIM(CLEAN(SUBSTITUTE(cell, CHAR(160), " ")))
 
-![](/posts/Week_4/images/raw_slater_data.png){fig-align="center"}
+![](images/raw_slater_data.png){fig-align="center"}
 
 We then used the the "Text to Columns" tool in Excel to separate the data into Parcel ID, Street Address, and Owner. We used the "-" as a delimiter. We cleaned the data to remove any addresses that were obviously non-residential, and we also narrowed the data down to just the Parcel ID and address.
 
-![](/posts/Week_4/images/cleaned_slater_csv.png){fig-align="center"}
+![](images/clean_slater_data.png){fig-align="center"}
 
 From there, we created the URLs to gather Google Street View images.
 
@@ -60,7 +60,7 @@ This function removes all spaces and replaces them with + signs.
 
 Here is the output of the cleaned Slater data:
 
-![](/posts/Week_4/images/Slater urls.xlsx){fig-align="center"}
+![](images/slater_urls.png){fig-align="center"}
 
 ## Tuesday
 

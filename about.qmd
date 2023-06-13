@@ -1,6 +1,6 @@
 ---
 title: "About"
-image: profile.jpg
+image: linkedin.jpg
 about:
   template: jolla
   links:
@@ -12,4 +12,4 @@ about:
       href: https://github.com/kailynhogan
 ---
 
-About this blog
+Kailyn Hogan is from Delhi, Iowa, and is a senior at Iowa State University majoring in Community and Regional Planning with a minor in Geographic Information Systems. She is also Vice President of the undergraduate Community and Regional Planning Club at Iowa State. Kailyn believes combining data science and urban planning is vital in today's data-driven world. After college, Kailyn hopes to join the Peace Corps to continue aiding communities and diversifying her cultural education.
