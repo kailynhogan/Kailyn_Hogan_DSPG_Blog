@@ -4,6 +4,7 @@ subtitle: "I gave a Morning Coffee Talk!"
 author: "Kailyn Hogan"
 date: "2023-06-02"
 categories: [Week Three]
+toc: True
 ---
 
 This week my team has been trying to gather resources to use in our AI model. We are trying to scrape data from multiple different sources including Beacon, Vanguard, and Trulia to compile photos and train our AI model.
@@ -33,7 +34,5 @@ To better understand the AI model my group is trying to create, I am watching th
 2.  [[https://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte]{.underline}](https://www.youtube.com/watch?v=jztwpsIzEGc&ab_channel=NicholasRenotte "https://www.youtube.com/watch?v=jztwpsizegc&ab_channel=nicholasrenotte")
 
 ## Morning Coffee Talk
-
-![Showing the rating scale for the DSM housing project.](IMG_1908){fig-align="center"}
 
 I also gave the Morning Coffee Talk on Thursday this week over the Des Moines Housing Project I was a part of. The Des Moines Housing Project was conducted by czb, a firm located in Bath, Maine. I was hired as a student researcher for them this past spring, and I conducted housing surveys on roughly 6,000 properties in Southwestern Des Moines.

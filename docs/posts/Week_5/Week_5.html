@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -147,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#tuesday" id="toc-tuesday" class="nav-link" data-scroll-target="#tuesday">Tuesday</a></li>
   <li><a href="#wednesday" id="toc-wednesday" class="nav-link" data-scroll-target="#wednesday">Wednesday</a></li>
   <li><a href="#thursday" id="toc-thursday" class="nav-link" data-scroll-target="#thursday">Thursday</a></li>
-  <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">Friday</a></li>
+  <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">Friday\</a></li>
   </ul>
 </nav>
     </div>
@@ -213,15 +247,178 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="tuesday" class="level2">
 <h2 class="anchored" data-anchor-id="tuesday">Tuesday</h2>
+<p>On Tuesday, we continued sorting images to train our AI Models. I finished sorting the Slater images for a clear view of the house yesterday, and today I worked on the same sorting for Grundy Center.</p>
+<p>We need about 200 images for each category to train our model. We are struggling to find enough “bad” images.</p>
+<p>Chris came over to talk to us about the app he is creating for the Housing Team. His app is meant to make image sorting easier, so he wants to be able to get it to us as soon as possible. He needed a database created with the house address, Google Street View image URL, and city to finish the app. I created the housing database for all the addresses for Slater, Independence, Grundy Center, and New Hampton.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/houses_database_for_chris.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Chris also suggested that Angelina and I take a look at spatial graphing in R. He said to try the DataCamp course Geospatial in R, and he said to look up Kyle Walkers TidyCensus book.</p>
+<p>On Tuesday, I also worked more on the demographics analysis that Chris asked for. I am starting the analysis by looking at total population in Iowa’s communities. The first plot I created plotted the change in population for Iowa as a whole.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v dplyr     1.1.2     v readr     2.1.4
+v forcats   1.0.0     v stringr   1.5.0
+v ggplot2   3.4.2     v tibble    3.2.1
+v lubridate 1.9.2     v tidyr     1.3.0
+v purrr     1.0.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># renaming the variables now so I don't have to do it later</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>pop00 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pop"</span> <span class="ot">=</span> <span class="st">"P001001"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>pop10 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pop"</span> <span class="ot">=</span> <span class="st">"P001001"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>pop20 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pop"</span> <span class="ot">=</span> <span class="st">"P1_001N"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa 2000 population</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>iowa00 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"state"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">year =</span> <span class="dv">2000</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">output =</span> <span class="st">"wide"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variable =</span> pop00) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Getting data from the 2000 decennial Census
+Using Census Summary File 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa 2010 population</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>iowa10 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"state"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variable =</span> pop10,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2010</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Getting data from the 2010 decennial Census
+Using Census Summary File 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa 2020 population</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>iowa20 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"state"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variable =</span> pop20,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">year =</span> <span class="dv">2020</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2020</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Getting data from the 2020 decennial Census
+Using the PL 94-171 Redistricting Data summary file
+Note: 2020 decennial Census data use differential privacy, a technique that
+introduces errors into data to preserve respondent confidentiality.
+i Small counts should be interpreted with caution.
+i See https://www.census.gov/library/fact-sheets/2021/protecting-the-confidentiality-of-the-2020-census-redistricting-data.html for additional guidance.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bind 2000-2020 data together</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>iowa <span class="ot">&lt;-</span> iowa20 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(iowa10,iowa00)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>change_pop_iowa.jpg <span class="ot">&lt;-</span> iowa <span class="sc">%&gt;%</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> pop))<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">comma</span>(pop)), <span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">25</span>)<span class="sc">+</span>  </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span>  <span class="co"># how do I change the size of the axis labels?</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1998</span>, <span class="dv">2025</span>),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2000</span>,<span class="dv">2010</span>,<span class="dv">2020</span>))<span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>() <span class="sc">+</span>  </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)<span class="sc">+</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Change in Total Population"</span>,</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"State of Iowa"</span>,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Population"</span>,</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">""</span>, </span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"2000-2020 Decennial Census"</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co"># save the plot as a .jpg</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>change_pop_iowa.jpg <span class="sc">%&gt;%</span> <span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"change_pop_iowa.jpg"</span>,<span class="at">width =</span> <span class="dv">6</span>,<span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">400</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/change_pop_iowa.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Next, I pulled the total population for each individual community in Iowa for 2020, 2010, and 2000. Using the 2020 Decennial Census data, I found that there are 408 communities in Iowa that fall within our population parameters. This is 39.69% of all cities in Iowa.</p>
+<p>I also looked at the growth rate for communities in Iowa. Because most of Iowa’s cities are on the smaller size, I don’t think that population is an effective indicator for this project. In fact, the median population for communities in Iowa is 384. I added a column for growth rate to my cities data frame containing the communities in Iowa that fall between our population parameters. Growth rate is calculated by dividing the change in population by the time period the change occurred.</p>
+<blockquote class="blockquote">
+<p>Growth Rate = N/t</p>
+</blockquote>
+<p>I also plotted the twenty-five lowest growth rates in Iowa.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/low_growth_rate.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Keokuk really stands out on this plot. Earlier in the Housing project, there was discussion about the deteriorating qualities of Lee County, the county of which Keokuk resides. This anomaly will need further investigated.</p>
+<p>Next, I want to look at which communities are growing, stable, and shrinking. The growth rates column should aid in this analysis.</p>
 </section>
 <section id="wednesday" class="level2">
 <h2 class="anchored" data-anchor-id="wednesday">Wednesday</h2>
+<p>Because I will be doing a lot of data visualization in the coming weeks with my demographics analysis task, I decided it would be a good idea to refresh my data visualization skills. I scored a 116 on the <em>Data Visualization in R</em> assessment I took on DataCamp. I am pretty happy with that score.</p>
+<p>I feel that I have quality skills in terms of data visualization, but I am lacking when it comes to organizing the data for visualizations. I think completely the track for <em>Data Visualization in R</em> would be helpful.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/data_visual_assessment_results.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>While I was on DataCamp on Wednesday, I also completed the <em>Introduction to Deep Learning with Keras</em> course so I would be ready to create an AI Model. I am in charge of making the model that identifies clear images of houses. We are using Google Collab to create our models, and all the data is being stored in Google Drive. The “clear images” are sorted into three categories: Obstructed, Partially Obstructed, and Not Obstructed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clear_image_sample.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>I was successful in creating the AI Model on Wednesday. Below is the accuracy of my model. There is still a long way to go with it. The Housing team has a lot more photos to gather to train our models on and make them as accurate as possible. Now that our AI Models are created, we can go back to web scraping and gathering images.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clear_image_acc_val.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="thursday" class="level2">
 <h2 class="anchored" data-anchor-id="thursday">Thursday</h2>
+<p>ITAG Conference</p>
+<p>Work on <em>Data Visualization in R</em> DataCamp track.</p>
 </section>
 <section id="friday" class="level2">
-<h2 class="anchored" data-anchor-id="friday">Friday</h2>
+<h2 class="anchored" data-anchor-id="friday">Friday\</h2>
 
 
 </section>
