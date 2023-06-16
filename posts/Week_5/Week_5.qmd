@@ -190,7 +190,7 @@ ArcGIS Pro includes a couple of free templates for infographics. A community pro
 
 I tried a ArcGIS Insights tutorial in the ESRI Hands on Learning lab after the first break. Unfortunately, the folder that was supposed to have the data for the tutorial was empty on my computer. Fortunately, there was already a dataset for 1-year ACS Housing estimates in ArcGIS Insights. I spent about an hour exploring the dataset through Insights. The ACS data included median house price, home ownership rates, vacany rates, etc.
 
-![](images/ESRI_learning_lab_map.png){fig-align="center"}
+![](images/ESRI_learning_lab_map-01.png){fig-align="center"}
 
 The map above shows the counties in Iowa that had a below average median home value and above average vacany rates.
 
