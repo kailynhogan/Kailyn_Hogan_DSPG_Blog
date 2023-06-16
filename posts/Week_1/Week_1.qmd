@@ -3,7 +3,7 @@ title: "Week One of Data Science for the Public Good"
 subtitle: "DataCamp! DataCamp! DataCamp!"
 author: "Kailyn Hogan"
 date: "2023-05-19"
-categories: [Week One]
+categories: [Week One, DataCamp]
 image: "datacamp.jpg"
 ---
 

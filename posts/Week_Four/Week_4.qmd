@@ -3,7 +3,7 @@ title: "Week Four of Data Science for the Public Good"
 subtitle: "Gathering addresses and images for our AI Models!"
 author: "Kailyn Hogan"
 date: "2023-06-09"
-categories: [Week Four]
+categories: [Week Four, Excel, Web Scraping, R]
 toc: true
 ---
 

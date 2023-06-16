@@ -3,7 +3,7 @@ title: "Week Two of Data Science for the Public Good"
 subtitle: "Relearning TidyCensus in Vegas!"
 author: "Kailyn Hogan"
 date: "2023-05-26"
-categories: [Week Two]
+categories: [Week Two, R]
 ---
 
 ## TidyCensus Practice

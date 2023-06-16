@@ -3,7 +3,7 @@ title: "Week Five of Data Science for the Public Good"
 subtitle: ""
 author: "Kailyn Hogan"
 date: "2023-06-16"
-categories: [Week Five]
+categories: [Week Five, ITAG Conference, ArcGIS, Demographic Analysis, AI Models, R]
 toc: True
 ---
 
@@ -61,6 +61,12 @@ The address data is stored differently on Realtor.com, and I was not successful 
 ## Tuesday
 
 On Tuesday, we continued sorting images to train our AI Models. I finished sorting the Slater images for a clear view of the house yesterday, and today I worked on the same sorting for Grundy Center.
+
+***insert image for NOT OBSTRUCTED***
+
+***OBSTRUCTED***
+
+***PARTIALLY OBSTRUCTED***
 
 We need about 200 images for each category to train our model. We are struggling to find enough "bad" images.
 
@@ -133,14 +139,13 @@ change_pop_iowa.jpg %>% ggsave(filename = "change_pop_iowa.jpg",width = 6,height
 
 ![](images/change_pop_iowa.jpg){fig-align="center"}
 
-Next, I pulled the total population for each individual community in Iowa for 2020, 2010, and 2000. Using the 2020 Decennial Census data, I found that there are 408 communities in Iowa that fall within our population parameters. This is 39.69% of all cities in Iowa. 
+Next, I pulled the total population for each individual community in Iowa for 2020, 2010, and 2000. Using the 2020 Decennial Census data, I found that there are 408 communities in Iowa that fall within our population parameters. This is 39.69% of all cities in Iowa.
 
 I also looked at the growth rate for communities in Iowa. Because most of Iowa's cities are on the smaller size, I don't think that population is an effective indicator for this project. In fact, the median population for communities in Iowa is 384. I added a column for growth rate to my cities data frame containing the communities in Iowa that fall between our population parameters. Growth rate is calculated by dividing the change in population by the time period the change occurred.
 
 > Growth Rate = N/t
 
 I also plotted the twenty-five lowest growth rates in Iowa.
-
 
 ![](images/low_growth_rate.jpg){fig-align="center"}
 
@@ -166,8 +171,35 @@ I was successful in creating the AI Model on Wednesday. Below is the accuracy of
 
 ## Thursday
 
-ITAG Conference
+On Thursday, my entire program attended the ITAG Conference in Des Moines. The ITAG Conference is the Iowa Technology and Geospatial Conference. They used to be two separate conferences, but they joined at some point because they were drawing the same audience. The main part of conference ran from 9 AM to 4 PM. We were fed a delicious breakfast and lunch too! I may have overindulged in the tea at the conference, as I had four cups throughout the day. NOTE: buy yourself some Tazo tea. It is delicious.
 
-Work on *Data Visualization in R* DataCamp track.
+Sessions attended:
 
-## Friday\\
+1.  Modernize Your ArcGIS Web AppBuilder Apps Using Experience Builder
+2.  ESRI Hands on Learning Lab
+3.  Modernizing Utility Operations with ArcGIS
+4.  The Story of Water at the Missouri DOC and the new Hydrography and Wetland Modelling
+
+![](images/ITAG_schedule.png){fig-align="center"}
+
+Above is the schedule for the conference. I attended the Modernize Your ArcGIS Web AppBuilder Apps Using Experience Builder hosted by ESRI first thing in the morning. I have only used ESRI's Web AppBuilder once, so this was a super informative session for me. ESRI is currently trading their Web AppBuilder out for the new Experience Builder. Both tools serve the same function, but the Experience Builder is more intuitive and offers more interface features. The presenter talked about ArcGIS Pro's infographics feature during the session, and I think it might be a much easier way to finish the demographics analysis for the housing project.
+
+![](images/ESRI_example_infographic.png){fig-align="center"}
+
+ArcGIS Pro includes a couple of free templates for infographics. A community profile, like the one above, is an included template. I have been looking at total population and household information, and I think this could be one way that the demographic information is displayed. I am pretty sure that most communities have access to some version of ESRI software as well, so I think this could transition well for commercial use when the housing project is fully finished.
+
+I tried a ArcGIS Insights tutorial in the ESRI Hands on Learning lab after the first break. Unfortunately, the folder that was supposed to have the data for the tutorial was empty on my computer. Fortunately, there was already a dataset for 1-year ACS Housing estimates in ArcGIS Insights. I spent about an hour exploring the dataset through Insights. The ACS data included median house price, home ownership rates, vacany rates, etc.
+
+![](images/ESRI_learning_lab_map.png){fig-align="center"}
+
+The map above shows the counties in Iowa that had a below average median home value and above average vacany rates.
+
+The Utility Operations session was not super valuable for me. I don't think it was applicable to anyone working outside of the city.
+
+## Friday
+
+Friday morning my group went over what we learned at the ITAG Conference on Thursday and what we expect to accomplish by the end of next week. I hope to finish the demographics analysis by next Friday.
+
+Earlier this week, Morenike, my project leader, asked me to create some demographic plots for Slater, Grundy Center, Independence, and New Hampton. She has not yet given me any specifics, but I am trying to keep that work load in mind for next week.
+
+I sent an email to Josh Obrecht, the GIS Analyst at ISU, for permission to download ArcGIS Pro on my personal laptop. I think it will be highly beneficial for finishing the demographics analysis. Josh is at the ITAG Conference this week too, so I don't know when he will get back to me about downloading ArcGIS Pro. For now, I will start working with the demographic data in ArcGIS Online.

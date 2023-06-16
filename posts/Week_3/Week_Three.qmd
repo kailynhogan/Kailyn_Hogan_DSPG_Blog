@@ -3,7 +3,7 @@ title: "Week Three of Data Science for the Public Good"
 subtitle: "I gave a Morning Coffee Talk!"
 author: "Kailyn Hogan"
 date: "2023-06-02"
-categories: [Week Three]
+categories: [Week Three, AI Models, DataCamp]
 toc: True
 ---
 
