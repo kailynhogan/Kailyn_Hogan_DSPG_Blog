@@ -14,14 +14,14 @@ We watched the first two videos in the webinar series: *Working with the 2021 Am
 
 I created the following plots using the information I learned from the webinars and previous knowledge:
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(tidycensus)
 library(tidyverse)
 library(ggthemes)
 library(scales)
 ```
 
-```{r}
+```{r, message = FALSE}
 
 ##ONWER VS. RENTER OCCUPIED FOR EACH CITY
 own_iowa <- get_decennial(geography = "place",
@@ -105,7 +105,7 @@ iowa %>%
 
 ```
 
-```{r}
+```{r, message = FALSE}
 ##MEDIAN AGE
 
 medage <- c("medage" = "B01002_001")
@@ -159,7 +159,7 @@ medage16_20 %>%
   theme_fivethirtyeight()
 ```
 
-```{r}
+```{r, message = FALSE}
 
 #PERCENT FOREIGN BORN, NON-CITIZENS
 foreign <- c("foreign" = "B05012_003",
@@ -190,7 +190,7 @@ foreign %>%
   geom_text(aes(x = NAME, y = pct_foreign, label = percent(pct_foreign)), hjust = .5, vjust = -.8)
 ```
 
-```{r}
+```{r, message = FALSE}
 ##MEDIAN INCOME BY HOUSEHOLD
 grundy_acs <- get_acs(state = "IA", 
                        geography = "place",
@@ -226,7 +226,7 @@ med_house %>%
   theme_fivethirtyeight()
 ```
 
-```{r}
+```{r, message = FALSE}
 # % LABOR FORCE UNEMPLOYED
 grundy_un <- get_acs(state = "IA", 
                       geography = "place",

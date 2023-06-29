@@ -72,7 +72,7 @@ Tuesday afternoon was spent web scraping. I did the DataCamp training for web sc
 
 I successfully scraped the categories of shoes from my favorite shoe site, Jonak, though.
 
-```{r}
+```{r, warning = FALSE}
 library(rvest)
 jonak = "https://www.jonak-paris.com/collection/shoes/sandals.html"
 categories <- read_html(jonak) %>% html_elements(".categ_itm_name") %>% html_text2()
@@ -81,7 +81,7 @@ head(categories)
 
 I wanted to know if Beacon and Vanguard had anti-web scraping protections on them, and that's why Angelina and I were unsuccessful in scraping them. I found a function online called paths_allowed() in the robotstxt package that checks to see if there are protections. Both Beacon and Vanguard have protections from running the URLs through the function. Jonak doesn't, so it was easy to scrape from the site. Zillow doesn't have any protections, either.
 
-```{r}
+```{r, warning = FALSE}
 library(robotstxt)
 #TRUE = web scraping allowed, FALSE = web scraping not allowed
 paths_allowed("https://beacon.schneidercorp.com/Application.aspx?AppID=165&LayerID=2145&PageTypeID=3&PageID=1107&Q=1818183221")
@@ -96,7 +96,7 @@ Because Zillow doesn't have protections, the housing team decided to switch tact
 
 On Wednesday, I was tasked with scraping the houses in Slater, IA. I made this data frame in R with the data I scraped from Zillow.
 
-```{r}
+```{r, warning = FALSE}
 library(rvest)
 library(tidyverse)
 

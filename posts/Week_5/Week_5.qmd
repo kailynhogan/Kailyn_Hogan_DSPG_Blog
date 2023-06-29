@@ -62,12 +62,6 @@ The address data is stored differently on Realtor.com, and I was not successful 
 
 On Tuesday, we continued sorting images to train our AI Models. I finished sorting the Slater images for a clear view of the house yesterday, and today I worked on the same sorting for Grundy Center.
 
-***insert image for NOT OBSTRUCTED***
-
-***OBSTRUCTED***
-
-***PARTIALLY OBSTRUCTED***
-
 We need about 200 images for each category to train our model. We are struggling to find enough "bad" images.
 
 Chris came over to talk to us about the app he is creating for the Housing Team. His app is meant to make image sorting easier, so he wants to be able to get it to us as soon as possible. He needed a database created with the house address, Google Street View image URL, and city to finish the app. I created the housing database for all the addresses for Slater, Independence, Grundy Center, and New Hampton.
@@ -78,7 +72,7 @@ Chris also suggested that Angelina and I take a look at spatial graphing in R. H
 
 On Tuesday, I also worked more on the demographics analysis that Chris asked for. I am starting the analysis by looking at total population in Iowa's communities. The first plot I created plotted the change in population for Iowa as a whole.
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 
 library(tidyverse)
 library(tidycensus)
@@ -189,8 +183,6 @@ Above is the schedule for the conference. I attended the Modernize Your ArcGIS W
 ArcGIS Pro includes a couple of free templates for infographics. A community profile, like the one above, is an included template. I have been looking at total population and household information, and I think this could be one way that the demographic information is displayed. I am pretty sure that most communities have access to some version of ESRI software as well, so I think this could transition well for commercial use when the housing project is fully finished.
 
 I tried a ArcGIS Insights tutorial in the ESRI Hands on Learning lab after the first break. Unfortunately, the folder that was supposed to have the data for the tutorial was empty on my computer. Fortunately, there was already a dataset for 1-year ACS Housing estimates in ArcGIS Insights. I spent about an hour exploring the dataset through Insights. The ACS data included median house price, home ownership rates, vacany rates, etc.
-
-![](images/ESRI_learning_lab_map-01.png){fig-align="center"}
 
 The map above shows the counties in Iowa that had a below average median home value and above average vacany rates.
 
