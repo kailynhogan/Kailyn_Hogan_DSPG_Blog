@@ -19,7 +19,7 @@ First up, the teaser video!
 
 We made a short YouTube video this week to tease the upcoming final presentation for DSPG on July 14th. The final presentation will be held in the room 0114 of the Student Innovation Center on Iowa State University's campus from 8:30 AM -12:00 PM. Attendees can join [virtually via Zoom](https://iastate.zoom.us/j/96296249454?pwd=NWZ2UVlHaDVpWm5Rc2JCeVh3K25JZz09) or in person. Click [here](#0) for more information.
 
-{{< video images/AI Housing Teaser Video.mp4 >}}
+{{< video Kailyn_Hogan_DSPG_Blog/posts/Week_7/images/AI_Housing_Teaser_Video.mp4 >}}
 
 ### Demographic Analysis
 
