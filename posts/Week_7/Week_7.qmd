@@ -1,277 +1,455 @@
 ---
-title: "Week Two of Data Science for the Public Good"
-subtitle: "Relearning TidyCensus in Vegas!"
+title: "Week Seven of Data Science for the Public Good"
+subtitle: "Demographic Analysis Time"
 author: "Kailyn Hogan"
-date: "2023-05-26"
-categories: [Week Two, R]
+date: "2023-06-30"
+categories: [Week Seven, R, Demographic Analysis]
+toc: TRUE
 ---
 
-## TidyCensus Practice
+## Monday
 
-This week we were introduced to the TidyCensus package via the 2023 webinar series *Analyzing 2017-2021 ACS Data in R and Python* by Kyle Walker, Associate Professor at Texas Christian University and R developer.
+On Monday, my group had our final? meeting with our stakeholders, Erin Mullinex and Erin Olson-Douglas. I got some clarification on what they expected from the demographic analysis from the meeting. They wanted me to look further into economic and fiscal conditions of Iowa's communities.
 
-We watched the first two videos in the webinar series: *Working with the 2021 American Community Survey with R and Tidycensus* and *Mapping and spatial analysis with ACS data in R*.
+Erin and Erin's intention with our project is to improve the housing stock across the state. To do so, we need to identify which communities need improvement based on external factors. The final destination after three years is to create an application that assess housing conditions and generates a map of housing characteristic quality.
 
-I created the following plots using the information I learned from the webinars and previous knowledge:
+Erin and Erin also let me know that thriving communities tend to have an employer of some sort. Communities with an employer do well because the employer may provide grants and funding to improve the community. Thriving communities are also growing in population and sometimes have lending institutions and non-profits.
 
-```{r}
+So far, I know to look at the following characteristics in the communities that could benefit from our project:
+
+-   populations between 500 and 10,000
+
+-   population change from 2000-2020: growing, stable, or shrinking?
+
+-   median age of residents
+
+-   presence of ag-related industries
+
+-   home ownership rates
+
+-   percent of residents commuting to work
+
+-   number of jobs
+
+-   median income
+
+-   income change
+
+-   workforce characteristics (this one is still confusing)
+
+-   local spending patterns (don't know where to find this data yet)
+
+After the meeting with Erin and Erin, I spent the rest of the day sorting WINVEST photos to train our AI Models. The photos are stored in CyBox under the communities they are associated with. Chris made a CSV file of the WINVEST data that we used to filter for poor roofs, poor siding, poor landscaping, and poor gutter. The CSV has the image name in a column, so we could then manually search for the image names associated with the poor values. I also went to Durham's GIS lab to create community summary infographics for Independence, New Hampton, and Grundy Center.
+
+![](images/grundy_center_community_summary.pdf){fig-align="center"}
+
+![](images/grundy_center_community_summary.pdf){fig-align="center"}
+
+![](images/independence_community_summary.pdf){fig-align="center"}
+
+![](images/new_hampton_community_summary.pdf){fig-align="center"}
+
+![](images/Iowa_community_summary.pdf){fig-align="center"}
+
+Community summary infographics are really easy to make.
+
+1.  Download shapefile for the geography you want to make an infographic for. For me, this was the places geography that I downloaded from the Census's shapefile directory.
+2.  Insert the geography shapefile into ArcGIS Pro.
+3.  Search for infographics in the tool bar.
+4.  Click on the geography you want to make an infographic for.
+5.  Select which type of infographic you would like. There are a lot of pre-loaded infographics available for free on ArcGIS Pro. I chose the Community Summary template to create the infographics above.
+
+Some of the elements on the infographics you can toggle to compare to different geographies. The Iowa community summary had the option to compare to the United States. The city infographics I could choose to compare to the county, state, or nation.
+
+## Tuesday
+
+On Tuesday, I was able to start the demographic analysis. I worked with population data and housing data from the 2021 5-Year American Community Survey.
+
+```{r, eval = FALSE}
 library(tidycensus)
 library(tidyverse)
-library(ggthemes)
-library(scales)
-```
 
-```{r}
 
-##ONWER VS. RENTER OCCUPIED FOR EACH CITY
-own_iowa <- get_decennial(geography = "place",
-                          state = "IA",
-                          year = 2010,
-                          output = "wide",
-                          variable = c("H017003","H017004","H017005","H017006","H017007","H017008","H017009","H017010","H017011")) %>% 
-  mutate(tenure = "Owner") %>% 
-  rename(fifteentotwentyfour = H017003, twentyfivetothirtyfour = H017004, thirtyfivetofourtyfour = H017005, fourtyfivetofiftyfour = H017006, fiftyfivetofiftynine = H017007, sixtytosixtyfour = H017008, sixtyfivetoseventyfour = H017009, seventyfivetoeightyfour = H017010, overeightyfive = H017011)
-## Getting data from the 2010 decennial Census
-## Using Census Summary File 1
-rent_iowa <- get_decennial(geography = "place",
-                           state = "IA",
-                           year = 2010,
-                           output = "wide",
-                           variable = c("H017013","H017014", "H017015", "H017016", "H017017","H017018","H017019", "H017020","H017021")) %>% 
-  mutate(tenure = "Renter") %>% 
-  rename(fifteentotwentyfour = H017013, twentyfivetothirtyfour = H017014, thirtyfivetofourtyfour = H017015, fourtyfivetofiftyfour = H017016, fiftyfivetofiftynine = H017017, sixtytosixtyfour = H017018, sixtyfivetoseventyfour = H017019, seventyfivetoeightyfour = H017020, overeightyfive = H017021)
-## Getting data from the 2010 decennial Census
-## Using Census Summary File 1
-iowa <- rent_iowa %>% 
-  bind_rows(own_iowa)%>% 
-  pivot_longer(-c(NAME, GEOID, tenure),
-               names_to = "agegroups",
-               values_to = "count")
+## Population Data ##
+# Getting population data from 2000-2020 Decennial Census.
 
-###plots for grundy, independence and new hampton for age break downs by housing tenure
-iowa %>% 
-  filter(NAME == "New Hampton city, Iowa") %>% 
-  mutate(agegroups = fct_relevel(agegroups, c("fifteentotwentyfour", "twentyfivetothirtyfour","thirtyfivetofourtyfour","fourtyfivetofiftyfour","fiftyfivetofiftynine","sixtytosixtyfour","sixtyfivetoseventyfour","seventyfivetoeightyfour","overeightyfive"))) %>% 
-  ggplot(aes(x = agegroups, y = if_else(tenure == "Renter", count, -count))) +
-  geom_bar(aes(fill = tenure), stat = "identity") +
-  geom_text(aes(x = agegroups, y = if_else(tenure == "Renter", count +10, -count - 12), label = scales::comma(count))) +
-  coord_flip()+
-  scale_x_discrete(labels = c("15 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 59", "60 to 64", "65 to 74", "75 to 84", "85 and Older")) +
-  scale_y_continuous(label = abs)+
-  labs(x = "",
-       y = "Population",
-       fill = "",
-       title = "Population in New Hampton, IA \nby Age and Tenure",
-       subtitle = "2010 Decennial Census") +
-  theme_fivethirtyeight()+
-  theme(legend.position = "bottom") +
-  scale_fill_wsj()
-
-iowa %>% 
-  filter(NAME == "Grundy Center city, Iowa") %>% 
-  mutate(agegroups = fct_relevel(agegroups, c("fifteentotwentyfour", "twentyfivetothirtyfour","thirtyfivetofourtyfour","fourtyfivetofiftyfour","fiftyfivetofiftynine","sixtytosixtyfour","sixtyfivetoseventyfour","seventyfivetoeightyfour","overeightyfive"))) %>% 
-  ggplot(aes(x = agegroups, y = if_else(tenure == "Renter", count, -count))) +
-  geom_bar(aes(fill = tenure), stat = "identity") +
-  geom_text(aes(x = agegroups, y = if_else(tenure == "Renter", count +5, -count - 8), label = scales::comma(count))) +
-  coord_flip()+
-  scale_x_discrete(labels = c("15 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 59", "60 to 64", "65 to 74", "75 to 84", "85 and Older")) +
-  scale_y_continuous(label = abs)+
-  labs(x = "",
-       y = "Population",
-       fill = "",
-       title = "Population in Grundy Center, IA \nby Age and Tenure",
-       subtitle = "2010 Decennial Census") +
-  theme_fivethirtyeight()+
-  theme(legend.position = "bottom") +
-  scale_fill_wsj()
-
-iowa %>% 
-  filter(NAME == "Independence city, Iowa") %>% 
-  mutate(agegroups = fct_relevel(agegroups, c("fifteentotwentyfour", "twentyfivetothirtyfour","thirtyfivetofourtyfour","fourtyfivetofiftyfour","fiftyfivetofiftynine","sixtytosixtyfour","sixtyfivetoseventyfour","seventyfivetoeightyfour","overeightyfive"))) %>% 
-  ggplot(aes(x = agegroups, y = if_else(tenure == "Renter", count, -count))) +
-  geom_bar(aes(fill = tenure), stat = "identity") +
-  geom_text(aes(x = agegroups, y = if_else(tenure == "Renter", count +12, -count - 15), label = scales::comma(count))) +
-  coord_flip()+
-  scale_x_discrete(labels = c("15 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 59", "60 to 64", "65 to 74", "75 to 84", "85 and Older")) +
-  scale_y_continuous(label = abs)+
-  labs(x = "",
-       y = "Population",
-       fill = "",
-       title = "Population in Independence, IA by \nAge and Tenure",
-       subtitle = "2010 Decennial Census") +
-  theme_fivethirtyeight()+
-  theme(legend.position = "bottom") +
-  scale_fill_wsj()
-
-```
-
-```{r}
-##MEDIAN AGE
-
-medage <- c("medage" = "B01002_001")
-
-grundy <- get_acs(geography = "place",
-              state = "IA",
-              variable = medage,
-              year = 2021,
-              output = "tidy") %>% 
-  filter(NAME == "Grundy Center city, Iowa") %>% 
-  mutate(year = 2021) 
-## Getting data from the 2016-2020 5-year ACS
-inde <- get_acs(geography = "place",
+# The 2020 total population API is "P1_001N."
+# The 2010 and 2000 total population API is "P001001."
+pop <- get_decennial(geography = "place",
+                     state = "IA",
+                     variables = c("pop20" = "P1_001N"),
+                     year = 2020,
+                     output = "wide")
+pop10 <- get_decennial(geography = "place",
                 state = "IA",
-                variable = medage,
-                year = 2021,
-                output = "tidy") %>% 
-  filter(NAME == "Independence city, Iowa") %>% 
-  mutate(year = 2021)
-new <- get_acs(geography = "place",
-                state = "IA",
-                variable = medage,
-                year = 2021,
-                output = "tidy") %>% 
-  filter(NAME == "New Hampton city, Iowa") %>% 
-  mutate(year = 2021)
-## Getting data from the 2016-2020 5-year ACS
-ia <- get_acs(geography = "state",
-              state = "IA",
-              variable = medage,
-              year = 2021,
-              output = "tidy") %>% 
-  mutate(year = 2021)
-## Getting data from the 2016-2020 5-year ACS
-medage16_20 <- grundy %>% 
-  bind_rows(ia,inde, new) %>% 
-  mutate(upper = estimate + moe,
-         lower = estimate - moe)
+                variable = c("pop10"="P001001"),
+                year = 2010,
+                output = "wide")
+pop00 <- get_decennial(geography = "place",
+                       state = "IA",
+                       variable = c("pop00"="P001001"),
+                       year = 2000,
+                       output = "wide")
+# Join the 2020, 2010, and 2000 total population data by GEOID and NAME.
+pop <- pop %>% 
+  left_join(pop10,by = c("GEOID","NAME"))
+pop <- pop %>% 
+  left_join(pop00,by = c("GEOID","NAME"))
 
-medage16_20 %>% 
-  ggplot() +
-  geom_pointrange(aes(x = NAME, y = estimate, ymin = lower, ymax = upper))+
-  geom_line(aes(x = NAME, y = estimate))+
-  coord_flip()+
-  geom_text(aes(x = NAME, y = estimate, label = estimate), hjust = .5, vjust = -.8)+
-  scale_x_discrete(limits = c("Grundy Center city, Iowa", "Independence city, Iowa", "New Hampton city, Iowa", "Iowa"),labels = c("Grundy Center","Independence","New Hampton","Iowa"))+
-  labs(title = "Median Age of the Population",
-       subtitle = "Data aquired from 2017-2021 5-year ACS estimates.",
-       x = "",
-       y = " ",)+
-  theme_fivethirtyeight()
+# Next, determine which cities are growing, shrinking, or stable in population.
+# Will need to calculate the percent population change (first pop - second pop / first pop).
+# A stable population is between -2% and 2% population change.
+# An increasing population has a greater than 2% population change.
+# A decreasing population has a less than -2% population change. 
+pop <- pop %>%
+  mutate(prc_change = ((pop20 - pop00) / pop20)) %>% #calculating percent change over 2000-2020
+  mutate(change_label = ifelse(prc_change > .02, "Growing",
+                             ifelse(prc_change < -.02, "Shrinking", "Stable")))
+
+head(pop)
 ```
 
-```{r}
+| GEOID   | NAME     | pop20 | pop10 | pop00 | prc_change   | change_lable |
+|---------|----------|-------|-------|-------|--------------|--------------|
+| 1900190 | Ackley   | 1599  | 1589  | 1809  | -0.131332083 | Shrinking    |
+| 1900235 | Ackworth | 115   | 83    | 85    | 0.260869565  | Growing      |
+| 1900370 | Adair    | 791   | 781   | 839   | -0.060682680 | Shrinking    |
+| 1900505 | Adel     | 6153  | 3682  | 3435  | 0.441735739  | Growing      |
+| 1900595 | Afton    | 874   | 845   | 917   | -0.049199085 | Shrinking    |
 
-#PERCENT FOREIGN BORN, NON-CITIZENS
-foreign <- c("foreign" = "B05012_003",
-             "pop" = "B05012_001")
+```{r, eval = FALSE}
+## Housing Data ##
+# Getting housing data from the 2021 5-Year American Community Survey.
 
-foreign <- get_acs(geography = "place",
+# Using the following API codes from the ACS:
+# total housing units = "B25001_001"
+# owner occupied units = "B25003_002"
+# renter occupied units = "B25003_003"
+# total occupied units = "B25002_002"
+# total vacant units = "B25002_003"
+# median house value = "B25077_001" 
+# median house age = "B25035_001"
+
+housing <- get_acs(geography = "place",
                    state = "IA",
+                   variable = c("total_units" = "B25001_001",
+                                "occupied_units" = "B25002_002",
+                                "vacant_units" = "B25002_003",
+                                "owner_occupied" = "B25003_002",
+                                "renter_occupied" = "B25003_003",
+                                "median_house_value" = "B25007_001"),
                    year = 2021,
-                   variable = foreign,
+                   output = "wide")
+# Getting median year built data from ACS.
+median_age <- get_acs(geography = "place",
+                      state = "IA",
+                      variable = c("median_year_built" = "B25035_001"),
+                      year = 2021,
+                      output = "wide") 
+# Calculate the median house age by subtracting the median year built from 2023.
+median_age <- median_age %>%
+  mutate(median_year_builtE = ifelse(median_year_builtE == 0, NA, median_year_builtE)) %>%
+  mutate(median_house_ageE = 2023 - median_year_builtE) %>% 
+  mutate(median_house_ageM = median_year_builtM) # Don't have to make a new moe because the subtraction didn't introduce new errors to the data.
+
+# Join the median year built data to the larger housing data frame.
+housing <- housing %>% 
+  left_join(median_age, by = c("GEOID","NAME"))
+
+# Calculate home ownership, vacany, and rental rates.
+# ALL RATES ARE PERCENTAGES with these calculations.
+housing <- housing %>% 
+  mutate(home_ownership_rateE = (owner_occupiedE / occupied_unitsE)) %>%  # Divide owner occupied units by total occupied units.
+  mutate(home_ownership_rateM = (sqrt((owner_occupiedM^2) / (occupied_unitsE^2) + ((owner_occupiedE * occupied_unitsM)^2) / (occupied_unitsE^4)))) %>%  # Calculate the new moe.
+  mutate(rental_rateE = (renter_occupiedE / occupied_unitsE)) %>%  # Divide renter occupied units by total occupied units.
+  mutate(rental_rateM = (sqrt((renter_occupiedM^2) / (occupied_unitsE^2) + ((renter_occupiedE * occupied_unitsM)^2) / (occupied_unitsE^4)))) %>% # Calculate the new moe.
+  mutate(vacancy_rateE = (vacant_unitsE / total_unitsE)) %>%  # Divide vacant units by total units.
+  mutate(vacancy_rateM = (sqrt((vacant_unitsM^2) / (total_unitsE^2) + ((vacant_unitsE * total_unitsM)^2) / (total_unitsE^4)))) # Calculate the new moe.
+
+head(housing)
+```
+
+| GEOID   | NAME     | total_unitsE | total_unitsM | occupied_unitsE | occupied_unitsM | vacant_unitsE | vacant_uintsM | owner_occupiedE | owner_occupiedM | renter_occupiedE | renter_occupiedM | median_house_valueE | median_house_valueM | median_year_builtE | median_year_builtM | median_house_ageE | median_house_ageM | home_ownership_rateE | home_ownership_rateM | vacancy_rateE | vacancy_rateM | rental_rateE | rental_rateM |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1900190 | Ackley   | 800          | 71           | 705             | 69              | 95            | 39            | 553             | 59              | 152              | 48               | 705                 | 69                  | 1955               | 5                  | 68                | 5                 | 0.7843972            | 0.11356683           | 0.118750000   | 0.049876190   | 0.21560284   | 0.07128013   |
+| 1900235 | Ackworth | 47           | 20           | 47              | 20              | 0             | 10            | 35              | 17              | 12               | 11               | 47                  | 20                  | 1999               | 11                 | 24                | 11                | 0.7446809            | 0.48087923           | 0.000000000   | 0.212765957   | 0.25531915   | 0.25803094   |
+| 1900370 | Adair    | 384          | 60           | 344             | 59              | 40            | 27            | 207             | 44              | 137              | 44               | 344                 | 59                  | 1960               | 8                  | 63                | 8                 | 0.6017442            | 0.16435236           | 0.104166667   | 0.072171720   | 0.39825581   | 0.14500288   |
+| 1900505 | Adel     | 2312         | 151          | 2234            | 120             | 78            | 97            | 1548            | 171             | 686              | 157              | 2234                | 120                 | 1978               | 7                  | 45                | 7                 | 0.6929275            | 0.08511417           | 0.033737024   | 0.042012837   | 0.30707252   | 0.07218725   |
+| 1900595 | Afton    | 382          | 56           | 357             | 53              | 25            | 16            | 251             | 40              | 106              | 36               | 357                 | 53                  | 1962               | 3                  | 61                | 3                 | 0.7030812            | 0.15313072           | 0.065445026   | 0.042969563   | 0.29691877   | 0.11005386   |
+
+```{r, eval = FALSE}
+## Taxable Property Values ##
+#link to data: https://data.iowa.gov/Local-Government-Finance/Taxable-Property-Values-in-Iowa-by-Tax-District-an/ig9g-pba5
+
+taxable.csv <- read.csv("C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/demographics analysis/Community Profile Datasets/Taxable_Property_Values_in_Iowa_by_Tax_District_and_Year.csv")
+# The name of the city is stored in City.Name and is in uppercase.
+# For the Census data, only the first letter of the city name is capitalized and " city, Iowa|, Iowa" is attached.
+# Need to lowercase taxable property values City.Name and remove " city, Iowa|, Iowa" from housing and population data frames before joining them. 
+
+housing <- housing %>% 
+  mutate(NAME = str_remove(NAME," city, Iowa|, Iowa"))
+pop <- pop %>% 
+  mutate(NAME = str_remove(NAME, " city, Iowa|, Iowa"))
+taxable.csv <- taxable.csv %>% 
+  mutate(City.Name = str_to_sentence(City.Name)) #str_to_sentence() uses regular sentence formatting where the first letter is capitalized.
+                              # Could have also used str_to_titletext().
+
+# Aggregate the sum of all columns and group by City.Name.
+# Function is set to sum to get the sum of all values.
+# na.rm = TRUE means the NAs get ignored when summing.
+residential <- aggregate(Residential ~ City.Name, data = taxable.csv, FUN = sum, na.rm = TRUE)
+ag_land <- aggregate(Ag.Land ~ City.Name, taxable.csv, FUN = sum, na.rm = TRUE)
+ag_building <- aggregate(Ag.Building ~ City.Name, taxable.csv, FUN = sum, na.rm = TRUE)
+commercial <- aggregate(Commercial ~ City.Name, taxable.csv, FUN = sum, na.rm = TRUE)
+industrial <- aggregate(Industrial ~ City.Name, taxable.csv, FUN = sum, na.rm = TRUE)
+# Join aggregated dataframes together to reform taxable property values data frame.
+taxable_prop_values <- residential %>%
+  left_join(ag_land, by = "City.Name") %>%
+  left_join(ag_building, by = "City.Name") %>%
+  left_join(commercial, by = "City.Name") %>%
+  left_join(industrial, by = "City.Name")
+  
+head(taxable_property_values)
+```
+
+| City.Name | Residential | Ag.Land     | Ag.Building | Commercial | Industrial |
+|-----------|-------------|-------------|-------------|------------|------------|
+|           | 57582069434 | 68289755861 | 3756099698  | 6892181005 | 9990249878 |
+| Ackley    | 59077903    | 1756505     | 61418       | 20369025   | 2143449    |
+| Ackworth  | 10399627    | 403117      | 7779        | 67230      | 0          |
+| Adair     | 1151067     | 715063      | 40676       | 5091781    | 195604     |
+| Adel      | 257984582   | 2651441     | 27555       | 81299747   | 12757527   |
+| Afton     | 24900696    | 138605      | 38906       | 7514181    | 1583244    |
+
+I also download the **LEHD Origin-Destination Employment Statistics (LODES)** from the Census website as well. I downloaded the *2020 Residential Area Characteristics* and the *2020 Workplace Area Characteristics*. They are aggregated by census block. I downloaded the *Geography crosswalk for IA* as well. The geography is needed to associate the census block codes to their related places in Iowa.
+
+## Wednesday
+
+Late on Wednesday, my team got more clarification from our boss, Chris, on what the AI Housing project actually is. From our conversation, I interpreted that our project is intended to produces a *rapid, hands off, housing quality assessment for policy and grant decision makers.*
+
+```{r, eval = FALSE}
+
+## Median Age of Residents ##
+
+# Getting the median age of all people in all places in Iowa from 2021 5-Year American Community Survey.
+pop_age <- get_acs(geography = "place",
+               state = "IA",
+               year = 2021,
+               variable = c("med_age" = "B01002_001"),
+               output = "wide") %>% 
+  mutate(NAME = str_remove(NAME, " city, Iowa|, Iowa"))
+
+# Get the number of people under 18 and over 65 for all places in Iowa.
+# The age data in the American Community Survey is separated by sex, so you will need to get the data for men and then women and combine the data frames. 
+male <- get_acs(geography = "place",
+                  state = "IA",
+                  year = 2021,
+                  variable = c("under5" = "B01001_003", # Make sure to start the variable names with a letter.
+                               "a5to9" = "B01001_004",
+                               "a10to14" = "B01001_005",
+                               "a15to17" = "B01001_006",
+                               "a65to66" = "B01001_020",
+                               "a67to69" = "B01001_021",
+                               "a70to74" = "B01001_022",
+                               "a75to79" = "B01001_023",
+                               "a80to84" = "B01001_024",
+                               "over85" = "B01001_025",
+                               "total" = "B01001_002"),
+                output = "wide") %>% 
+  mutate(NAME = str_remove(NAME, " city, Iowa|, Iowa"))
+male <- male %>% 
+  mutate(under18E = under5E + a5to9E + a10to14E + a15to17E) %>%
+  mutate(under18M = sqrt(under5M^2 + a5to9M^2 + a10to14M^2 + a15to17M^2)) %>%
+  #mutate(prc_under18E = under18E / totalE) %>% 
+  #mutate(prc_under18M = moe_ratio(under18E, totalE, under18M, totalM)) %>% 
+  mutate(over65E = a65to66E + a67to69E + a70to74E + a75to79E + a80to84E + over85E) %>%
+  mutate(over65M =  sqrt(a65to66M^2 + a67to69M^2 + a70to74M^2 + a75to79M^2 + a80to84M^2 + over85M^2)) %>% 
+ # mutate(prc_over65E = over65E / totalE) %>% 
+  #mutate(prc_over65M = moe_ratio(over65E, totalE, over65M, totalM)) 
+
+# Now do the same for the female age data.
+female <- get_acs(geography = "place",
+                state = "IA",
+                year = 2021,
+                variable = c("under5" = "B01001_027",
+                             "a5to9" = "B01001_028",
+                             "a10to14" = "B01001_029",
+                             "a15to17" = "B01001_030",
+                             "a65to66" = "B01001_044",
+                             "a67to69" = "B01001_045",
+                             "a70to74" = "B01001_046",
+                             "a75to79" = "B01001_047",
+                             "a80to84" = "B01001_048",
+                             "over85" = "B01001_049",
+                             "total" = "B01001_026"),
+                output = "wide") %>% 
+  mutate(NAME = str_remove(NAME, " city, Iowa|, Iowa"))
+female <- female %>% 
+  mutate(under18E = under5E + a5to9E + a10to14E + a15to17E) %>%
+  mutate(under18M = sqrt(under5M^2 + a5to9M^2 + a10to14M^2 + a15to17M^2)) %>%
+  #mutate(prc_under18E = under18E / totalE) %>% 
+ #mutate(prc_under18M = moe_ratio(under18E, totalE, under18M, totalM)) %>% 
+  mutate(over65E = a65to66E + a67to69E + a70to74E + a75to79E + a80to84E + over85E) %>%
+  mutate(over65M =  sqrt(a65to66M^2 + a67to69M^2 + a70to74M^2 + a75to79M^2 + a80to84M^2 + over85M^2)) %>% 
+  #mutate(prc_over65E = over65E / totalE) %>% 
+  #mutate(prc_over65M = moe_ratio(over65E, totalE, over65M, totalM)) 
+
+# Combine the data frames.
+age <- female %>% 
+  bind_rows(male)
+
+# Aggregate the data by NAME.
+# I am using a different aggregation format here by using the summary() function. 
+# This will produce a separate dataframe with just under18E, under18M, over65E, over65M, prc_under18E, prc_under18M, prc_over65E, and prc_over65M.
+aggregated_age <- age %>% 
+  group_by(NAME) %>% 
+             summarize(under18E = sum(under18E),
+                       under18M = sqrt(sum(under18M^2)),
+                       over65E = sum(over65E),
+                       over65M = sqrt(sum(over65M)),
+                       prc_under18E = sum(under18E)/sum(totalE),
+                       prc_under18M = sqrt(sum(under18M^2) / sum(totalE)^2 + (sum(under18E)^2 * sum(totalM^2)) / sum(totalE)^4),
+                       prc_over65E = sum(over65E)/sum(totalE),
+                       prc_over65M = sqrt(sum(over65M^2) / sum(totalE)^2 + (sum(over65E)^2 * sum(totalM^2)) / sum(totalE)^4))
+
+# Add a column that states whether a place is "aged", "stable" or "young."
+# Using a 2% difference to gauge a stable population.
+# Aged population has a less than -2% difference between the percent under 18 and the percent over 65.
+# Young population has a greater than 2% difference between the percent under 18 and the percent over 65. 
+aggregated_age <- aggregated_age %>%
+  mutate(age_label = ifelse(prc_under18E - prc_over65E > .02, "Young",
+                               ifelse(prc_under18E - prc_over65E < -.02, "Aging", "Stable")))
+
+## Add the age data to the population dataframe.
+pop <- pop %>% 
+  left_join(aggregated_age,by = c("NAME")) %>% 
+  left_join(pop_age, by = c("GEOID","NAME"))
+
+head(aggregated_age)
+```
+
+| NAME     | under18E | under18M  | over65E | over65M   | prc_under18E | prc_under18M | prc_over65E | prc_over65M  | age_label |
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+| Ackley   | 402      | 68.39591  | 349     | 9.030714  | 0.23563892   | 0.044036378  | 0.20457210  | 0.0166781814 | Young     |
+| Ackworth | 50       | 26.47640  | 24      | 6.256889  | 0.33783784   | 0.212313083  | 0.16216216  | 0.0692779288 | Young     |
+| Adair    | 206      | 67.47592  | 144     | 7.692109  | 0.24065421   | 0.088939653  | 0.16822430  | 0.0301622637 | Young     |
+| Adel     | 1708     | 285.81987 | 661     | 14.821549 | 0.29111982   | 0.050896612  | 0.11266405  | 0.0062375436 | Young     |
+| Afton    | 208      | 60.94260  | 189     | 8.606830  | 0.22757112   | 0.073795265  | 0.20678337  | 0.0302370669 | Young     |
+
+```{r, eval = FALSE}
+library(tidyverse)
+
+## Unemployment ##
+# Getting unemployment data from the 2021 5-Year American Community Survey.
+
+# Get the total number of people in the workforce and the total number of the labor force that is unemployed.
+# Calculate the percent of the workforce that is unemployed. 
+unemployment <- get_acs(state = "IA", 
+                   geography = "place",
+                   year = 2021,
+                   variable = c("total_workforce" = "B23025_003",
+                                "unemployed" = "B23025_005"),
                    output = "wide") %>% 
-  filter(NAME %in% c("Grundy Center city, Iowa", "Independence city, Iowa", "New Hampton city, Iowa"))
-## Getting data from the 2017-2021 5-year ACS
-foreign <- foreign %>% 
-  mutate(pct_foreign = foreignE/popE,
-         pct_foreign_moe = moe_prop(foreignE, popE, foreignM, popM))
+  mutate(prc_unemployed = unemployedE / total_workforceE,
+         unemployed_moe = moe_ratio(unemployedE, total_workforceE, unemployedM, total_workforceM)) %>% 
+  mutate(NAME = str_remove(NAME," city, Iowa|, Iowa"))
 
-foreign %>% 
-  ggplot() +
-  geom_pointrange(aes(x = NAME, y = pct_foreign, ymin = pct_foreign - pct_foreign_moe, ymax = pct_foreign + pct_foreign_moe ))+
-  coord_flip() +
-  scale_y_continuous(label = scales::percent) +
-  theme_fivethirtyeight() +
-  labs( x = " ",
-        y = "Pct Foreign",
-        title = "Percent of Foreign-Born, Non-Citzen",
-        subtitle = "2017-2021 5-Year ACS Estimates")+
-  scale_x_discrete(labels = c("Grundy Center", "Independence", "New Hampton"))+
-  geom_text(aes(x = NAME, y = pct_foreign, label = percent(pct_foreign)), hjust = .5, vjust = -.8)
+head(unemployment)
 ```
 
-```{r}
-##MEDIAN INCOME BY HOUSEHOLD
-grundy_acs <- get_acs(state = "IA", 
-                       geography = "place",
-                       year = 2021,
-                       variable = c(med_house = "B19013_001"),
-                       output = "tidy") %>% 
-  filter(NAME == "Grundy Center city, Iowa")
-inde_acs <- get_acs(state = "IA", 
-                      geography = "place",
-                      year = 2021,
-                      variable = c(med_house = "B19013_001"),
-                      output = "tidy") %>% 
-  filter(NAME == "Independence city, Iowa")
-new_acs <- get_acs(state = "IA", 
-                      geography = "place",
-                      year = 2021,
-                      variable = c(med_house = "B19013_001"),
-                      output = "tidy") %>% 
-  filter(NAME == "New Hampton city, Iowa")
+| GEOID   | NAME     | total_workforceE | total_workforceM | unemployedE | unemployedM | prc_unemplyed | unemployed_moe |
+|---------|---------|---------|---------|---------|---------|---------|---------|
+| 1900190 | Ackley   | 828              | 88               | 25          | 17          | 0.030193237   | 0.020780658    |
+| 1900235 | Ackworth | 73               | 39               | 6           | 9           | 0.082191781   | 0.130873976    |
+| 1900370 | Adair    | 440              | 101              | 25          | 25          | 0.056818182   | 0.058295873    |
+| 1900505 | Adel     | 3125             | 245              | 127         | 93          | 0.040640000   | 0.029930074    |
+| 1900595 | Afton    | 480              | 100              | 42          | 31          | 0.087500000   | 0.067106702    |
 
-## Getting data from the 2016-2020 5-year ACS
-med_house <- grundy_acs %>% 
-  bind_rows(inde_acs,new_acs)
-med_house %>%  
-  ggplot(aes(x = NAME, y = estimate))+
-  geom_pointrange(aes(ymin = estimate - moe, ymax = estimate +moe))+
-  geom_text(aes(label = scales::dollar(estimate)), hjust = -.2)+
-  scale_x_discrete(labels = c("Grundy Center", "Independence", "New Hampton"))+
-  scale_y_continuous(label = scales::dollar)+
-  labs(y = "",
-       title = "Estimated Median Income by Household",
-       subtitle = "Data acquired from 2017-2021 5-year ACS estimates.")+
-  theme_fivethirtyeight()
-```
+```{r, eval = FALSE}
+## Commuting ##
+library(tidyverse)
+library(tidycensus)
 
-```{r}
-# % LABOR FORCE UNEMPLOYED
-grundy_un <- get_acs(state = "IA", 
-                      geography = "place",
-                      year = 2021,
-                      variable = c("total" = "B23025_003",
-                                   "unemployed" = "B23025_005"),
-                      output = "wide") %>% 
-  filter(NAME == "Grundy Center city, Iowa") %>% 
-  mutate(pct = unemployedE / totalE,
-         moe = moe_ratio(unemployedE, totalE, unemployedM, totalM))
-inde_un <- get_acs(state = "IA", 
-                     geography = "place",
+# Getting commute data from the 2021 5-Year American Community Survey.
+
+# Get the total number of people available for commute data and the total number of people commuting to work. 
+# Calculate the percent of people commuting to work. 
+prc_travel <- get_acs(geography = "place",
+                     state = "IA",
+                     variable = c("total" = "B08008_001",
+                                  "travel" = "B08008_004"),
                      year = 2021,
-                     variable = c("total" = "B23025_003",
-                                  "unemployed" = "B23025_005"),
                      output = "wide") %>% 
-  filter(NAME == "Independence city, Iowa") %>% 
-  mutate(pct = unemployedE / totalE,
-         moe = moe_ratio(unemployedE, totalE, unemployedM, totalM))
-new_un <- get_acs(state = "IA", 
-                     geography = "place",
-                     year = 2021,
-                     variable = c("total" = "B23025_003",
-                                  "unemployed" = "B23025_005"),
-                     output = "wide") %>% 
-  filter(NAME == "New Hampton city, Iowa") %>% 
-  mutate(pct = unemployedE / totalE,
-         moe = moe_ratio(unemployedE, totalE, unemployedM, totalM))
+  mutate(prc_travel = travelE / totalE,
+         travel_moe = (moe_ratio(travelE, totalE, travelM, totalM))) %>% 
+  mutate(NAME = str_remove(NAME, " city, Iowa|, Iowa"))
 
-## Getting data from the 2016-2020 5-year ACS
-pct_un <- grundy_un %>% 
-  bind_rows(inde_un,new_un)
-pct_un %>%  
-  ggplot(aes(x = NAME, y = pct))+
-  geom_pointrange(aes(ymin = pct - moe, ymax = pct +moe))+
-  geom_text(aes(label = scales::percent(pct)), hjust = -.2)+
-  scale_y_continuous(label = scales::percent)+
-  scale_x_discrete(labels = c("Grundy Center", "Independence", "New Hampton"))+
-  labs(y = "",
-       x = "",
-       title = "Estimated % of Population Unemployed",
-       subtitle = "Data acquired from 2017-2021 5-year ACS estimates.")+
-  theme_fivethirtyeight()
+head(prc_travel)
 ```
 
-I wish I would've gotten to dig deeper into TidyCensus this week, but I was on vacation in Vegas. I learned a lot about TidyCensus considering though.
+| **GEOID** | NAME     | totalE | totalM | travelE | travelM | prc_travel | travel_moe |
+|-----------|----------|--------|--------|---------|---------|------------|------------|
+| 1900190   | Ackley   | 797    | 85     | 534     | 83      | 0.6700125  | 0.12629855 |
+| 1900235   | Ackworth | 67     | 38     | 64      | 39      | 0.9552239  | 0.79519912 |
+| 1900370   | Adair    | 412    | 93     | 230     | 57      | 0.5582524  | 0.18713615 |
+| 1900505   | Adel     | 2924   | 229    | 2216    | 263     | 0.7578659  | 0.10776390 |
+| 1900595   | Afton    | 434    | 90     | 319     | 77      | 0.7350230  | 0.23390328 |
 
-We also had our first client meeting for the Housing and AI project this week on Thursday, May 25th. We gained clarity for which direction we should be heading in the project from our stakeholders.
+When I was working on the demographic analysis on Wednesday, I took a break to do some more research on demographic analyses in general. I found this [link](http://oskynews.org/how-a-handful-of-iowa-towns-thrive-rise-above-rural-decline/) on my project leader's, Liesl Eathington, ISU webpage.
+
+The link is to a local news article that Liesl was interviewed for talking about the characteristics of thriving rural, small towns. The article also talked about some demographic analysis that was done on rural communities for grant purposes. Through this analysis, the researchers discovered that it was key to analyze **housing**, **income**, and **jobs** in a community to understand it. The researchers also found that an indicator of a declining small town is deteriorating infrastructure like streets and sewers.
+
+Small towns that are thriving have one or more of the following characteristics:
+
+-   close healthcare
+
+-   local day care options
+
+-   local grocery store
+
+-   local utilities
+
+-   local restaurants
+
+-   local shops
+
+-   local school(s)
+
+Knowing this information will help me finish the demographic analysis of Iowa's communities. I want to see if I can find available data on infrastructure conditions to identify communities potentially in need of our AI Model.
+
+## Thursday
+
+My group spent all morning working on our team's teaser video. I worked on this blog and this week's team blog when I had breaks from that. The team blog can be found on this blog and on the [2023 DSPG blog](https://dspg-2023.github.io/DSPG2023/allBlogs.html).
+
+I compiled the data I currently have for the demographic analysis into a larger data frame called "iowa." I used the function write.csv() to create a CSV file from the "iowa" dataframe. This still needs updated because I am not done working with the WAC and RAC data, but it is a starting point. Later, I will be putting this CSV file into Tableau to visualize the data.
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+```{r, eval = FALSE}
+
+iowa # Name of aggregated database.
+
+iowa <- pop %>% 
+  left_join(housing, by = c("GEOID","NAME")) %>% 
+  left_join(taxable_prop_values, by = "NAME") %>% 
+  left_join(unemployment, by = c("GEOID","NAME")) %>% 
+  left_join(prc_travel, by = c("GEOID","NAME"))
+
+# Export as CSV.
+write.csv(iowa, "analysing_iowa_communities.csv", row.names = FALSE)
+```
+
+```{r, results='asis'}
+
+# Read the CSV file. 
+data <- read.csv("C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/demographics analysis/analysing_iowa_communities.csv") 
+
+# Display the contents of the CSV file.
+knitr::kable(head(arrange(data, NAME)))
+```
+
+## Friday
+
+On Friday, I gave the weekly wrap up presentation.

@@ -1,0 +1,236 @@
+---
+title: "Team Blog: Week Seven"
+subtitle: "Final Presentation Outline"
+author: "Kailyn Hogan"
+date: "2023-06-30"
+categories: [Week Seven, Team Blog]
+toc: TRUE
+---
+
+## Week Seven for the Housing Team
+
+*For more detailed information on what each member of the housing team has accomplished thus far, check out their individual blog pages. Links are embedded in their specific sections.*
+
+# AI-Driven Housing Evaluation for Rural Community Development
+
+Hello! Welcome to week seven of Data Science for the Public Good for the Housing Team. We have made a lot of progress in the past seven weeks, and we are excited to share it with you!
+
+First up, the teaser video!
+
+We made a short YouTube video this week to tease the upcoming final presentation for DSPG on July 14th. The final presentation will be held in the room 0114 of the Student Innovation Center on Iowa State University's campus from 8:30 AM -12:00 PM. Attendees can join [virtually via Zoom](https://iastate.zoom.us/j/96296249454?pwd=NWZ2UVlHaDVpWm5Rc2JCeVh3K25JZz09) or in person. Click [here](#0) for more information.
+
+{{< video images/AI Housing Teaser Video.mp4 >}}
+
+### Demographic Analysis
+
+The Housing Team recently introduced a new section to their project: a demographics section. Demographic profiles for Grundy Center, Independence, and New Hampton were created last week. This week the focus was shifted to analysis. One of our objectives is to determine which communities in Iowa have the most need for our project, thus we are conducting a demographic analysis.
+
+We are covering the following characteristics of communities within our analysis:
+
+-   population
+
+-   housing
+
+-   income
+
+-   jobs and the workforce
+
+Most of our data is coming from the 2000-2020 Decennial Census or the 2021 5-Year American Community Survey. Additional data sources can be found [here](https://lehd.ces.census.gov/data/) and [here](https://data.iowa.gov/Local-Government-Finance/Taxable-Property-Values-in-Iowa-by-Tax-District-an/ig9g-pba5).
+
+The Housing Team was able to make some strides with the demographic analysis this week and compile gathered data into a larger CSV file.
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+```{r, results='asis'}
+
+# Read the CSV file 
+data <- read.csv("C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/demographics analysis/analysing_iowa_communities.csv") 
+
+# Display the contents of the CSV file
+knitr::kable(head(arrange(data, NAME)))
+```
+
+Find more information on the Demographic Analysis process by clicking the link [here](https://kailynhogan.github.io/Kailyn_Hogan_DSPG_Blog/).
+
+### AI Models
+
+To start this section off, I would like to recap out AI Model progress. In total we have seven different AI Models all testing images for the conditions of different house characteristics. The models are listed below:
+
+-   house present
+
+-   clear image
+
+-   multiple houses
+
+-   vegetation
+
+-   roof
+
+-   gutter
+
+-   siding
+
+The last four AI Models -- vegetation, roof, gutter, and siding -- are aided by the WINVEST project. The entirety of DSPG collected data on the conditions of Grundy Center, Independence, and New Hampton houses' vegetation, roof, gutter, and siding through WINVEST.
+
+As of this week, with the completion of the roof and gutter models, all AI Models are finished. Next is training.
+
+#### **Image Sorting for Model Training**
+
+The Housing Team was able to add WINVEST photos into our image collection this week. We specifically filtered the WINVEST data sets to only download the images associated with *poor* characteristics. This was done because we need more images of bad houses to accurately train our models. We have enough images of good houses at this point.
+
+Below is a diagram detailing the image storage solution we are managing for our AI Models.
+
+![](images/gavin_image_storage.png){fig-align="center"}
+
+An image sorting algorithm was created to sort each image by address and create an associated folder. Images from all sources (Google, Zillow, WINVEST) can be stored in the same folder and run through the AI Model together.
+
+![](images/address_image_folder.png){fig-align="center"}
+
+#### Storing AI Model Outputs
+
+Last week, code was written to take the outputs of the AI Model and write them to a CSV file. Last weeks version was simply a test, but, as of this week, we are able to write the outputs to the CSV file officially.
+
+```{r, results='asis'}
+
+# Read the CSV file 
+new_hampton <- read.csv("C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/housing databases/New_Hampton_database.csv")
+
+# Display the contents of the CSV file
+knitr::kable(head(new_hampton))
+```
+
+Find more information on the AI Model creation process by clicking the link [here](https://gavinfishy.github.io/Gavin_DSPG_Blog/).
+
+### Geospatial Mapping
+
+We are using the CSV file with the outputs of the AI Models to map the conditions of housing each city. To do this, we are using Tableau.
+
+The better part of this week has been spent learning how to use Tableau and dealing with complications in downloading. The below map was created in Tableau Public and shows the conditions of siding in New Hampton, Iowa. With the data that is currently available, we can see that that majority of siding conditions in New Hampton are poor.
+
+![](images/New_hampton_siding_map_draft.png){fig-align="center"}
+
+Find more information on the Geospatial Mapping process by clicking the link [here](https://1angelinaevans.github.io/AngelinaEvansBlog/).
+
+### Next Steps
+
+Listed below is what the Housing Team plans to accomplish over the next two weeks before our final presentation:
+
+-   Further train AI Models to provide a more accurate evaluation of housing conditions
+
+-   Build Heatmap to determine where AI Models are basing evaluation
+
+-   Update demographic profile graphs to include state, regional, and national comparisons
+
+-   Analyze demographic profiles to determine patterns and trends between Grundy Center, Independence, and New Hampton
+
+-   Visualize the demographic analysis data using Tableau
+
+-   Determine communities that could benefit from our project
+
+-   Further analyze in-need communities
+
+-   Visualize the outputs of the AI Models geospatially using Tableau
+
+-   Analyse Tableau visualizations and show findings
+
+-   Compare housing conditions in Grundy Center, Independence, and New Hampton using Tableau visualizations
+
+To wrap up this week, we generated an outline for our final presentation. Section titles, speakers, main points, and time allotted are listed in the table below. Note, this a draft of the final presentation. It is subject to change.
+
+## Final Presentation Outline
+
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| **SPEAKER**                                   | **SECTION**                                                                                                                                          | **TIME**  |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Morenike                                      |  **Introduction**                                                                                                                                    | 2 min     |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Overview of the project objectives and goals                                                                                                     |           |
+|                                               | 2.  Importance of data collection and analysis in real estate and community analysis                                                                 |           |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Angelina and Kailyn                           | **Data Collection**                                                                                                                                  | 5 min     |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Scraping from Beacon and Vanguard*                                                                                                                  |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Brief explanation of Beacon and Vanguard as data sources                                                                                         |           |
+|                                               | 2.  Scraping process                                                                                                                                 |           |
+|                                               | 3.  Importance of obtaining accurate and reliable data from these sources                                                                            |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Address Cleaning and Google Links*                                                                                                                  |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Address cleaning and standardization techniques                                                                                                  |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 2.  Utilizing Google links for Google Street View image retrieval                                                                                    |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 3.  Reasons for having accurate and complete address data                                                                                            |           |
+|                                               |                                                                                                                                                      |           |
+|                                               |     *Scraping from Google Street View*                                                                                                               |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 4.  Extracting street view images for AI model use                                                                                                   |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 5.  Techniques used for automated data extraction from Google Street View                                                                            |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | S*craping from Zillow*                                                                                                                               |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Introduction to Zillow as a real estate data source                                                                                              |           |
+|                                               | 2.  Extracting relevant property data from Zillow                                                                                                    |           |
+|                                               | 3.  Challenges and limitations of scraping from Zillow                                                                                               |           |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Gavin                                         | **AI Model Creation**                                                                                                                                | 10 min    |
+|                                               |                                                                                                                                                      |           |
+| *Angelina and Kailyn on Manual Image Sorting* | *Only displaying images for one of the models. Note in presentation the ones that do exist, but we are using only one model to refine presentation.* |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Manual Image Sorting to Train Models*                                                                                                               |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Techniques used for organizing and categorizing the obtained images                                                                              |           |
+|                                               | 2.  Purpose of image sorting                                                                                                                         |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Building AI Models* *(Binary and Multiple)*                                                                                                         |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Keras and Tensorflow Libraries                                                                                                                   |           |
+|                                               | 2.  Refining image data                                                                                                                              |           |
+|                                               | 3.  AI has to be able to easily read the images                                                                                                      |           |
+|                                               | 4.  Identify Labels (Binary vs. Multiple)                                                                                                            |           |
+|                                               | 5.  Split Training, Testing, and Evaluating Data                                                                                                     |           |
+|                                               | 6.  Build Layers                                                                                                                                     |           |
+|                                               | 7.  Train the AI Models                                                                                                                              |           |
+|                                               | 8.  Evaluate                                                                                                                                         |           |
+|                                               | 9.  Export                                                                                                                                           |           |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Gavin                                         | **The Thing Gavin Made that Writes to a CSV**                                                                                                        | 8 min     |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Kailyn                                        | **Demographic Analysis and Profiling**                                                                                                               | 6 min     |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Select Communities*                                                                                                                                 |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Key findings and insights regarding population, age groups, etc.                                                                                 |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | *All Iowa Communities*                                                                                                                               |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Overview of the demographic analysis methodology                                                                                                 |           |
+|                                               | 2.  Comparative analysis of Iowa communities based on demographic factors                                                                            |           |
+|                                               | 3.  Visualization techniques used to present the analysis results                                                                                    |           |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Angelina                                      | **Visualizing Housing Quality Data from AI Model Outputs (with GIS?)**                                                                               | 6 min     |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Geocoding Addresses*                                                                                                                                |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Explanation of geocoding process and its importance                                                                                              |           |
+|                                               | 2.  Comparison of geocoding in R                                                                                                                     |           |
+|                                               | 3.  Evaluation of advantages and limitations of each geocoding approach                                                                              |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | *Mapping AI Model data*                                                                                                                              |           |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Application of spatial data for visualizing and analyzing house quality                                                                          |           |
+|                                               | 2.  Techniques used for representing house quality on maps                                                                                           |           |
+|                                               | 3.  Interpretation and insights gained from geographical Analysis of house quality                                                                   |           |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+| Morenike                                      | **Conclusion**                                                                                                                                       | 2 min     |
+|                                               |                                                                                                                                                      |           |
+|                                               | 1.  Summary of the project workflow and key findings                                                                                                 |           |
+|                                               | 2.  Lessons learned and challenges encountered                                                                                                       |           |
+|                                               | 3.  Future possibilities and areas for further improvement                                                                                           |           |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+
+|                                               | **Questions**                                                                                                                                        | 10 min    |
++-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+

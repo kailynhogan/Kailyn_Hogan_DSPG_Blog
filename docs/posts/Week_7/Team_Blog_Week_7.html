@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kailyn Hogan">
+<meta name="dcterms.date" content="2023-06-30">
+
+<title>Kailyn Hogan’s DSPG Blog - Team Blog: Week Seven</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kailyn Hogan’s DSPG Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kailynhogan" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/kailynjhogan/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Team Blog: Week Seven</h1>
+            <p class="subtitle lead">Final Presentation Outline</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Week Seven</div>
+                <div class="quarto-category">Team Blog</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kailyn Hogan </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 30, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-seven-for-the-housing-team" id="toc-week-seven-for-the-housing-team" class="nav-link active" data-scroll-target="#week-seven-for-the-housing-team">Week Seven for the Housing Team</a></li>
+  <li><a href="#ai-driven-housing-evaluation-for-rural-community-development" id="toc-ai-driven-housing-evaluation-for-rural-community-development" class="nav-link" data-scroll-target="#ai-driven-housing-evaluation-for-rural-community-development">AI-Driven Housing Evaluation for Rural Community Development</a>
+  <ul class="collapse">
+  <li><a href="#demographic-analysis" id="toc-demographic-analysis" class="nav-link" data-scroll-target="#demographic-analysis">Demographic Analysis</a></li>
+  <li><a href="#ai-models" id="toc-ai-models" class="nav-link" data-scroll-target="#ai-models">AI Models</a></li>
+  <li><a href="#geospatial-mapping" id="toc-geospatial-mapping" class="nav-link" data-scroll-target="#geospatial-mapping">Geospatial Mapping</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  <li><a href="#final-presentation-outline" id="toc-final-presentation-outline" class="nav-link" data-scroll-target="#final-presentation-outline">Final Presentation Outline</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="week-seven-for-the-housing-team" class="level2">
+<h2 class="anchored" data-anchor-id="week-seven-for-the-housing-team">Week Seven for the Housing Team</h2>
+<p><em>For more detailed information on what each member of the housing team has accomplished thus far, check out their individual blog pages. Links are embedded in their specific sections.</em></p>
+</section>
+<section id="ai-driven-housing-evaluation-for-rural-community-development" class="level1">
+<h1>AI-Driven Housing Evaluation for Rural Community Development</h1>
+<p>Hello! Welcome to week seven of Data Science for the Public Good for the Housing Team. We have made a lot of progress in the past seven weeks, and we are excited to share it with you!</p>
+<p>First up, the teaser video!</p>
+<p>We made a short YouTube video this week to tease the upcoming final presentation for DSPG on July 14th. The final presentation will be held in the room 0114 of the Student Innovation Center on Iowa State University’s campus from 8:30 AM -12:00 PM. Attendees can join <a href="https://iastate.zoom.us/j/96296249454?pwd=NWZ2UVlHaDVpWm5Rc2JCeVh3K25JZz09">virtually via Zoom</a> or in person. Click <a href="#0">here</a> for more information.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/AI"></video></div>
+<section id="demographic-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="demographic-analysis">Demographic Analysis</h3>
+<p>The Housing Team recently introduced a new section to their project: a demographics section. Demographic profiles for Grundy Center, Independence, and New Hampton were created last week. This week the focus was shifted to analysis. One of our objectives is to determine which communities in Iowa have the most need for our project, thus we are conducting a demographic analysis.</p>
+<p>We are covering the following characteristics of communities within our analysis:</p>
+<ul>
+<li><p>population</p></li>
+<li><p>housing</p></li>
+<li><p>income</p></li>
+<li><p>jobs and the workforce</p></li>
+</ul>
+<p>Most of our data is coming from the 2000-2020 Decennial Census or the 2021 5-Year American Community Survey. Additional data sources can be found <a href="https://lehd.ces.census.gov/data/">here</a> and <a href="https://data.iowa.gov/Local-Government-Finance/Taxable-Property-Values-in-Iowa-by-Tax-District-an/ig9g-pba5">here</a>.</p>
+<p>The Housing Team was able to make some strides with the demographic analysis this week and compile gathered data into a larger CSV file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the CSV file </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/demographics analysis/analysing_iowa_communities.csv"</span>) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the contents of the CSV file</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">arrange</span>(data, NAME)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">GEOID</th>
+<th style="text-align: left;">NAME</th>
+<th style="text-align: right;">pop20</th>
+<th style="text-align: right;">pop10</th>
+<th style="text-align: right;">pop00</th>
+<th style="text-align: right;">prc_change</th>
+<th style="text-align: left;">change_label</th>
+<th style="text-align: right;">under18E</th>
+<th style="text-align: right;">under18M</th>
+<th style="text-align: right;">over65E</th>
+<th style="text-align: right;">over65M</th>
+<th style="text-align: right;">prc_under18E</th>
+<th style="text-align: right;">prc_under18M</th>
+<th style="text-align: right;">prc_over65E</th>
+<th style="text-align: right;">prc_over65M</th>
+<th style="text-align: left;">age_label</th>
+<th style="text-align: right;">med_ageE</th>
+<th style="text-align: right;">med_ageM</th>
+<th style="text-align: right;">total_unitsE</th>
+<th style="text-align: right;">total_unitsM</th>
+<th style="text-align: right;">occupied_unitsE</th>
+<th style="text-align: right;">occupied_unitsM</th>
+<th style="text-align: right;">vacant_unitsE</th>
+<th style="text-align: right;">vacant_unitsM</th>
+<th style="text-align: right;">owner_occupiedE</th>
+<th style="text-align: right;">owner_occupiedM</th>
+<th style="text-align: right;">renter_occupiedE</th>
+<th style="text-align: right;">renter_occupiedM</th>
+<th style="text-align: right;">median_house_valueE</th>
+<th style="text-align: right;">median_house_valueM</th>
+<th style="text-align: right;">median_year_builtE</th>
+<th style="text-align: right;">median_year_builtM</th>
+<th style="text-align: right;">median_house_ageE</th>
+<th style="text-align: right;">median_house_ageM</th>
+<th style="text-align: right;">home_ownership_rateE</th>
+<th style="text-align: right;">home_ownership_rateM</th>
+<th style="text-align: right;">vacancy_rateE</th>
+<th style="text-align: right;">vacancy_rateM</th>
+<th style="text-align: right;">rental_rateE</th>
+<th style="text-align: right;">rental_rateM</th>
+<th style="text-align: right;">Residential</th>
+<th style="text-align: right;">Ag.Land</th>
+<th style="text-align: right;">Ag.Building</th>
+<th style="text-align: right;">Commercial</th>
+<th style="text-align: right;">Industrial</th>
+<th style="text-align: right;">total_workforceE</th>
+<th style="text-align: right;">total_workforceM</th>
+<th style="text-align: right;">unemployedE</th>
+<th style="text-align: right;">unemployedM</th>
+<th style="text-align: right;">prc_unemployed</th>
+<th style="text-align: right;">unemployed_moe</th>
+<th style="text-align: right;">totalE</th>
+<th style="text-align: right;">totalM</th>
+<th style="text-align: right;">travelE</th>
+<th style="text-align: right;">travelM</th>
+<th style="text-align: right;">prc_travel</th>
+<th style="text-align: right;">travel_moe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1900190</td>
+<td style="text-align: left;">Ackley</td>
+<td style="text-align: right;">1599</td>
+<td style="text-align: right;">1589</td>
+<td style="text-align: right;">1809</td>
+<td style="text-align: right;">-0.1313321</td>
+<td style="text-align: left;">Shrinking</td>
+<td style="text-align: right;">402</td>
+<td style="text-align: right;">68.39591</td>
+<td style="text-align: right;">349</td>
+<td style="text-align: right;">9.030714</td>
+<td style="text-align: right;">0.2356389</td>
+<td style="text-align: right;">0.0440364</td>
+<td style="text-align: right;">0.2045721</td>
+<td style="text-align: right;">0.0166782</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">41.5</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">705</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">553</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">705</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.7843972</td>
+<td style="text-align: right;">0.1135668</td>
+<td style="text-align: right;">0.1187500</td>
+<td style="text-align: right;">0.0498762</td>
+<td style="text-align: right;">0.2156028</td>
+<td style="text-align: right;">0.0712801</td>
+<td style="text-align: right;">59077903</td>
+<td style="text-align: right;">1756505</td>
+<td style="text-align: right;">61418</td>
+<td style="text-align: right;">20369025</td>
+<td style="text-align: right;">2143449</td>
+<td style="text-align: right;">828</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.0301932</td>
+<td style="text-align: right;">0.0207807</td>
+<td style="text-align: right;">797</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">534</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">0.6700125</td>
+<td style="text-align: right;">0.1262985</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1900235</td>
+<td style="text-align: left;">Ackworth</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.2608696</td>
+<td style="text-align: left;">Growing</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">26.47640</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">6.256889</td>
+<td style="text-align: right;">0.3378378</td>
+<td style="text-align: right;">0.2123131</td>
+<td style="text-align: right;">0.1621622</td>
+<td style="text-align: right;">0.0692779</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">38.1</td>
+<td style="text-align: right;">30.8</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.7446809</td>
+<td style="text-align: right;">0.4808792</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.2127660</td>
+<td style="text-align: right;">0.2553191</td>
+<td style="text-align: right;">0.2580309</td>
+<td style="text-align: right;">10399627</td>
+<td style="text-align: right;">403117</td>
+<td style="text-align: right;">7779</td>
+<td style="text-align: right;">67230</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.0821918</td>
+<td style="text-align: right;">0.1308740</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0.9552239</td>
+<td style="text-align: right;">0.7951991</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1900370</td>
+<td style="text-align: left;">Adair</td>
+<td style="text-align: right;">791</td>
+<td style="text-align: right;">781</td>
+<td style="text-align: right;">839</td>
+<td style="text-align: right;">-0.0606827</td>
+<td style="text-align: left;">Shrinking</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">67.47592</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">7.692109</td>
+<td style="text-align: right;">0.2406542</td>
+<td style="text-align: right;">0.0889397</td>
+<td style="text-align: right;">0.1682243</td>
+<td style="text-align: right;">0.0301623</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">37.7</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">384</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">344</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">344</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">1960</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.6017442</td>
+<td style="text-align: right;">0.1643524</td>
+<td style="text-align: right;">0.1041667</td>
+<td style="text-align: right;">0.0721717</td>
+<td style="text-align: right;">0.3982558</td>
+<td style="text-align: right;">0.1450029</td>
+<td style="text-align: right;">1151067</td>
+<td style="text-align: right;">715063</td>
+<td style="text-align: right;">40676</td>
+<td style="text-align: right;">5091781</td>
+<td style="text-align: right;">195604</td>
+<td style="text-align: right;">440</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.0568182</td>
+<td style="text-align: right;">0.0582959</td>
+<td style="text-align: right;">412</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.5582524</td>
+<td style="text-align: right;">0.1871361</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1900505</td>
+<td style="text-align: left;">Adel</td>
+<td style="text-align: right;">6153</td>
+<td style="text-align: right;">3682</td>
+<td style="text-align: right;">3435</td>
+<td style="text-align: right;">0.4417357</td>
+<td style="text-align: left;">Growing</td>
+<td style="text-align: right;">1708</td>
+<td style="text-align: right;">285.81987</td>
+<td style="text-align: right;">661</td>
+<td style="text-align: right;">14.821549</td>
+<td style="text-align: right;">0.2911198</td>
+<td style="text-align: right;">0.0508966</td>
+<td style="text-align: right;">0.1126641</td>
+<td style="text-align: right;">0.0062375</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">36.8</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2312</td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">2234</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">1548</td>
+<td style="text-align: right;">171</td>
+<td style="text-align: right;">686</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">2234</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">1978</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.6929275</td>
+<td style="text-align: right;">0.0851142</td>
+<td style="text-align: right;">0.0337370</td>
+<td style="text-align: right;">0.0420128</td>
+<td style="text-align: right;">0.3070725</td>
+<td style="text-align: right;">0.0721873</td>
+<td style="text-align: right;">257984582</td>
+<td style="text-align: right;">2651441</td>
+<td style="text-align: right;">27555</td>
+<td style="text-align: right;">81299747</td>
+<td style="text-align: right;">12757527</td>
+<td style="text-align: right;">3125</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">0.0406400</td>
+<td style="text-align: right;">0.0299301</td>
+<td style="text-align: right;">2924</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: right;">2216</td>
+<td style="text-align: right;">263</td>
+<td style="text-align: right;">0.7578659</td>
+<td style="text-align: right;">0.1077639</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1900595</td>
+<td style="text-align: left;">Afton</td>
+<td style="text-align: right;">874</td>
+<td style="text-align: right;">845</td>
+<td style="text-align: right;">917</td>
+<td style="text-align: right;">-0.0491991</td>
+<td style="text-align: left;">Shrinking</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: right;">60.94260</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: right;">8.606830</td>
+<td style="text-align: right;">0.2275711</td>
+<td style="text-align: right;">0.0737953</td>
+<td style="text-align: right;">0.2067834</td>
+<td style="text-align: right;">0.0302371</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">39.0</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">357</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">251</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">357</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7030812</td>
+<td style="text-align: right;">0.1531307</td>
+<td style="text-align: right;">0.0654450</td>
+<td style="text-align: right;">0.0429696</td>
+<td style="text-align: right;">0.2969188</td>
+<td style="text-align: right;">0.1100539</td>
+<td style="text-align: right;">24900696</td>
+<td style="text-align: right;">138605</td>
+<td style="text-align: right;">38906</td>
+<td style="text-align: right;">7514181</td>
+<td style="text-align: right;">1583244</td>
+<td style="text-align: right;">480</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0.0875000</td>
+<td style="text-align: right;">0.0671067</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">319</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">0.7350230</td>
+<td style="text-align: right;">0.2339033</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1900640</td>
+<td style="text-align: left;">Agency</td>
+<td style="text-align: right;">620</td>
+<td style="text-align: right;">638</td>
+<td style="text-align: right;">622</td>
+<td style="text-align: right;">-0.0032258</td>
+<td style="text-align: left;">Stable</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">29.79933</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">6.383032</td>
+<td style="text-align: right;">0.1501057</td>
+<td style="text-align: right;">0.0678777</td>
+<td style="text-align: right;">0.2600423</td>
+<td style="text-align: right;">0.0458014</td>
+<td style="text-align: left;">Aging</td>
+<td style="text-align: right;">49.6</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">233</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">1959</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.7298578</td>
+<td style="text-align: right;">0.1901772</td>
+<td style="text-align: right;">0.0944206</td>
+<td style="text-align: right;">0.0958713</td>
+<td style="text-align: right;">0.2701422</td>
+<td style="text-align: right;">0.1280830</td>
+<td style="text-align: right;">82024799</td>
+<td style="text-align: right;">119286</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">2742290</td>
+<td style="text-align: right;">2872782</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0291667</td>
+<td style="text-align: right;">0.0301548</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">0.9439655</td>
+<td style="text-align: right;">0.3734276</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Find more information on the Demographic Analysis process by clicking the link <a href="https://kailynhogan.github.io/Kailyn_Hogan_DSPG_Blog/">here</a>.</p>
+</section>
+<section id="ai-models" class="level3">
+<h3 class="anchored" data-anchor-id="ai-models">AI Models</h3>
+<p>To start this section off, I would like to recap out AI Model progress. In total we have seven different AI Models all testing images for the conditions of different house characteristics. The models are listed below:</p>
+<ul>
+<li><p>house present</p></li>
+<li><p>clear image</p></li>
+<li><p>multiple houses</p></li>
+<li><p>vegetation</p></li>
+<li><p>roof</p></li>
+<li><p>gutter</p></li>
+<li><p>siding</p></li>
+</ul>
+<p>The last four AI Models – vegetation, roof, gutter, and siding – are aided by the WINVEST project. The entirety of DSPG collected data on the conditions of Grundy Center, Independence, and New Hampton houses’ vegetation, roof, gutter, and siding through WINVEST.</p>
+<p>As of this week, with the completion of the roof and gutter models, all AI Models are finished. Next is training.</p>
+<section id="image-sorting-for-model-training" class="level4">
+<h4 class="anchored" data-anchor-id="image-sorting-for-model-training"><strong>Image Sorting for Model Training</strong></h4>
+<p>The Housing Team was able to add WINVEST photos into our image collection this week. We specifically filtered the WINVEST data sets to only download the images associated with <em>poor</em> characteristics. This was done because we need more images of bad houses to accurately train our models. We have enough images of good houses at this point.</p>
+<p>Below is a diagram detailing the image storage solution we are managing for our AI Models.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gavin_image_storage.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>An image sorting algorithm was created to sort each image by address and create an associated folder. Images from all sources (Google, Zillow, WINVEST) can be stored in the same folder and run through the AI Model together.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/address_image_folder.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="storing-ai-model-outputs" class="level4">
+<h4 class="anchored" data-anchor-id="storing-ai-model-outputs">Storing AI Model Outputs</h4>
+<p>Last week, code was written to take the outputs of the AI Model and write them to a CSV file. Last weeks version was simply a test, but, as of this week, we are able to write the outputs to the CSV file officially.</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the CSV file </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>new_hampton <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/housing databases/New_Hampton_database.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the contents of the CSV file</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(new_hampton))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 18%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 3%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">address</th>
+<th style="text-align: left;">city</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: left;">source</th>
+<th style="text-align: left;">city_id</th>
+<th style="text-align: left;">image_name</th>
+<th style="text-align: left;">image_url</th>
+<th style="text-align: right;">lon</th>
+<th style="text-align: right;">lat</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">parcel_num</th>
+<th style="text-align: left;">floors_num</th>
+<th style="text-align: left;">bedrooms_num</th>
+<th style="text-align: left;">bathrooms_num</th>
+<th style="text-align: left;">basement</th>
+<th style="text-align: left;">heating</th>
+<th style="text-align: left;">cooling</th>
+<th style="text-align: left;">yr_built</th>
+<th style="text-align: left;">own_v_rent</th>
+<th style="text-align: left;">age_tenants</th>
+<th style="text-align: left;">tenants_num</th>
+<th style="text-align: left;">type_property</th>
+<th style="text-align: left;">sqft</th>
+<th style="text-align: left;">curr_price</th>
+<th style="text-align: left;">prev_price</th>
+<th style="text-align: left;">county</th>
+<th style="text-align: left;">clear_image</th>
+<th style="text-align: left;">test_failed</th>
+<th style="text-align: left;">rand_select</th>
+<th style="text-align: left;">vegetation</th>
+<th style="text-align: right;">vegetation_confidence</th>
+<th style="text-align: left;">siding</th>
+<th style="text-align: right;">siding_confidence</th>
+<th style="text-align: left;">gutter</th>
+<th style="text-align: right;">gutter_confidence</th>
+<th style="text-align: left;">roof</th>
+<th style="text-align: right;">roof_confidence</th>
+<th style="text-align: left;">img_used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">116 N CHESTNUT ST</td>
+<td style="text-align: left;">New Hampton</td>
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">G_H_116 N CHESTNUT ST.png</td>
+<td style="text-align: left;">https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=116+N+CHESTNUT+ST,New+Hampton+Iowa</td>
+<td style="text-align: right;">-92.31573</td>
+<td style="text-align: right;">43.06073</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12 E COURT ST</td>
+<td style="text-align: left;">New Hampton</td>
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">G_H_12 E COURT ST.png</td>
+<td style="text-align: left;">https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=12+E+COURT+ST,New+Hampton+Iowa</td>
+<td style="text-align: right;">-92.31436</td>
+<td style="text-align: right;">43.06131</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">311 W MAIN ST</td>
+<td style="text-align: left;">New Hampton</td>
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">G_H_311 W MAIN ST.png</td>
+<td style="text-align: left;">https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=311+W+MAIN+ST,New+Hampton+Iowa</td>
+<td style="text-align: right;">-92.31997</td>
+<td style="text-align: right;">43.05944</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">house_present</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">102 E MAIN ST</td>
+<td style="text-align: left;">New Hampton</td>
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">G_H_102 E MAIN ST.png</td>
+<td style="text-align: left;">https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=102+E+MAIN+ST,New+Hampton+Iowa</td>
+<td style="text-align: right;">-92.31394</td>
+<td style="text-align: right;">43.05950</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">garden_present</td>
+<td style="text-align: right;">38.42</td>
+<td style="text-align: left;">chipped_paint</td>
+<td style="text-align: right;">35.95</td>
+<td style="text-align: left;">poor/no_gutter</td>
+<td style="text-align: right;">52.65</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">G_H_102 E MAIN ST_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">508 N LINN AVE</td>
+<td style="text-align: left;">New Hampton</td>
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">G_H_508 N LINN AVE.png</td>
+<td style="text-align: left;">https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=508+N+LINN+AVE,New+Hampton+Iowa</td>
+<td style="text-align: right;">-92.31810</td>
+<td style="text-align: right;">43.06419</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">house_present</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9 W GARDNER ST</td>
+<td style="text-align: left;">New Hampton</td>
+<td style="text-align: left;">Iowa</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">H</td>
+<td style="text-align: left;">G_H_9 W GARDNER ST.png</td>
+<td style="text-align: left;">https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=9+W+GARDNER+ST,New+Hampton+Iowa</td>
+<td style="text-align: right;">-92.31587</td>
+<td style="text-align: right;">43.06500</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Find more information on the AI Model creation process by clicking the link <a href="https://gavinfishy.github.io/Gavin_DSPG_Blog/">here</a>.</p>
+</section>
+</section>
+<section id="geospatial-mapping" class="level3">
+<h3 class="anchored" data-anchor-id="geospatial-mapping">Geospatial Mapping</h3>
+<p>We are using the CSV file with the outputs of the AI Models to map the conditions of housing each city. To do this, we are using Tableau.</p>
+<p>The better part of this week has been spent learning how to use Tableau.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/New_hampton_siding_map_draft.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Find more information on the Geospatial Mapping process by clicking the link <a href="https://1angelinaevans.github.io/AngelinaEvansBlog/">here</a>.</p>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next Steps</h3>
+<p>Listed below is what the Housing Team plans to accomplish over the next two weeks before our final presentation:</p>
+<ul>
+<li><p>Further train AI Models to provide a more accurate evaluation of housing conditions</p></li>
+<li><p>Build Heatmap to determine where AI Models are basing evaluation</p></li>
+<li><p>Update demographic profile graphs to include state, regional, and national comparisons</p></li>
+<li><p>Analyze demographic profiles to determine patterns and trends between Grundy Center, Independence, and New Hampton</p></li>
+<li><p>Visualize the demographic analysis data using Tableau</p></li>
+<li><p>Determine communities that could benefit from our project</p></li>
+<li><p>Further analyze in-need communities</p></li>
+<li><p>Visualize the outputs of the AI Models geospatially using Tableau</p></li>
+<li><p>Analyse Tableau visualizations and show findings</p></li>
+<li><p>Compare housing conditions in Grundy Center, Independence, and New Hampton using Tableau visualizations</p></li>
+</ul>
+<p>To wrap up this week, we generated an outline for our final presentation. Section titles, speakers, main points, and time allotted are listed in the table below. Note, this a draft of the final presentation. It is subject to change.</p>
+</section>
+<section id="final-presentation-outline" class="level2">
+<h2 class="anchored" data-anchor-id="final-presentation-outline">Final Presentation Outline</h2>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 71%">
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>SPEAKER</strong></td>
+<td><strong>SECTION</strong></td>
+<td><strong>TIME</strong></td>
+</tr>
+<tr class="even">
+<td>Morenike</td>
+<td><p>&nbsp;<strong>Introduction</strong></p>
+<ol type="1">
+<li>Overview of the project objectives and goals</li>
+<li>Importance of data collection and analysis in real estate and community analysis</li>
+</ol></td>
+<td>2 min</td>
+</tr>
+<tr class="odd">
+<td>Angelina and Kailyn</td>
+<td><p><strong>Data Collection</strong></p>
+<p><em>Scraping from Beacon and Vanguard</em></p>
+<ol type="1">
+<li>Brief explanation of Beacon and Vanguard as data sources</li>
+<li>Scraping process</li>
+<li>Importance of obtaining accurate and reliable data from these sources</li>
+</ol>
+<p><em>Address Cleaning and Google Links</em></p>
+<ol type="1">
+<li><p>Address cleaning and standardization techniques</p></li>
+<li><p>Utilizing Google links for Google Street View image retrieval</p></li>
+<li><p>Reasons for having accurate and complete address data</p>
+<p><em>Scraping from Google Street View</em></p></li>
+<li><p>Extracting street view images for AI model use</p></li>
+<li><p>Techniques used for automated data extraction from Google Street View</p></li>
+</ol>
+<p>S<em>craping from Zillow</em></p>
+<ol type="1">
+<li>Introduction to Zillow as a real estate data source</li>
+<li>Extracting relevant property data from Zillow</li>
+<li>Challenges and limitations of scraping from Zillow</li>
+</ol></td>
+<td>5 min</td>
+</tr>
+<tr class="even">
+<td><p>Gavin</p>
+<p><em>Angelina and Kailyn on Manual Image Sorting</em></p></td>
+<td><p><strong>AI Model Creation</strong></p>
+<p><em>Only displaying images for one of the models. Note in presentation the ones that do exist, but we are using only one model to refine presentation.</em></p>
+<p><em>Manual Image Sorting to Train Models</em></p>
+<ol type="1">
+<li>Techniques used for organizing and categorizing the obtained images</li>
+<li>Purpose of image sorting</li>
+</ol>
+<p><em>Building AI Models</em> <em>(Binary and Multiple)</em></p>
+<ol type="1">
+<li>Keras and Tensorflow Libraries</li>
+<li>Refining image data</li>
+<li>AI has to be able to easily read the images</li>
+<li>Identify Labels (Binary vs.&nbsp;Multiple)</li>
+<li>Split Training, Testing, and Evaluating Data</li>
+<li>Build Layers</li>
+<li>Train the AI Models</li>
+<li>Evaluate</li>
+<li>Export</li>
+</ol></td>
+<td>10 min</td>
+</tr>
+<tr class="odd">
+<td>Gavin</td>
+<td><strong>The Thing Gavin Made that Writes to a CSV</strong></td>
+<td>8 min</td>
+</tr>
+<tr class="even">
+<td>Kailyn</td>
+<td><p><strong>Demographic Analysis and Profiling</strong></p>
+<p><em>Select Communities</em></p>
+<ol type="1">
+<li>Key findings and insights regarding population, age groups, etc.</li>
+</ol>
+<p><em>All Iowa Communities</em></p>
+<ol type="1">
+<li>Overview of the demographic analysis methodology</li>
+<li>Comparative analysis of Iowa communities based on demographic factors</li>
+<li>Visualization techniques used to present the analysis results</li>
+</ol></td>
+<td>6 min</td>
+</tr>
+<tr class="odd">
+<td>Angelina</td>
+<td><p><strong>Visualizing Housing Quality Data from AI Model Outputs (with GIS?)</strong></p>
+<p><em>Geocoding Addresses</em></p>
+<ol type="1">
+<li>Explanation of geocoding process and its importance</li>
+<li>Comparison of geocoding in R</li>
+<li>Evaluation of advantages and limitations of each geocoding approach</li>
+</ol>
+<p><em>Mapping AI Model data</em></p>
+<ol type="1">
+<li>Application of spatial data&nbsp;for visualizing and analyzing house quality</li>
+<li>Techniques used for representing house quality on maps</li>
+<li>Interpretation and insights gained from geographical Analysis of house quality</li>
+</ol></td>
+<td>6 min</td>
+</tr>
+<tr class="even">
+<td>Morenike</td>
+<td><p><strong>Conclusion</strong></p>
+<ol type="1">
+<li>Summary of the project workflow and key findings</li>
+<li>Lessons learned and challenges encountered</li>
+<li>Future possibilities and areas for further improvement</li>
+</ol></td>
+<td>2 min</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>Questions</strong></td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
+
+
+
+</body></html>

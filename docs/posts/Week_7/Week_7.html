@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kailyn Hogan">
-<meta name="dcterms.date" content="2023-05-26">
+<meta name="dcterms.date" content="2023-06-30">
 
-<title>Kailyn Hogan’s DSPG Blog - Week Two of Data Science for the Public Good</title>
+<title>Kailyn Hogan’s DSPG Blog - Week Seven of Data Science for the Public Good</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -141,11 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week Two of Data Science for the Public Good</h1>
-            <p class="subtitle lead">Relearning TidyCensus in Vegas!</p>
+      <h1 class="title">Week Seven of Data Science for the Public Good</h1>
+            <p class="subtitle lead">Demographic Analysis Time</p>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Week Two</div>
+                <div class="quarto-category">Week Seven</div>
                 <div class="quarto-category">R</div>
+                <div class="quarto-category">Demographic Analysis</div>
               </div>
                   </div>
   </div>
@@ -163,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 26, 2023</p>
+        <p class="date">June 30, 2023</p>
       </div>
     </div>
     
@@ -174,390 +175,1447 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#monday" id="toc-monday" class="nav-link active" data-scroll-target="#monday">Monday</a></li>
+  <li><a href="#tuesday" id="toc-tuesday" class="nav-link" data-scroll-target="#tuesday">Tuesday</a></li>
+  <li><a href="#wednesday" id="toc-wednesday" class="nav-link" data-scroll-target="#wednesday">Wednesday</a></li>
+  <li><a href="#thursday" id="toc-thursday" class="nav-link" data-scroll-target="#thursday">Thursday</a></li>
+  <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">Friday</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<section id="tidycensus-practice" class="level2">
-<h2 class="anchored" data-anchor-id="tidycensus-practice">TidyCensus Practice</h2>
-<p>This week we were introduced to the TidyCensus package via the 2023 webinar series <em>Analyzing 2017-2021 ACS Data in R and Python</em> by Kyle Walker, Associate Professor at Texas Christian University and R developer.</p>
-<p>We watched the first two videos in the webinar series: <em>Working with the 2021 American Community Survey with R and Tidycensus</em> and <em>Mapping and spatial analysis with ACS data in R</em>.</p>
-<p>I created the following plots using the information I learned from the webinars and previous knowledge:</p>
+<section id="monday" class="level2">
+<h2 class="anchored" data-anchor-id="monday">Monday</h2>
+<p>On Monday, my group had our final? meeting with our stakeholders, Erin Mullinex and Erin Olson-Douglas. I got some clarification on what they expected from the demographic analysis from the meeting. They wanted me to look further into economic and fiscal conditions of Iowa’s communities.</p>
+<p>Erin and Erin’s intention with our project is to improve the housing stock across the state. To do so, we need to identify which communities need improvement based on external factors. The final destination after three years is to create an application that assess housing conditions and generates a map of housing characteristic quality.</p>
+<p>Erin and Erin also let me know that thriving communities tend to have an employer of some sort. Communities with an employer do well because the employer may provide grants and funding to improve the community. Thriving communities are also growing in population and sometimes have lending institutions and non-profits.</p>
+<p>So far, I know to look at the following characteristics in the communities that could benefit from our project:</p>
+<ul>
+<li><p>populations between 500 and 10,000</p></li>
+<li><p>population change from 2000-2020: growing, stable, or shrinking?</p></li>
+<li><p>median age of residents</p></li>
+<li><p>presence of ag-related industries</p></li>
+<li><p>home ownership rates</p></li>
+<li><p>percent of residents commuting to work</p></li>
+<li><p>number of jobs</p></li>
+<li><p>median income</p></li>
+<li><p>income change</p></li>
+<li><p>workforce characteristics (this one is still confusing)</p></li>
+<li><p>local spending patterns (don’t know where to find this data yet)</p></li>
+</ul>
+<p>After the meeting with Erin and Erin, I spent the rest of the day sorting WINVEST photos to train our AI Models. The photos are stored in CyBox under the communities they are associated with. Chris made a CSV file of the WINVEST data that we used to filter for poor roofs, poor siding, poor landscaping, and poor gutter. The CSV has the image name in a column, so we could then manually search for the image names associated with the poor values. I also went to Durham’s GIS lab to create community summary infographics for Independence, New Hampton, and Grundy Center.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="images/grundy_center_community_summary.pdf" class="img-fluid"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="images/grundy_center_community_summary.pdf" class="img-fluid"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="images/independence_community_summary.pdf" class="img-fluid"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="images/new_hampton_community_summary.pdf" class="img-fluid"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="images/Iowa_community_summary.pdf" class="img-fluid"></p>
+</figure>
+</div>
+<p>Community summary infographics are really easy to make.</p>
+<ol type="1">
+<li>Download shapefile for the geography you want to make an infographic for. For me, this was the places geography that I downloaded from the Census’s shapefile directory.</li>
+<li>Insert the geography shapefile into ArcGIS Pro.</li>
+<li>Search for infographics in the tool bar.</li>
+<li>Click on the geography you want to make an infographic for.</li>
+<li>Select which type of infographic you would like. There are a lot of pre-loaded infographics available for free on ArcGIS Pro. I chose the Community Summary template to create the infographics above.</li>
+</ol>
+<p>Some of the elements on the infographics you can toggle to compare to different geographies. The Iowa community summary had the option to compare to the United States. The city infographics I could choose to compare to the county, state, or nation.</p>
+</section>
+<section id="tuesday" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday">Tuesday</h2>
+<p>On Tuesday, I was able to start the demographic analysis. I worked with population data and housing data from the 2021 5-Year American Community Survey.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.1.3</code></pre>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Population Data ##</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting population data from 2000-2020 Decennial Census.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The 2020 total population API is "P1_001N."</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The 2010 and 2000 total population API is "P001001."</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">"pop20"</span> <span class="ot">=</span> <span class="st">"P1_001N"</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span> <span class="dv">2020</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">output =</span> <span class="st">"wide"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>pop10 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"pop10"</span><span class="ot">=</span><span class="st">"P001001"</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">output =</span> <span class="st">"wide"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>pop00 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                       <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"pop00"</span><span class="ot">=</span><span class="st">"P001001"</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">year =</span> <span class="dv">2000</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">output =</span> <span class="st">"wide"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the 2020, 2010, and 2000 total population data by GEOID and NAME.</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop10,<span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop00,<span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Next, determine which cities are growing, shrinking, or stable in population.</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Will need to calculate the percent population change (first pop - second pop / first pop).</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># A stable population is between -2% and 2% population change.</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># An increasing population has a greater than 2% population change.</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># A decreasing population has a less than -2% population change. </span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prc_change =</span> ((pop20 <span class="sc">-</span> pop00) <span class="sc">/</span> pop20)) <span class="sc">%&gt;%</span> <span class="co">#calculating percent change over 2000-2020</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change_label =</span> <span class="fu">ifelse</span>(prc_change <span class="sc">&gt;</span> .<span class="dv">02</span>, <span class="st">"Growing"</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">ifelse</span>(prc_change <span class="sc">&lt;</span> <span class="sc">-</span>.<span class="dv">02</span>, <span class="st">"Shrinking"</span>, <span class="st">"Stable"</span>)))</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.1.3</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GEOID</th>
+<th>NAME</th>
+<th>pop20</th>
+<th>pop10</th>
+<th>pop00</th>
+<th>prc_change</th>
+<th>change_lable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1900190</td>
+<td>Ackley</td>
+<td>1599</td>
+<td>1589</td>
+<td>1809</td>
+<td>-0.131332083</td>
+<td>Shrinking</td>
+</tr>
+<tr class="even">
+<td>1900235</td>
+<td>Ackworth</td>
+<td>115</td>
+<td>83</td>
+<td>85</td>
+<td>0.260869565</td>
+<td>Growing</td>
+</tr>
+<tr class="odd">
+<td>1900370</td>
+<td>Adair</td>
+<td>791</td>
+<td>781</td>
+<td>839</td>
+<td>-0.060682680</td>
+<td>Shrinking</td>
+</tr>
+<tr class="even">
+<td>1900505</td>
+<td>Adel</td>
+<td>6153</td>
+<td>3682</td>
+<td>3435</td>
+<td>0.441735739</td>
+<td>Growing</td>
+</tr>
+<tr class="odd">
+<td>1900595</td>
+<td>Afton</td>
+<td>874</td>
+<td>845</td>
+<td>917</td>
+<td>-0.049199085</td>
+<td>Shrinking</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Housing Data ##</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting housing data from the 2021 5-Year American Community Survey.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the following API codes from the ACS:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># total housing units = "B25001_001"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># owner occupied units = "B25003_002"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># renter occupied units = "B25003_003"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># total occupied units = "B25002_002"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># total vacant units = "B25002_003"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># median house value = "B25077_001" </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># median house age = "B25035_001"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>housing <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                   <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"total_units"</span> <span class="ot">=</span> <span class="st">"B25001_001"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"occupied_units"</span> <span class="ot">=</span> <span class="st">"B25002_002"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"vacant_units"</span> <span class="ot">=</span> <span class="st">"B25002_003"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"owner_occupied"</span> <span class="ot">=</span> <span class="st">"B25003_002"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"renter_occupied"</span> <span class="ot">=</span> <span class="st">"B25003_003"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"median_house_value"</span> <span class="ot">=</span> <span class="st">"B25007_001"</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                   <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                   <span class="at">output =</span> <span class="st">"wide"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting median year built data from ACS.</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>median_age <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                      <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                      <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"median_year_built"</span> <span class="ot">=</span> <span class="st">"B25035_001"</span>),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                      <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"wide"</span>) </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median house age by subtracting the median year built from 2023.</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>median_age <span class="ot">&lt;-</span> median_age <span class="sc">%&gt;%</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">median_year_builtE =</span> <span class="fu">ifelse</span>(median_year_builtE <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, median_year_builtE)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">median_house_ageE =</span> <span class="dv">2023</span> <span class="sc">-</span> median_year_builtE) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">median_house_ageM =</span> median_year_builtM) <span class="co"># Don't have to make a new moe because the subtraction didn't introduce new errors to the data.</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the median year built data to the larger housing data frame.</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>housing <span class="ot">&lt;-</span> housing <span class="sc">%&gt;%</span> </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(median_age, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>))</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate home ownership, vacany, and rental rates.</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ALL RATES ARE PERCENTAGES with these calculations.</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>housing <span class="ot">&lt;-</span> housing <span class="sc">%&gt;%</span> </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">home_ownership_rateE =</span> (owner_occupiedE <span class="sc">/</span> occupied_unitsE)) <span class="sc">%&gt;%</span>  <span class="co"># Divide owner occupied units by total occupied units.</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">home_ownership_rateM =</span> (<span class="fu">sqrt</span>((owner_occupiedM<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (occupied_unitsE<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> ((owner_occupiedE <span class="sc">*</span> occupied_unitsM)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (occupied_unitsE<span class="sc">^</span><span class="dv">4</span>)))) <span class="sc">%&gt;%</span>  <span class="co"># Calculate the new moe.</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rental_rateE =</span> (renter_occupiedE <span class="sc">/</span> occupied_unitsE)) <span class="sc">%&gt;%</span>  <span class="co"># Divide renter occupied units by total occupied units.</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rental_rateM =</span> (<span class="fu">sqrt</span>((renter_occupiedM<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (occupied_unitsE<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> ((renter_occupiedE <span class="sc">*</span> occupied_unitsM)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (occupied_unitsE<span class="sc">^</span><span class="dv">4</span>)))) <span class="sc">%&gt;%</span> <span class="co"># Calculate the new moe.</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vacancy_rateE =</span> (vacant_unitsE <span class="sc">/</span> total_unitsE)) <span class="sc">%&gt;%</span>  <span class="co"># Divide vacant units by total units.</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vacancy_rateM =</span> (<span class="fu">sqrt</span>((vacant_unitsM<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (total_unitsE<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> ((vacant_unitsE <span class="sc">*</span> total_unitsM)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (total_unitsE<span class="sc">^</span><span class="dv">4</span>)))) <span class="co"># Calculate the new moe.</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(housing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.1.3</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GEOID</th>
+<th>NAME</th>
+<th>total_unitsE</th>
+<th>total_unitsM</th>
+<th>occupied_unitsE</th>
+<th>occupied_unitsM</th>
+<th>vacant_unitsE</th>
+<th>vacant_uintsM</th>
+<th>owner_occupiedE</th>
+<th>owner_occupiedM</th>
+<th>renter_occupiedE</th>
+<th>renter_occupiedM</th>
+<th>median_house_valueE</th>
+<th>median_house_valueM</th>
+<th>median_year_builtE</th>
+<th>median_year_builtM</th>
+<th>median_house_ageE</th>
+<th>median_house_ageM</th>
+<th>home_ownership_rateE</th>
+<th>home_ownership_rateM</th>
+<th>vacancy_rateE</th>
+<th>vacancy_rateM</th>
+<th>rental_rateE</th>
+<th>rental_rateM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1900190</td>
+<td>Ackley</td>
+<td>800</td>
+<td>71</td>
+<td>705</td>
+<td>69</td>
+<td>95</td>
+<td>39</td>
+<td>553</td>
+<td>59</td>
+<td>152</td>
+<td>48</td>
+<td>705</td>
+<td>69</td>
+<td>1955</td>
+<td>5</td>
+<td>68</td>
+<td>5</td>
+<td>0.7843972</td>
+<td>0.11356683</td>
+<td>0.118750000</td>
+<td>0.049876190</td>
+<td>0.21560284</td>
+<td>0.07128013</td>
+</tr>
+<tr class="even">
+<td>1900235</td>
+<td>Ackworth</td>
+<td>47</td>
+<td>20</td>
+<td>47</td>
+<td>20</td>
+<td>0</td>
+<td>10</td>
+<td>35</td>
+<td>17</td>
+<td>12</td>
+<td>11</td>
+<td>47</td>
+<td>20</td>
+<td>1999</td>
+<td>11</td>
+<td>24</td>
+<td>11</td>
+<td>0.7446809</td>
+<td>0.48087923</td>
+<td>0.000000000</td>
+<td>0.212765957</td>
+<td>0.25531915</td>
+<td>0.25803094</td>
+</tr>
+<tr class="odd">
+<td>1900370</td>
+<td>Adair</td>
+<td>384</td>
+<td>60</td>
+<td>344</td>
+<td>59</td>
+<td>40</td>
+<td>27</td>
+<td>207</td>
+<td>44</td>
+<td>137</td>
+<td>44</td>
+<td>344</td>
+<td>59</td>
+<td>1960</td>
+<td>8</td>
+<td>63</td>
+<td>8</td>
+<td>0.6017442</td>
+<td>0.16435236</td>
+<td>0.104166667</td>
+<td>0.072171720</td>
+<td>0.39825581</td>
+<td>0.14500288</td>
+</tr>
+<tr class="even">
+<td>1900505</td>
+<td>Adel</td>
+<td>2312</td>
+<td>151</td>
+<td>2234</td>
+<td>120</td>
+<td>78</td>
+<td>97</td>
+<td>1548</td>
+<td>171</td>
+<td>686</td>
+<td>157</td>
+<td>2234</td>
+<td>120</td>
+<td>1978</td>
+<td>7</td>
+<td>45</td>
+<td>7</td>
+<td>0.6929275</td>
+<td>0.08511417</td>
+<td>0.033737024</td>
+<td>0.042012837</td>
+<td>0.30707252</td>
+<td>0.07218725</td>
+</tr>
+<tr class="odd">
+<td>1900595</td>
+<td>Afton</td>
+<td>382</td>
+<td>56</td>
+<td>357</td>
+<td>53</td>
+<td>25</td>
+<td>16</td>
+<td>251</td>
+<td>40</td>
+<td>106</td>
+<td>36</td>
+<td>357</td>
+<td>53</td>
+<td>1962</td>
+<td>3</td>
+<td>61</td>
+<td>3</td>
+<td>0.7030812</td>
+<td>0.15313072</td>
+<td>0.065445026</td>
+<td>0.042969563</td>
+<td>0.29691877</td>
+<td>0.11005386</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Taxable Property Values ##</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#link to data: https://data.iowa.gov/Local-Government-Finance/Taxable-Property-Values-in-Iowa-by-Tax-District-an/ig9g-pba5</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>taxable.csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/demographics analysis/Community Profile Datasets/Taxable_Property_Values_in_Iowa_by_Tax_District_and_Year.csv"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The name of the city is stored in City.Name and is in uppercase.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For the Census data, only the first letter of the city name is capitalized and " city, Iowa|, Iowa" is attached.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to lowercase taxable property values City.Name and remove " city, Iowa|, Iowa" from housing and population data frames before joining them. </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>housing <span class="ot">&lt;-</span> housing <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME,<span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>taxable.csv <span class="ot">&lt;-</span> taxable.csv <span class="sc">%&gt;%</span> </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">City.Name =</span> <span class="fu">str_to_sentence</span>(City.Name)) <span class="co">#str_to_sentence() uses regular sentence formatting where the first letter is capitalized.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># Could have also used str_to_titletext().</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the sum of all columns and group by City.Name.</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Function is set to sum to get the sum of all values.</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># na.rm = TRUE means the NAs get ignored when summing.</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>residential <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Residential <span class="sc">~</span> City.Name, <span class="at">data =</span> taxable.csv, <span class="at">FUN =</span> sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ag_land <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Ag.Land <span class="sc">~</span> City.Name, taxable.csv, <span class="at">FUN =</span> sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>ag_building <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Ag.Building <span class="sc">~</span> City.Name, taxable.csv, <span class="at">FUN =</span> sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>commercial <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Commercial <span class="sc">~</span> City.Name, taxable.csv, <span class="at">FUN =</span> sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>industrial <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Industrial <span class="sc">~</span> City.Name, taxable.csv, <span class="at">FUN =</span> sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Join aggregated dataframes together to reform taxable property values data frame.</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>taxable_prop_values <span class="ot">&lt;-</span> residential <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ag_land, <span class="at">by =</span> <span class="st">"City.Name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ag_building, <span class="at">by =</span> <span class="st">"City.Name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(commercial, <span class="at">by =</span> <span class="st">"City.Name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(industrial, <span class="at">by =</span> <span class="st">"City.Name"</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(taxable_property_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.1.3</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>City.Name</th>
+<th>Residential</th>
+<th>Ag.Land</th>
+<th>Ag.Building</th>
+<th>Commercial</th>
+<th>Industrial</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>57582069434</td>
+<td>68289755861</td>
+<td>3756099698</td>
+<td>6892181005</td>
+<td>9990249878</td>
+</tr>
+<tr class="even">
+<td>Ackley</td>
+<td>59077903</td>
+<td>1756505</td>
+<td>61418</td>
+<td>20369025</td>
+<td>2143449</td>
+</tr>
+<tr class="odd">
+<td>Ackworth</td>
+<td>10399627</td>
+<td>403117</td>
+<td>7779</td>
+<td>67230</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Adair</td>
+<td>1151067</td>
+<td>715063</td>
+<td>40676</td>
+<td>5091781</td>
+<td>195604</td>
+</tr>
+<tr class="odd">
+<td>Adel</td>
+<td>257984582</td>
+<td>2651441</td>
+<td>27555</td>
+<td>81299747</td>
+<td>12757527</td>
+</tr>
+<tr class="even">
+<td>Afton</td>
+<td>24900696</td>
+<td>138605</td>
+<td>38906</td>
+<td>7514181</td>
+<td>1583244</td>
+</tr>
+</tbody>
+</table>
+<p>I also download the <strong>LEHD Origin-Destination Employment Statistics (LODES)</strong> from the Census website as well. I downloaded the <em>2020 Residential Area Characteristics</em> and the <em>2020 Workplace Area Characteristics</em>. They are aggregated by census block. I downloaded the <em>Geography crosswalk for IA</em> as well. The geography is needed to associate the census block codes to their related places in Iowa.</p>
+</section>
+<section id="wednesday" class="level2">
+<h2 class="anchored" data-anchor-id="wednesday">Wednesday</h2>
+<p>Late on Wednesday, my team got more clarification from our boss, Chris, on what the AI Housing project actually is. From our conversation, I interpreted that our project is intended to produces a <em>rapid, hands off, housing quality assessment for policy and grant decision makers.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Median Age of Residents ##</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the median age of all people in all places in Iowa from 2021 5-Year American Community Survey.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>pop_age <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"med_age"</span> <span class="ot">=</span> <span class="st">"B01002_001"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of people under 18 and over 65 for all places in Iowa.</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The age data in the American Community Survey is separated by sex, so you will need to get the data for men and then women and combine the data frames. </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>male <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"under5"</span> <span class="ot">=</span> <span class="st">"B01001_003"</span>, <span class="co"># Make sure to start the variable names with a letter.</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a5to9"</span> <span class="ot">=</span> <span class="st">"B01001_004"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a10to14"</span> <span class="ot">=</span> <span class="st">"B01001_005"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a15to17"</span> <span class="ot">=</span> <span class="st">"B01001_006"</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a65to66"</span> <span class="ot">=</span> <span class="st">"B01001_020"</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a67to69"</span> <span class="ot">=</span> <span class="st">"B01001_021"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a70to74"</span> <span class="ot">=</span> <span class="st">"B01001_022"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a75to79"</span> <span class="ot">=</span> <span class="st">"B01001_023"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"a80to84"</span> <span class="ot">=</span> <span class="st">"B01001_024"</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"over85"</span> <span class="ot">=</span> <span class="st">"B01001_025"</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"total"</span> <span class="ot">=</span> <span class="st">"B01001_002"</span>),</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>male <span class="ot">&lt;-</span> male <span class="sc">%&gt;%</span> </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">under18E =</span> under5E <span class="sc">+</span> a5to9E <span class="sc">+</span> a10to14E <span class="sc">+</span> a15to17E) <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">under18M =</span> <span class="fu">sqrt</span>(under5M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a5to9M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a10to14M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a15to17M<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(prc_under18E = under18E / totalE) %&gt;% </span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(prc_under18M = moe_ratio(under18E, totalE, under18M, totalM)) %&gt;% </span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">over65E =</span> a65to66E <span class="sc">+</span> a67to69E <span class="sc">+</span> a70to74E <span class="sc">+</span> a75to79E <span class="sc">+</span> a80to84E <span class="sc">+</span> over85E) <span class="sc">%&gt;%</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">over65M =</span>  <span class="fu">sqrt</span>(a65to66M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a67to69M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a70to74M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a75to79M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a80to84M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> over85M<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a> <span class="co"># mutate(prc_over65E = over65E / totalE) %&gt;% </span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(prc_over65M = moe_ratio(over65E, totalE, over65M, totalM)) </span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Now do the same for the female age data.</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>female <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>                <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>                <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"under5"</span> <span class="ot">=</span> <span class="st">"B01001_027"</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a5to9"</span> <span class="ot">=</span> <span class="st">"B01001_028"</span>,</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a10to14"</span> <span class="ot">=</span> <span class="st">"B01001_029"</span>,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a15to17"</span> <span class="ot">=</span> <span class="st">"B01001_030"</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a65to66"</span> <span class="ot">=</span> <span class="st">"B01001_044"</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a67to69"</span> <span class="ot">=</span> <span class="st">"B01001_045"</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a70to74"</span> <span class="ot">=</span> <span class="st">"B01001_046"</span>,</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a75to79"</span> <span class="ot">=</span> <span class="st">"B01001_047"</span>,</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"a80to84"</span> <span class="ot">=</span> <span class="st">"B01001_048"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"over85"</span> <span class="ot">=</span> <span class="st">"B01001_049"</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"total"</span> <span class="ot">=</span> <span class="st">"B01001_026"</span>),</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>female <span class="ot">&lt;-</span> female <span class="sc">%&gt;%</span> </span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">under18E =</span> under5E <span class="sc">+</span> a5to9E <span class="sc">+</span> a10to14E <span class="sc">+</span> a15to17E) <span class="sc">%&gt;%</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">under18M =</span> <span class="fu">sqrt</span>(under5M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a5to9M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a10to14M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a15to17M<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(prc_under18E = under18E / totalE) %&gt;% </span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a> <span class="co">#mutate(prc_under18M = moe_ratio(under18E, totalE, under18M, totalM)) %&gt;% </span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">over65E =</span> a65to66E <span class="sc">+</span> a67to69E <span class="sc">+</span> a70to74E <span class="sc">+</span> a75to79E <span class="sc">+</span> a80to84E <span class="sc">+</span> over85E) <span class="sc">%&gt;%</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">over65M =</span>  <span class="fu">sqrt</span>(a65to66M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a67to69M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a70to74M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a75to79M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> a80to84M<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> over85M<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(prc_over65E = over65E / totalE) %&gt;% </span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(prc_over65M = moe_ratio(over65E, totalE, over65M, totalM)) </span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the data frames.</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> female <span class="sc">%&gt;%</span> </span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(male)</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the data by NAME.</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="co"># I am using a different aggregation format here by using the summary() function. </span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="co"># This will produce a separate dataframe with just under18E, under18M, over65E, over65M, prc_under18E, prc_under18M, prc_over65E, and prc_over65M.</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>aggregated_age <span class="ot">&lt;-</span> age <span class="sc">%&gt;%</span> </span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(NAME) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>             <span class="fu">summarize</span>(<span class="at">under18E =</span> <span class="fu">sum</span>(under18E),</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>                       <span class="at">under18M =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(under18M<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>                       <span class="at">over65E =</span> <span class="fu">sum</span>(over65E),</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>                       <span class="at">over65M =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(over65M)),</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>                       <span class="at">prc_under18E =</span> <span class="fu">sum</span>(under18E)<span class="sc">/</span><span class="fu">sum</span>(totalE),</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>                       <span class="at">prc_under18M =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(under18M<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">sum</span>(totalE)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="fu">sum</span>(under18E)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(totalM<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sum</span>(totalE)<span class="sc">^</span><span class="dv">4</span>),</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>                       <span class="at">prc_over65E =</span> <span class="fu">sum</span>(over65E)<span class="sc">/</span><span class="fu">sum</span>(totalE),</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>                       <span class="at">prc_over65M =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(over65M<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="fu">sum</span>(totalE)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="fu">sum</span>(over65E)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(totalM<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sum</span>(totalE)<span class="sc">^</span><span class="dv">4</span>))</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column that states whether a place is "aged", "stable" or "young."</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a 2% difference to gauge a stable population.</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Aged population has a less than -2% difference between the percent under 18 and the percent over 65.</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Young population has a greater than 2% difference between the percent under 18 and the percent over 65. </span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>aggregated_age <span class="ot">&lt;-</span> aggregated_age <span class="sc">%&gt;%</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_label =</span> <span class="fu">ifelse</span>(prc_under18E <span class="sc">-</span> prc_over65E <span class="sc">&gt;</span> .<span class="dv">02</span>, <span class="st">"Young"</span>,</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">ifelse</span>(prc_under18E <span class="sc">-</span> prc_over65E <span class="sc">&lt;</span> <span class="sc">-</span>.<span class="dv">02</span>, <span class="st">"Aging"</span>, <span class="st">"Stable"</span>)))</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="do">## Add the age data to the population dataframe.</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aggregated_age,<span class="at">by =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pop_age, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>))</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aggregated_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.1.3</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>NAME</th>
+<th>under18E</th>
+<th>under18M</th>
+<th>over65E</th>
+<th>over65M</th>
+<th>prc_under18E</th>
+<th>prc_under18M</th>
+<th>prc_over65E</th>
+<th>prc_over65M</th>
+<th>age_label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ackley</td>
+<td>402</td>
+<td>68.39591</td>
+<td>349</td>
+<td>9.030714</td>
+<td>0.23563892</td>
+<td>0.044036378</td>
+<td>0.20457210</td>
+<td>0.0166781814</td>
+<td>Young</td>
+</tr>
+<tr class="even">
+<td>Ackworth</td>
+<td>50</td>
+<td>26.47640</td>
+<td>24</td>
+<td>6.256889</td>
+<td>0.33783784</td>
+<td>0.212313083</td>
+<td>0.16216216</td>
+<td>0.0692779288</td>
+<td>Young</td>
+</tr>
+<tr class="odd">
+<td>Adair</td>
+<td>206</td>
+<td>67.47592</td>
+<td>144</td>
+<td>7.692109</td>
+<td>0.24065421</td>
+<td>0.088939653</td>
+<td>0.16822430</td>
+<td>0.0301622637</td>
+<td>Young</td>
+</tr>
+<tr class="even">
+<td>Adel</td>
+<td>1708</td>
+<td>285.81987</td>
+<td>661</td>
+<td>14.821549</td>
+<td>0.29111982</td>
+<td>0.050896612</td>
+<td>0.11266405</td>
+<td>0.0062375436</td>
+<td>Young</td>
+</tr>
+<tr class="odd">
+<td>Afton</td>
+<td>208</td>
+<td>60.94260</td>
+<td>189</td>
+<td>8.606830</td>
+<td>0.22757112</td>
+<td>0.073795265</td>
+<td>0.20678337</td>
+<td>0.0302370669</td>
+<td>Young</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Unemployment ##</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting unemployment data from the 2021 5-Year American Community Survey.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the total number of people in the workforce and the total number of the labor force that is unemployed.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percent of the workforce that is unemployed. </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>unemployment <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"total_workforce"</span> <span class="ot">=</span> <span class="st">"B23025_003"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"unemployed"</span> <span class="ot">=</span> <span class="st">"B23025_005"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prc_unemployed =</span> unemployedE <span class="sc">/</span> total_workforceE,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">unemployed_moe =</span> <span class="fu">moe_ratio</span>(unemployedE, total_workforceE, unemployedM, total_workforceM)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME,<span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(unemployment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.1.3</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GEOID</th>
+<th>NAME</th>
+<th>total_workforceE</th>
+<th>total_workforceM</th>
+<th>unemployedE</th>
+<th>unemployedM</th>
+<th>prc_unemplyed</th>
+<th>unemployed_moe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1900190</td>
+<td>Ackley</td>
+<td>828</td>
+<td>88</td>
+<td>25</td>
+<td>17</td>
+<td>0.030193237</td>
+<td>0.020780658</td>
+</tr>
+<tr class="even">
+<td>1900235</td>
+<td>Ackworth</td>
+<td>73</td>
+<td>39</td>
+<td>6</td>
+<td>9</td>
+<td>0.082191781</td>
+<td>0.130873976</td>
+</tr>
+<tr class="odd">
+<td>1900370</td>
+<td>Adair</td>
+<td>440</td>
+<td>101</td>
+<td>25</td>
+<td>25</td>
+<td>0.056818182</td>
+<td>0.058295873</td>
+</tr>
+<tr class="even">
+<td>1900505</td>
+<td>Adel</td>
+<td>3125</td>
+<td>245</td>
+<td>127</td>
+<td>93</td>
+<td>0.040640000</td>
+<td>0.029930074</td>
+</tr>
+<tr class="odd">
+<td>1900595</td>
+<td>Afton</td>
+<td>480</td>
+<td>100</td>
+<td>42</td>
+<td>31</td>
+<td>0.087500000</td>
+<td>0.067106702</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Commuting ##</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting commute data from the 2021 5-Year American Community Survey.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the total number of people available for commute data and the total number of people commuting to work. </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percent of people commuting to work. </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>prc_travel <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"total"</span> <span class="ot">=</span> <span class="st">"B08008_001"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"travel"</span> <span class="ot">=</span> <span class="st">"B08008_004"</span>),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prc_travel =</span> travelE <span class="sc">/</span> totalE,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">travel_moe =</span> (<span class="fu">moe_ratio</span>(travelE, totalE, travelM, totalM))) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">" city, Iowa|, Iowa"</span>))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prc_travel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.1.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'stringr' was built under R version 4.1.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'forcats' was built under R version 4.1.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.1.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-v dplyr     1.1.2     v readr     2.1.4
-v forcats   1.0.0     v stringr   1.5.0
-v ggplot2   3.4.2     v tibble    3.2.1
-v lubridate 1.9.2     v tidyr     1.3.0
-v purrr     1.0.1     
--- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'scales' was built under R version 4.1.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'scales'
-
-The following object is masked from 'package:purrr':
-
-    discard
-
-The following object is masked from 'package:readr':
-
-    col_factor</code></pre>
-</div>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>GEOID</strong></th>
+<th>NAME</th>
+<th>totalE</th>
+<th>totalM</th>
+<th>travelE</th>
+<th>travelM</th>
+<th>prc_travel</th>
+<th>travel_moe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1900190</td>
+<td>Ackley</td>
+<td>797</td>
+<td>85</td>
+<td>534</td>
+<td>83</td>
+<td>0.6700125</td>
+<td>0.12629855</td>
+</tr>
+<tr class="even">
+<td>1900235</td>
+<td>Ackworth</td>
+<td>67</td>
+<td>38</td>
+<td>64</td>
+<td>39</td>
+<td>0.9552239</td>
+<td>0.79519912</td>
+</tr>
+<tr class="odd">
+<td>1900370</td>
+<td>Adair</td>
+<td>412</td>
+<td>93</td>
+<td>230</td>
+<td>57</td>
+<td>0.5582524</td>
+<td>0.18713615</td>
+</tr>
+<tr class="even">
+<td>1900505</td>
+<td>Adel</td>
+<td>2924</td>
+<td>229</td>
+<td>2216</td>
+<td>263</td>
+<td>0.7578659</td>
+<td>0.10776390</td>
+</tr>
+<tr class="odd">
+<td>1900595</td>
+<td>Afton</td>
+<td>434</td>
+<td>90</td>
+<td>319</td>
+<td>77</td>
+<td>0.7350230</td>
+<td>0.23390328</td>
+</tr>
+</tbody>
+</table>
+<p>When I was working on the demographic analysis on Wednesday, I took a break to do some more research on demographic analyses in general. I found this <a href="http://oskynews.org/how-a-handful-of-iowa-towns-thrive-rise-above-rural-decline/">link</a> on my project leader’s, Liesl Eathington, ISU webpage.</p>
+<p>The link is to a local news article that Liesl was interviewed for talking about the characteristics of thriving rural, small towns. The article also talked about some demographic analysis that was done on rural communities for grant purposes. Through this analysis, the researchers discovered that it was key to analyze <strong>housing</strong>, <strong>income</strong>, and <strong>jobs</strong> in a community to understand it. The researchers also found that an indicator of a declining small town is deteriorating infrastructure like streets and sewers.</p>
+<p>Small towns that are thriving have one or more of the following characteristics:</p>
+<ul>
+<li><p>close healthcare</p></li>
+<li><p>local day care options</p></li>
+<li><p>local grocery store</p></li>
+<li><p>local utilities</p></li>
+<li><p>local restaurants</p></li>
+<li><p>local shops</p></li>
+<li><p>local school(s)</p></li>
+</ul>
+<p>Knowing this information will help me finish the demographic analysis of Iowa’s communities. I want to see if I can find available data on infrastructure conditions to identify communities potentially in need of our AI Model.</p>
+</section>
+<section id="thursday" class="level2">
+<h2 class="anchored" data-anchor-id="thursday">Thursday</h2>
+<p>My group spent all morning working on our team’s teaser video. I worked on this blog and this week’s team blog when I had breaks from that. The team blog can be found on this blog and on the <a href="https://dspg-2023.github.io/DSPG2023/allBlogs.html">2023 DSPG blog</a>.</p>
+<p>I compiled the data I currently have for the demographic analysis into a larger data frame called “iowa.” I used the function write.csv() to create a CSV file from the “iowa” dataframe. This still needs updated because I am not done working with the WAC and RAC data, but it is a starting point. Later, I will be putting this CSV file into Tableau to visualize the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">##ONWER VS. RENTER OCCUPIED FOR EACH CITY</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>own_iowa <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">year =</span> <span class="dv">2010</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">output =</span> <span class="st">"wide"</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"H017003"</span>,<span class="st">"H017004"</span>,<span class="st">"H017005"</span>,<span class="st">"H017006"</span>,<span class="st">"H017007"</span>,<span class="st">"H017008"</span>,<span class="st">"H017009"</span>,<span class="st">"H017010"</span>,<span class="st">"H017011"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tenure =</span> <span class="st">"Owner"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">fifteentotwentyfour =</span> H017003, <span class="at">twentyfivetothirtyfour =</span> H017004, <span class="at">thirtyfivetofourtyfour =</span> H017005, <span class="at">fourtyfivetofiftyfour =</span> H017006, <span class="at">fiftyfivetofiftynine =</span> H017007, <span class="at">sixtytosixtyfour =</span> H017008, <span class="at">sixtyfivetoseventyfour =</span> H017009, <span class="at">seventyfivetoeightyfour =</span> H017010, <span class="at">overeightyfive =</span> H017011)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2010 decennial Census</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>iowa <span class="co"># Name of aggregated database.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>iowa <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(housing, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(taxable_prop_values, <span class="at">by =</span> <span class="st">"NAME"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(unemployment, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(prc_travel, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>,<span class="st">"NAME"</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Export as CSV.</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(iowa, <span class="st">"analysing_iowa_communities.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Using Census Summary File 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2010 decennial Census</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Using Census Summary File 1</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>rent_iowa <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">year =</span> <span class="dv">2010</span>,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">output =</span> <span class="st">"wide"</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"H017013"</span>,<span class="st">"H017014"</span>, <span class="st">"H017015"</span>, <span class="st">"H017016"</span>, <span class="st">"H017017"</span>,<span class="st">"H017018"</span>,<span class="st">"H017019"</span>, <span class="st">"H017020"</span>,<span class="st">"H017021"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tenure =</span> <span class="st">"Renter"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">fifteentotwentyfour =</span> H017013, <span class="at">twentyfivetothirtyfour =</span> H017014, <span class="at">thirtyfivetofourtyfour =</span> H017015, <span class="at">fourtyfivetofiftyfour =</span> H017016, <span class="at">fiftyfivetofiftynine =</span> H017017, <span class="at">sixtytosixtyfour =</span> H017018, <span class="at">sixtyfivetoseventyfour =</span> H017019, <span class="at">seventyfivetoeightyfour =</span> H017020, <span class="at">overeightyfive =</span> H017021)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2010 decennial Census
-Using Census Summary File 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2010 decennial Census</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Using Census Summary File 1</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>iowa <span class="ot">&lt;-</span> rent_iowa <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(own_iowa)<span class="sc">%&gt;%</span> </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(NAME, GEOID, tenure),</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"agegroups"</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="do">###plots for grundy, independence and new hampton for age break downs by housing tenure</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>iowa <span class="sc">%&gt;%</span> </span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"New Hampton city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">agegroups =</span> <span class="fu">fct_relevel</span>(agegroups, <span class="fu">c</span>(<span class="st">"fifteentotwentyfour"</span>, <span class="st">"twentyfivetothirtyfour"</span>,<span class="st">"thirtyfivetofourtyfour"</span>,<span class="st">"fourtyfivetofiftyfour"</span>,<span class="st">"fiftyfivetofiftynine"</span>,<span class="st">"sixtytosixtyfour"</span>,<span class="st">"sixtyfivetoseventyfour"</span>,<span class="st">"seventyfivetoeightyfour"</span>,<span class="st">"overeightyfive"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> agegroups, <span class="at">y =</span> <span class="fu">if_else</span>(tenure <span class="sc">==</span> <span class="st">"Renter"</span>, count, <span class="sc">-</span>count))) <span class="sc">+</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> tenure), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> agegroups, <span class="at">y =</span> <span class="fu">if_else</span>(tenure <span class="sc">==</span> <span class="st">"Renter"</span>, count <span class="sc">+</span><span class="dv">10</span>, <span class="sc">-</span>count <span class="sc">-</span> <span class="dv">12</span>), <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">comma</span>(count))) <span class="sc">+</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"15 to 24"</span>, <span class="st">"25 to 34"</span>, <span class="st">"35 to 44"</span>, <span class="st">"45 to 54"</span>, <span class="st">"55 to 59"</span>, <span class="st">"60 to 64"</span>, <span class="st">"65 to 74"</span>, <span class="st">"75 to 84"</span>, <span class="st">"85 and Older"</span>)) <span class="sc">+</span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> abs)<span class="sc">+</span></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Population"</span>,</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">""</span>,</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Population in New Hampton, IA </span><span class="sc">\n</span><span class="st">by Age and Tenure"</span>,</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"2010 Decennial Census"</span>) <span class="sc">+</span></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>()<span class="sc">+</span></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_wsj</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the CSV file. </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Kailyn Hogan/OneDrive - Iowa State University/Documents/GitHub/Housing/demographics analysis/analysing_iowa_communities.csv"</span>) </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the contents of the CSV file.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">arrange</span>(data, NAME)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<table class="table">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">GEOID</th>
+<th style="text-align: left;">NAME</th>
+<th style="text-align: right;">pop20</th>
+<th style="text-align: right;">pop10</th>
+<th style="text-align: right;">pop00</th>
+<th style="text-align: right;">prc_change</th>
+<th style="text-align: left;">change_label</th>
+<th style="text-align: right;">under18E</th>
+<th style="text-align: right;">under18M</th>
+<th style="text-align: right;">over65E</th>
+<th style="text-align: right;">over65M</th>
+<th style="text-align: right;">prc_under18E</th>
+<th style="text-align: right;">prc_under18M</th>
+<th style="text-align: right;">prc_over65E</th>
+<th style="text-align: right;">prc_over65M</th>
+<th style="text-align: left;">age_label</th>
+<th style="text-align: right;">med_ageE</th>
+<th style="text-align: right;">med_ageM</th>
+<th style="text-align: right;">total_unitsE</th>
+<th style="text-align: right;">total_unitsM</th>
+<th style="text-align: right;">occupied_unitsE</th>
+<th style="text-align: right;">occupied_unitsM</th>
+<th style="text-align: right;">vacant_unitsE</th>
+<th style="text-align: right;">vacant_unitsM</th>
+<th style="text-align: right;">owner_occupiedE</th>
+<th style="text-align: right;">owner_occupiedM</th>
+<th style="text-align: right;">renter_occupiedE</th>
+<th style="text-align: right;">renter_occupiedM</th>
+<th style="text-align: right;">median_house_valueE</th>
+<th style="text-align: right;">median_house_valueM</th>
+<th style="text-align: right;">median_year_builtE</th>
+<th style="text-align: right;">median_year_builtM</th>
+<th style="text-align: right;">median_house_ageE</th>
+<th style="text-align: right;">median_house_ageM</th>
+<th style="text-align: right;">home_ownership_rateE</th>
+<th style="text-align: right;">home_ownership_rateM</th>
+<th style="text-align: right;">vacancy_rateE</th>
+<th style="text-align: right;">vacancy_rateM</th>
+<th style="text-align: right;">rental_rateE</th>
+<th style="text-align: right;">rental_rateM</th>
+<th style="text-align: right;">Residential</th>
+<th style="text-align: right;">Ag.Land</th>
+<th style="text-align: right;">Ag.Building</th>
+<th style="text-align: right;">Commercial</th>
+<th style="text-align: right;">Industrial</th>
+<th style="text-align: right;">total_workforceE</th>
+<th style="text-align: right;">total_workforceM</th>
+<th style="text-align: right;">unemployedE</th>
+<th style="text-align: right;">unemployedM</th>
+<th style="text-align: right;">prc_unemployed</th>
+<th style="text-align: right;">unemployed_moe</th>
+<th style="text-align: right;">totalE</th>
+<th style="text-align: right;">totalM</th>
+<th style="text-align: right;">travelE</th>
+<th style="text-align: right;">travelM</th>
+<th style="text-align: right;">prc_travel</th>
+<th style="text-align: right;">travel_moe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1900190</td>
+<td style="text-align: left;">Ackley</td>
+<td style="text-align: right;">1599</td>
+<td style="text-align: right;">1589</td>
+<td style="text-align: right;">1809</td>
+<td style="text-align: right;">-0.1313321</td>
+<td style="text-align: left;">Shrinking</td>
+<td style="text-align: right;">402</td>
+<td style="text-align: right;">68.39591</td>
+<td style="text-align: right;">349</td>
+<td style="text-align: right;">9.030714</td>
+<td style="text-align: right;">0.2356389</td>
+<td style="text-align: right;">0.0440364</td>
+<td style="text-align: right;">0.2045721</td>
+<td style="text-align: right;">0.0166782</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">41.5</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">705</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">553</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">705</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.7843972</td>
+<td style="text-align: right;">0.1135668</td>
+<td style="text-align: right;">0.1187500</td>
+<td style="text-align: right;">0.0498762</td>
+<td style="text-align: right;">0.2156028</td>
+<td style="text-align: right;">0.0712801</td>
+<td style="text-align: right;">59077903</td>
+<td style="text-align: right;">1756505</td>
+<td style="text-align: right;">61418</td>
+<td style="text-align: right;">20369025</td>
+<td style="text-align: right;">2143449</td>
+<td style="text-align: right;">828</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.0301932</td>
+<td style="text-align: right;">0.0207807</td>
+<td style="text-align: right;">797</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">534</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">0.6700125</td>
+<td style="text-align: right;">0.1262985</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1900235</td>
+<td style="text-align: left;">Ackworth</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.2608696</td>
+<td style="text-align: left;">Growing</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">26.47640</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">6.256889</td>
+<td style="text-align: right;">0.3378378</td>
+<td style="text-align: right;">0.2123131</td>
+<td style="text-align: right;">0.1621622</td>
+<td style="text-align: right;">0.0692779</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">38.1</td>
+<td style="text-align: right;">30.8</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.7446809</td>
+<td style="text-align: right;">0.4808792</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.2127660</td>
+<td style="text-align: right;">0.2553191</td>
+<td style="text-align: right;">0.2580309</td>
+<td style="text-align: right;">10399627</td>
+<td style="text-align: right;">403117</td>
+<td style="text-align: right;">7779</td>
+<td style="text-align: right;">67230</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.0821918</td>
+<td style="text-align: right;">0.1308740</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0.9552239</td>
+<td style="text-align: right;">0.7951991</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1900370</td>
+<td style="text-align: left;">Adair</td>
+<td style="text-align: right;">791</td>
+<td style="text-align: right;">781</td>
+<td style="text-align: right;">839</td>
+<td style="text-align: right;">-0.0606827</td>
+<td style="text-align: left;">Shrinking</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">67.47592</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">7.692109</td>
+<td style="text-align: right;">0.2406542</td>
+<td style="text-align: right;">0.0889397</td>
+<td style="text-align: right;">0.1682243</td>
+<td style="text-align: right;">0.0301623</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">37.7</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">384</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">344</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">344</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">1960</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.6017442</td>
+<td style="text-align: right;">0.1643524</td>
+<td style="text-align: right;">0.1041667</td>
+<td style="text-align: right;">0.0721717</td>
+<td style="text-align: right;">0.3982558</td>
+<td style="text-align: right;">0.1450029</td>
+<td style="text-align: right;">1151067</td>
+<td style="text-align: right;">715063</td>
+<td style="text-align: right;">40676</td>
+<td style="text-align: right;">5091781</td>
+<td style="text-align: right;">195604</td>
+<td style="text-align: right;">440</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.0568182</td>
+<td style="text-align: right;">0.0582959</td>
+<td style="text-align: right;">412</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.5582524</td>
+<td style="text-align: right;">0.1871361</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1900505</td>
+<td style="text-align: left;">Adel</td>
+<td style="text-align: right;">6153</td>
+<td style="text-align: right;">3682</td>
+<td style="text-align: right;">3435</td>
+<td style="text-align: right;">0.4417357</td>
+<td style="text-align: left;">Growing</td>
+<td style="text-align: right;">1708</td>
+<td style="text-align: right;">285.81987</td>
+<td style="text-align: right;">661</td>
+<td style="text-align: right;">14.821549</td>
+<td style="text-align: right;">0.2911198</td>
+<td style="text-align: right;">0.0508966</td>
+<td style="text-align: right;">0.1126641</td>
+<td style="text-align: right;">0.0062375</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">36.8</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2312</td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">2234</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">1548</td>
+<td style="text-align: right;">171</td>
+<td style="text-align: right;">686</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">2234</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">1978</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.6929275</td>
+<td style="text-align: right;">0.0851142</td>
+<td style="text-align: right;">0.0337370</td>
+<td style="text-align: right;">0.0420128</td>
+<td style="text-align: right;">0.3070725</td>
+<td style="text-align: right;">0.0721873</td>
+<td style="text-align: right;">257984582</td>
+<td style="text-align: right;">2651441</td>
+<td style="text-align: right;">27555</td>
+<td style="text-align: right;">81299747</td>
+<td style="text-align: right;">12757527</td>
+<td style="text-align: right;">3125</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">0.0406400</td>
+<td style="text-align: right;">0.0299301</td>
+<td style="text-align: right;">2924</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: right;">2216</td>
+<td style="text-align: right;">263</td>
+<td style="text-align: right;">0.7578659</td>
+<td style="text-align: right;">0.1077639</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1900595</td>
+<td style="text-align: left;">Afton</td>
+<td style="text-align: right;">874</td>
+<td style="text-align: right;">845</td>
+<td style="text-align: right;">917</td>
+<td style="text-align: right;">-0.0491991</td>
+<td style="text-align: left;">Shrinking</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: right;">60.94260</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: right;">8.606830</td>
+<td style="text-align: right;">0.2275711</td>
+<td style="text-align: right;">0.0737953</td>
+<td style="text-align: right;">0.2067834</td>
+<td style="text-align: right;">0.0302371</td>
+<td style="text-align: left;">Young</td>
+<td style="text-align: right;">39.0</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">357</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">251</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">357</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7030812</td>
+<td style="text-align: right;">0.1531307</td>
+<td style="text-align: right;">0.0654450</td>
+<td style="text-align: right;">0.0429696</td>
+<td style="text-align: right;">0.2969188</td>
+<td style="text-align: right;">0.1100539</td>
+<td style="text-align: right;">24900696</td>
+<td style="text-align: right;">138605</td>
+<td style="text-align: right;">38906</td>
+<td style="text-align: right;">7514181</td>
+<td style="text-align: right;">1583244</td>
+<td style="text-align: right;">480</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0.0875000</td>
+<td style="text-align: right;">0.0671067</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">319</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">0.7350230</td>
+<td style="text-align: right;">0.2339033</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1900640</td>
+<td style="text-align: left;">Agency</td>
+<td style="text-align: right;">620</td>
+<td style="text-align: right;">638</td>
+<td style="text-align: right;">622</td>
+<td style="text-align: right;">-0.0032258</td>
+<td style="text-align: left;">Stable</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">29.79933</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">6.383032</td>
+<td style="text-align: right;">0.1501057</td>
+<td style="text-align: right;">0.0678777</td>
+<td style="text-align: right;">0.2600423</td>
+<td style="text-align: right;">0.0458014</td>
+<td style="text-align: left;">Aging</td>
+<td style="text-align: right;">49.6</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">233</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">1959</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.7298578</td>
+<td style="text-align: right;">0.1901772</td>
+<td style="text-align: right;">0.0944206</td>
+<td style="text-align: right;">0.0958713</td>
+<td style="text-align: right;">0.2701422</td>
+<td style="text-align: right;">0.1280830</td>
+<td style="text-align: right;">82024799</td>
+<td style="text-align: right;">119286</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">2742290</td>
+<td style="text-align: right;">2872782</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0291667</td>
+<td style="text-align: right;">0.0301548</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">0.9439655</td>
+<td style="text-align: right;">0.3734276</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>iowa <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Grundy Center city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">agegroups =</span> <span class="fu">fct_relevel</span>(agegroups, <span class="fu">c</span>(<span class="st">"fifteentotwentyfour"</span>, <span class="st">"twentyfivetothirtyfour"</span>,<span class="st">"thirtyfivetofourtyfour"</span>,<span class="st">"fourtyfivetofiftyfour"</span>,<span class="st">"fiftyfivetofiftynine"</span>,<span class="st">"sixtytosixtyfour"</span>,<span class="st">"sixtyfivetoseventyfour"</span>,<span class="st">"seventyfivetoeightyfour"</span>,<span class="st">"overeightyfive"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> agegroups, <span class="at">y =</span> <span class="fu">if_else</span>(tenure <span class="sc">==</span> <span class="st">"Renter"</span>, count, <span class="sc">-</span>count))) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> tenure), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> agegroups, <span class="at">y =</span> <span class="fu">if_else</span>(tenure <span class="sc">==</span> <span class="st">"Renter"</span>, count <span class="sc">+</span><span class="dv">5</span>, <span class="sc">-</span>count <span class="sc">-</span> <span class="dv">8</span>), <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">comma</span>(count))) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"15 to 24"</span>, <span class="st">"25 to 34"</span>, <span class="st">"35 to 44"</span>, <span class="st">"45 to 54"</span>, <span class="st">"55 to 59"</span>, <span class="st">"60 to 64"</span>, <span class="st">"65 to 74"</span>, <span class="st">"75 to 84"</span>, <span class="st">"85 and Older"</span>)) <span class="sc">+</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> abs)<span class="sc">+</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Population"</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">""</span>,</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Population in Grundy Center, IA </span><span class="sc">\n</span><span class="st">by Age and Tenure"</span>,</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"2010 Decennial Census"</span>) <span class="sc">+</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>()<span class="sc">+</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_wsj</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>iowa <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Independence city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">agegroups =</span> <span class="fu">fct_relevel</span>(agegroups, <span class="fu">c</span>(<span class="st">"fifteentotwentyfour"</span>, <span class="st">"twentyfivetothirtyfour"</span>,<span class="st">"thirtyfivetofourtyfour"</span>,<span class="st">"fourtyfivetofiftyfour"</span>,<span class="st">"fiftyfivetofiftynine"</span>,<span class="st">"sixtytosixtyfour"</span>,<span class="st">"sixtyfivetoseventyfour"</span>,<span class="st">"seventyfivetoeightyfour"</span>,<span class="st">"overeightyfive"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> agegroups, <span class="at">y =</span> <span class="fu">if_else</span>(tenure <span class="sc">==</span> <span class="st">"Renter"</span>, count, <span class="sc">-</span>count))) <span class="sc">+</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> tenure), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> agegroups, <span class="at">y =</span> <span class="fu">if_else</span>(tenure <span class="sc">==</span> <span class="st">"Renter"</span>, count <span class="sc">+</span><span class="dv">12</span>, <span class="sc">-</span>count <span class="sc">-</span> <span class="dv">15</span>), <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">comma</span>(count))) <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"15 to 24"</span>, <span class="st">"25 to 34"</span>, <span class="st">"35 to 44"</span>, <span class="st">"45 to 54"</span>, <span class="st">"55 to 59"</span>, <span class="st">"60 to 64"</span>, <span class="st">"65 to 74"</span>, <span class="st">"75 to 84"</span>, <span class="st">"85 and Older"</span>)) <span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> abs)<span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Population"</span>,</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">""</span>,</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Population in Independence, IA by </span><span class="sc">\n</span><span class="st">Age and Tenure"</span>,</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"2010 Decennial Census"</span>) <span class="sc">+</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>()<span class="sc">+</span></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_wsj</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">##MEDIAN AGE</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>medage <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"medage"</span> <span class="ot">=</span> <span class="st">"B01002_001"</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>grundy <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">variable =</span> medage,</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Grundy Center city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2021</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2016-2020 5-year ACS</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>inde <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">variable =</span> medage,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Independence city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2021</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">variable =</span> medage,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"New Hampton city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2021</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2016-2020 5-year ACS</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>ia <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"state"</span>,</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">variable =</span> medage,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="dv">2021</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2016-2020 5-year ACS</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>medage16_20 <span class="ot">&lt;-</span> grundy <span class="sc">%&gt;%</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(ia,inde, new) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper =</span> estimate <span class="sc">+</span> moe,</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">lower =</span> estimate <span class="sc">-</span> moe)</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>medage16_20 <span class="sc">%&gt;%</span> </span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate, <span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper))<span class="sc">+</span></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate))<span class="sc">+</span></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate, <span class="at">label =</span> estimate), <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">8</span>)<span class="sc">+</span></span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"Grundy Center city, Iowa"</span>, <span class="st">"Independence city, Iowa"</span>, <span class="st">"New Hampton city, Iowa"</span>, <span class="st">"Iowa"</span>),<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Grundy Center"</span>,<span class="st">"Independence"</span>,<span class="st">"New Hampton"</span>,<span class="st">"Iowa"</span>))<span class="sc">+</span></span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Median Age of the Population"</span>,</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Data aquired from 2017-2021 5-year ACS estimates."</span>,</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">" "</span>,)<span class="sc">+</span></span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_line()`: Each group consists of only one observation.
-i Do you need to adjust the group aesthetic?</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#PERCENT FOREIGN BORN, NON-CITIZENS</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>foreign <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"foreign"</span> <span class="ot">=</span> <span class="st">"B05012_003"</span>,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"pop"</span> <span class="ot">=</span> <span class="st">"B05012_001"</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>foreign <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">variable =</span> foreign,</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Grundy Center city, Iowa"</span>, <span class="st">"Independence city, Iowa"</span>, <span class="st">"New Hampton city, Iowa"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2017-2021 5-year ACS</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>foreign <span class="ot">&lt;-</span> foreign <span class="sc">%&gt;%</span> </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_foreign =</span> foreignE<span class="sc">/</span>popE,</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pct_foreign_moe =</span> <span class="fu">moe_prop</span>(foreignE, popE, foreignM, popM))</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>foreign <span class="sc">%&gt;%</span> </span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> pct_foreign, <span class="at">ymin =</span> pct_foreign <span class="sc">-</span> pct_foreign_moe, <span class="at">ymax =</span> pct_foreign <span class="sc">+</span> pct_foreign_moe ))<span class="sc">+</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>() <span class="sc">+</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">x =</span> <span class="st">" "</span>,</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Pct Foreign"</span>,</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Percent of Foreign-Born, Non-Citzen"</span>,</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">"2017-2021 5-Year ACS Estimates"</span>)<span class="sc">+</span></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Grundy Center"</span>, <span class="st">"Independence"</span>, <span class="st">"New Hampton"</span>))<span class="sc">+</span></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> pct_foreign, <span class="at">label =</span> <span class="fu">percent</span>(pct_foreign)), <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">##MEDIAN INCOME BY HOUSEHOLD</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>grundy_acs <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">variable =</span> <span class="fu">c</span>(<span class="at">med_house =</span> <span class="st">"B19013_001"</span>),</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Grundy Center city, Iowa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>inde_acs <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">variable =</span> <span class="fu">c</span>(<span class="at">med_house =</span> <span class="st">"B19013_001"</span>),</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Independence city, Iowa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>new_acs <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">variable =</span> <span class="fu">c</span>(<span class="at">med_house =</span> <span class="st">"B19013_001"</span>),</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"tidy"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"New Hampton city, Iowa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2016-2020 5-year ACS</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>med_house <span class="ot">&lt;-</span> grundy_acs <span class="sc">%&gt;%</span> </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(inde_acs,new_acs)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>med_house <span class="sc">%&gt;%</span>  </span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate))<span class="sc">+</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> estimate <span class="sc">-</span> moe, <span class="at">ymax =</span> estimate <span class="sc">+</span>moe))<span class="sc">+</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(estimate)), <span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Grundy Center"</span>, <span class="st">"Independence"</span>, <span class="st">"New Hampton"</span>))<span class="sc">+</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>dollar)<span class="sc">+</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">""</span>,</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Estimated Median Income by Household"</span>,</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Data acquired from 2017-2021 5-year ACS estimates."</span>)<span class="sc">+</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># % LABOR FORCE UNEMPLOYED</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>grundy_un <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"total"</span> <span class="ot">=</span> <span class="st">"B23025_003"</span>,</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"unemployed"</span> <span class="ot">=</span> <span class="st">"B23025_005"</span>),</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Grundy Center city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> unemployedE <span class="sc">/</span> totalE,</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">moe =</span> <span class="fu">moe_ratio</span>(unemployedE, totalE, unemployedM, totalM))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>inde_un <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"total"</span> <span class="ot">=</span> <span class="st">"B23025_003"</span>,</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"unemployed"</span> <span class="ot">=</span> <span class="st">"B23025_005"</span>),</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Independence city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> unemployedE <span class="sc">/</span> totalE,</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">moe =</span> <span class="fu">moe_ratio</span>(unemployedE, totalE, unemployedM, totalM))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>new_un <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">state =</span> <span class="st">"IA"</span>, </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">geography =</span> <span class="st">"place"</span>,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"total"</span> <span class="ot">=</span> <span class="st">"B23025_003"</span>,</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"unemployed"</span> <span class="ot">=</span> <span class="st">"B23025_005"</span>),</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">output =</span> <span class="st">"wide"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"New Hampton city, Iowa"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> unemployedE <span class="sc">/</span> totalE,</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">moe =</span> <span class="fu">moe_ratio</span>(unemployedE, totalE, unemployedM, totalM))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2017-2021 5-year ACS</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting data from the 2016-2020 5-year ACS</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>pct_un <span class="ot">&lt;-</span> grundy_un <span class="sc">%&gt;%</span> </span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(inde_un,new_un)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>pct_un <span class="sc">%&gt;%</span>  </span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> pct))<span class="sc">+</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> pct <span class="sc">-</span> moe, <span class="at">ymax =</span> pct <span class="sc">+</span>moe))<span class="sc">+</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(pct)), <span class="at">hjust =</span> <span class="sc">-</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>percent)<span class="sc">+</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Grundy Center"</span>, <span class="st">"Independence"</span>, <span class="st">"New Hampton"</span>))<span class="sc">+</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">""</span>,</span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Estimated % of Population Unemployed"</span>,</span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Data acquired from 2017-2021 5-year ACS estimates."</span>)<span class="sc">+</span></span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_fivethirtyeight</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Week_7_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>I wish I would’ve gotten to dig deeper into TidyCensus this week, but I was on vacation in Vegas. I learned a lot about TidyCensus considering though.</p>
-<p>We also had our first client meeting for the Housing and AI project this week on Thursday, May 25th. We gained clarity for which direction we should be heading in the project from our stakeholders.</p>
+</section>
+<section id="friday" class="level2">
+<h2 class="anchored" data-anchor-id="friday">Friday</h2>
+<p>On Friday, I gave the weekly wrap up presentation.</p>
 
 
 </section>
