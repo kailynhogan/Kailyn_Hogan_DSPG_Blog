@@ -44,6 +44,8 @@ For the 2023 AI Housing Project, I planned to analyze the following demographic 
 
 -   Jobs and employment
 
+I chose the following demographic characteristics because they can tell something about the condition of a community. For the 2023 AI Housing Project, I was looking for struggling communities. Typically, struggling communities have a declining population. They can have a higher median age if new individuals are not moving into town and having kids and existing, young residents are moving out. A low median house value and high median house age can also indicate a struggling community. A high median house age can reveal that new housing is not being built in the community. A low median income is not a great sign or a low percent change in income. Employment statistics are important because there will only be money to invest in a community if people are employed. I was interested in the percentage of the workforce that commuted to work because that gives us information on where jobs are located. If people are commuting, there needs to be more jobs in town. A low number of jobs does not encourage population growth.
+
 For a more comprehensive analysis, I could also analyze the spatial relationship of healthcare options, daycare options, grocery stores, utilities, restaurants, shops, and schools to places in Iowa. Small, thriving, rural towns have access to at least one or more stated features.
 
 ## **Gathering Data**
@@ -71,7 +73,7 @@ median_income %>% get_acs(geography = "state",
 head(median_income)
 ```
 
-The `get_acs()` example above is pulling median income data from the 2010 5-Year American Community Survey at the state level. By default, `get_acs()` will pull data from the 5-Year ACS instead of the 1-Year ACS unless specified with the *`survey =`* argument.
+The `get_acs()` example above is pulling median income data from the 2010 5-Year American Community Survey at the state level. By default, `get_acs()` will pull data from the 5-Year ACS instead of the 1-Year ACS unless specified with the `survey =` argument.
 
 ```{r}
 # pulling from 1-Year ACS
@@ -302,7 +304,7 @@ Well done! You have created your first visualization in Tableau.
 
 You can create dashboards and stories in Tableau like this one with a little more practice.
 
-\[insert story\]
+\[insert story\] !!!!!!!!!!!!!!!!!!!!!!!!!
 
 ```{r tableau-story, echo = FALSE}
 
