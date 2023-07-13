@@ -1043,312 +1043,163 @@ value[value$NAME %in% c("Grundy Center", "New Hampton", "Independence"), ] %>%
 
 ### Housing Occupancy Plots
 
-```{r}, warning = FALSE, message = FALSE}
-# Home Ownership, Rental, and Vacancy Rates                                 
+\`\`\`{r}, warning = FALSE, message = FALSE} \# Home Ownership, Rental, and Vacancy Rates
 
-# Getting owner occupied data and total occupied units from 5-Year American Community Survey. 
+# Getting owner occupied data and total occupied units from 5-Year American Community Survey.
+
 # Using years object that was defined earlier.
-placeOwn <- map_dfr(years, ~{
-  get_acs(
-    geography = "place",
-    variables = c("Owner Occupied" = "B25003_002",
-                  "total" = "B25001_001"),
-    state = "IA",
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year") 
+
+placeOwn \<- map_dfr(years, \~{ get_acs( geography = "place", variables = c("Owner Occupied" = "B25003_002", "total" = "B25001_001"), state = "IA", year = .x, survey = "acs5", ) }, .id = "year")
 
 # Create a new column for percent own.
-placeOwn <- placeOwn %>%
-  group_by(year, GEOID, NAME) %>%
-  mutate(percent = estimate / first(estimate))
-  filter(variable != "total")
+
+placeOwn \<- placeOwn %\>% group_by(year, GEOID, NAME) %\>% mutate(percent = estimate / first(estimate)) filter(variable != "total")
 
 # Getting renter occupied data and total occupied units from 5-Year American Community Survey.
-# Using years object defined earlier. 
-placeRent <- map_dfr(years, ~{
-  get_acs(
-    geography = "place",
-    variables = c("Renter Occupied" = "B25003_003",
-                  "total" = "B25001_001"),
-    state = "IA",
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year")
+
+# Using years object defined earlier.
+
+placeRent \<- map_dfr(years, \~{ get_acs( geography = "place", variables = c("Renter Occupied" = "B25003_003", "total" = "B25001_001"), state = "IA", year = .x, survey = "acs5", ) }, .id = "year")
 
 # Add a new column for percent rent.
-placeRent <- placeRent %>%
-  group_by(year, GEOID, NAME) %>%
-  mutate(percent = estimate / first(estimate)) %>% 
-  filter(variable != "total")
+
+placeRent \<- placeRent %\>% group_by(year, GEOID, NAME) %\>% mutate(percent = estimate / first(estimate)) %\>% filter(variable != "total")
 
 # Getting vacant units and total units from 5-Year ACS.
-# Using years object defined earlier. 
-placeVacant <- map_dfr(years, ~{
-  get_acs(
-    geography = "place",
-    state = "IA",
-    variables = c("Vacant" = "B25002_003",
-                  "total" = "B25001_001"),
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year")
+
+# Using years object defined earlier.
+
+placeVacant \<- map_dfr(years, \~{ get_acs( geography = "place", state = "IA", variables = c("Vacant" = "B25002_003", "total" = "B25001_001"), year = .x, survey = "acs5", ) }, .id = "year")
 
 # Create new column for vacant percent.
-placeVacant <- placeVacant %>% 
-  group_by(year, GEOID, NAME) %>% 
-  mutate(percent = estimate / first(estimate)) %>% 
-  filter(variable != "total")
+
+placeVacant \<- placeVacant %\>% group_by(year, GEOID, NAME) %\>% mutate(percent = estimate / first(estimate)) %\>% filter(variable != "total")
 
 # Combine all data into one data frame.
-placeRate <- placeOwn %>% 
-  bind_rows(placeRent, placeVacant)
 
-# To simplify the filtering process from now on, create an object for desired cities. 
-target_cities <- c("Independence city, Iowa","New Hampton city, Iowa", "Grundy Center city, Iowa")
+placeRate \<- placeOwn %\>% bind_rows(placeRent, placeVacant)
+
+# To simplify the filtering process from now on, create an object for desired cities.
+
+target_cities \<- c("Independence city, Iowa","New Hampton city, Iowa", "Grundy Center city, Iowa")
 
 # Filter for desired cities.
-placeRate <- placeRate %>% 
-  filter(NAME %in% target_cities) %>% 
-  mutate(NAME = str_remove(NAME," city, Iowa"))
+
+placeRate \<- placeRate %\>% filter(NAME %in% target_cities) %\>% mutate(NAME = str_remove(NAME," city, Iowa"))
 
 # Add a geography column.
-placeRate <- placeRate %>% 
-  mutate(geography = "Place")
 
+placeRate \<- placeRate %\>% mutate(geography = "Place")
 
 ### STATE TIME
 
-# Getting owner occupied data and total occupied units from 5-Year American Community Survey for Iowa. 
+# Getting owner occupied data and total occupied units from 5-Year American Community Survey for Iowa.
+
 # Using years object that was defined earlier.
-stateOwn <- map_dfr(years, ~{
-  get_acs(
-    geography = "state",
-    variables = c("Owner Occupied" = "B25003_002",
-                  "total" = "B25001_001"),
-    state = "IA",
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year")
 
-# Create a column called prc_own for percent home ownership. 
+stateOwn \<- map_dfr(years, \~{ get_acs( geography = "state", variables = c("Owner Occupied" = "B25003_002", "total" = "B25001_001"), state = "IA", year = .x, survey = "acs5", ) }, .id = "year")
+
+# Create a column called prc_own for percent home ownership.
+
 # Create column for the margin of error of prc_own.
-# Filter the data frame for the desired cities. 
-stateOwn <- stateOwn %>% 
-  group_by(year) %>% 
-  mutate(percent = estimate/first(estimate)) %>%
-  filter(variable != "total")
 
-# Repeat the process for Renter Occupied and Vacant Units. 
-stateRent <- map_dfr(years, ~{
-  get_acs(
-    geography = "state",
-    variables = c("Renter Occupied" = "B25003_003",
-                  "total" = "B25001_001"),
-    state = "IA",
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year")
-# Calculate percent.
-stateRent <- stateRent %>% 
-  group_by(year) %>% 
-  mutate(percent = estimate/first(estimate)) %>%
-  filter(variable != "total")
+# Filter the data frame for the desired cities.
+
+stateOwn \<- stateOwn %\>% group_by(year) %\>% mutate(percent = estimate/first(estimate)) %\>% filter(variable != "total")
+
+# Repeat the process for Renter Occupied and Vacant Units.
+
+stateRent \<- map_dfr(years, \~{ get_acs( geography = "state", variables = c("Renter Occupied" = "B25003_003", "total" = "B25001_001"), state = "IA", year = .x, survey = "acs5", ) }, .id = "year") \# Calculate percent. stateRent \<- stateRent %\>% group_by(year) %\>% mutate(percent = estimate/first(estimate)) %\>% filter(variable != "total")
 
 # Vacant Units time.
-stateVacant <- map_dfr(years, ~{
-  get_acs(
-    geography = "state",
-    variables = c("Vacant" = "B25002_003",
-                  "total" = "B25001_001"),
-    state = "IA",
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year")
-# Calculate percent.
-stateVacant <- stateVacant %>% 
-  group_by(year) %>% 
-  mutate(percent = estimate/first(estimate)) %>%
-  filter(variable != "total")
+
+stateVacant \<- map_dfr(years, \~{ get_acs( geography = "state", variables = c("Vacant" = "B25002_003", "total" = "B25001_001"), state = "IA", year = .x, survey = "acs5", ) }, .id = "year") \# Calculate percent. stateVacant \<- stateVacant %\>% group_by(year) %\>% mutate(percent = estimate/first(estimate)) %\>% filter(variable != "total")
 
 # Combine all rates and add geography.
-stateRate <- stateOwn %>% 
-  bind_rows(stateRent, stateVacant) %>% 
-  mutate(geography = "State")
 
-place_state %>% 
-  filter(variable == "Owner Occupied") %>% 
-  ggplot(aes(x = year, y = percent, group = NAME, color = NAME)) +
-  geom_line(linewidth = 1) +
-  geom_point(size =2, color = "black") +
-  scale_y_continuous(labels = scales::percent)+
-  theme_fivethirtyeight() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Home Ownership Rate",
-       caption = "Variable: B25003_002",
-       color = "",
-       subtitle = "2009-2021 5-Year ACS Estimates")
+stateRate \<- stateOwn %\>% bind_rows(stateRent, stateVacant) %\>% mutate(geography = "State")
 
-
+place_state %\>% filter(variable == "Owner Occupied") %\>% ggplot(aes(x = year, y = percent, group = NAME, color = NAME)) + geom_line(linewidth = 1) + geom_point(size =2, color = "black") + scale_y_continuous(labels = scales::percent)+ theme_fivethirtyeight() + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + labs(title = "Home Ownership Rate", caption = "Variable: B25003_002", color = "", subtitle ="2009-2021 5-Year ACS Estimates")
 
 #### REGION TIME
 
-# Getting owner occupied data and total occupied units from 5-Year American Community Survey for the Midwest. 
+# Getting owner occupied data and total occupied units from 5-Year American Community Survey for the Midwest.
+
 # Using years object that was defined earlier.
-regionOwn <- map_dfr(years, ~{
-  get_acs(
-    geography = "region",
-    variables = c("Owner Occupied" = "B25003_002",
-                  "total" = "B25001_001"),
-    year = .x,
-    survey = "acs5",
-  )
-}, .id = "year")
+
+regionOwn \<- map_dfr(years, \~{ get_acs( geography = "region", variables = c("Owner Occupied" = "B25003_002", "total" = "B25001_001"), year = .x, survey = "acs5", ) }, .id = "year")
 
 # Calculate percent home ownership rate.
-regionOwn <- regionOwn %>% 
-  group_by(year, GEOID, NAME) %>% 
-  mutate(percent  = estimate/first(estimate)) %>% 
-  filter(variable != "total")
+
+regionOwn \<- regionOwn %\>% group_by(year, GEOID, NAME) %\>% mutate(percent = estimate/first(estimate)) %\>% filter(variable != "total")
 
 # Repeat for Renter Occupied data.
-regionRent <- map_dfr(years, ~{
-  get_acs(
-    geography = "region",
-    variables = c("Renter Occupied" = "B25003_003",
-                  "total" = "B25001_001"),
-    year = .x,
-    survey = "acs5"
-  )
-}, .id = "year")
-# Calculate percent rent.
-regionRent <- regionRent %>% 
-  group_by(year, GEOID, NAME) %>% 
-  mutate(percent = estimate / first(estimate)) %>% 
-  filter(variable != "total")
 
-# One last time for vacant units. 
-regionVacant <- map_dfr(years, ~{
-  get_acs(
-    geography = "region",
-    variables = c("Vacant" = "B25002_003",
-                  "total" = "B25001_001"),
-    year = .x,
-    survey = "acs5"
-  )
-}, .id = "year")
-# Calculate Vacant.
-regionVacant <- regionVacant %>% 
-  group_by(year, GEOID, NAME) %>% 
-  mutate(percent = estimate/ first(estimate)) %>% 
-  filter(variable != "total")
+regionRent \<- map_dfr(years, \~{ get_acs( geography = "region", variables = c("Renter Occupied" = "B25003_003", "total" = "B25001_001"), year = .x, survey = "acs5" ) }, .id = "year") \# Calculate percent rent. regionRent \<- regionRent %\>% group_by(year, GEOID, NAME) %\>% mutate(percent = estimate / first(estimate)) %\>% filter(variable != "total")
+
+# One last time for vacant units.
+
+regionVacant \<- map_dfr(years, \~{ get_acs( geography = "region", variables = c("Vacant" = "B25002_003", "total" = "B25001_001"), year = .x, survey = "acs5" ) }, .id = "year") \# Calculate Vacant. regionVacant \<- regionVacant %\>% group_by(year, GEOID, NAME) %\>% mutate(percent = estimate/ first(estimate)) %\>% filter(variable != "total")
 
 # Combine owner, renter, and vacant.
-regionRate <- regionOwn %>% 
-  bind_rows(regionRent, regionVacant)
 
-# To simplify the filtering process from now on, create an object for desired region 
-target_region <- "Midwest Region"
+regionRate \<- regionOwn %\>% bind_rows(regionRent, regionVacant)
+
+# To simplify the filtering process from now on, create an object for desired region
+
+target_region \<- "Midwest Region"
 
 # Filter for Midwest.
+
 # Drop " Region."
+
 # Add a geography column.
-regionRate <- regionRate %>% 
-  filter(NAME %in% target_region) %>% 
-  mutate(NAME = str_remove(NAME, " Region")) %>% 
-  mutate(geography = "Region")
 
-
+regionRate \<- regionRate %\>% filter(NAME %in% target_region) %\>% mutate(NAME = str_remove(NAME, " Region")) %\>% mutate(geography = "Region")
 
 ## NATION TIME
 
 # Get data from the 5-Year ACS.
-nationRate <- map_dfr(years, ~{
-  get_acs(
-    geography = "us",
-    variables = c("Owner Occupied" = "B25003_002",
-                  "Renter Occupied" = "B25003_003",
-                  "Vacant" = "B25002_003",
-                  "total" = "B25001_001"),
-    year = .x,
-    survey = "acs5"
-  )
-}, .id = "year")
+
+nationRate \<- map_dfr(years, \~{ get_acs( geography = "us", variables = c("Owner Occupied" = "B25003_002", "Renter Occupied" = "B25003_003", "Vacant" = "B25002_003", "total" = "B25001_001"), year = .x, survey = "acs5" ) }, .id = "year")
 
 # Calculate rates.
-# Add geography.
-nationRate <- nationRate %>% 
-  group_by(year) %>% 
-  mutate(percent = estimate/ first(estimate)) %>% 
-  filter(variable != "total") %>% 
-  mutate(geography = "Nation")
 
+# Add geography.
+
+nationRate \<- nationRate %\>% group_by(year) %\>% mutate(percent = estimate/ first(estimate)) %\>% filter(variable != "total") %\>% mutate(geography = "Nation")
 
 # Create plots for home ownership rate at all geographies.
+
 # HOME OWNERSHIP RATE
 
 # I want state, region, and nation in their own contextRate so that they can be displayed by linetype.
 
 # Filter placeRate for variable == "Owner Occupied"
-filtered_placeRate <- placeRate %>%
-  filter(variable == "Owner Occupied")
+
+filtered_placeRate \<- placeRate %\>% filter(variable == "Owner Occupied")
 
 # Bind context.
-contextRate <- stateRate %>% 
-  bind_rows(regionRate, nationRate)
-# Filter stateRate for variable == "Owner Occupied"
-filtered_contextRate <- contextRate %>%
-  filter(variable == "Owner Occupied")
 
+contextRate \<- stateRate %\>% bind_rows(regionRate, nationRate) \# Filter stateRate for variable == "Owner Occupied" filtered_contextRate \<- contextRate %\>% filter(variable == "Owner Occupied")
 
 # Create the line plot: Home Ownership Rate
-ggplot() +
-  geom_line(data = filtered_contextRate, aes(x = year, y = percent, group = NAME, linetype = NAME),
-            color = "black", linewidth = 1, alpha = .4) +
-  geom_line(data = filtered_placeRate, aes(x = year, y = percent, group = NAME, color = NAME), linewidth = 1.75) +
-  scale_y_continuous(labels = scales::percent,
-                     limits = c(.54,.8),
-                     breaks = c(.55,.6,.65,.7,.75,.8))+
-  theme_fivethirtyeight() +
-  labs(title = "Home Ownership Rate",
-       subtitle = "2009-2021 5-Year ACS Estimates",
-       caption = "Variable: B25003_002",
-       color = "",
-       linetype = "") 
 
+ggplot() + geom_line(data = filtered_contextRate, aes(x = year, y = percent, group = NAME, linetype = NAME), color = "black", linewidth = 1, alpha = .4) + geom_line(data = filtered_placeRate, aes(x = year, y = percent, group = NAME, color = NAME), linewidth = 1.75) + scale_y_continuous(labels = scales::percent, limits = c(.54,.8), breaks = c(.55,.6,.65,.7,.75,.8))+ theme_fivethirtyeight() + labs(title = "Home Ownership Rate", subtitle = "2009-2021 5-Year ACS Estimates", caption = "Variable: B25003_002", color = "", linetype ="")
 
 # Create plots for vacancy rate at all geographies.
+
 # VACANCY RATE
 
 # filter for vacancy
-vacancy_placeRate <- placeRate %>% 
-  filter(variable == "Vacant")
-vacancy_contextRate <- contextRate %>% 
-  filter(variable == "Vacant")
+
+vacancy_placeRate \<- placeRate %\>% filter(variable == "Vacant") vacancy_contextRate \<- contextRate %\>% filter(variable == "Vacant")
 
 # Create the line plot: Vacancy Rate
-ggplot() +
-  geom_line(data = vacancy_contextRate, aes(x = year, y = percent, group = NAME, linetype = NAME),
-            color = "black", linewidth = 1, alpha = .4) +
-  geom_line(data = vacancy_placeRate, aes(x = year, y = percent, group = NAME, color = NAME), linewidth = 1.5) +
-  scale_y_continuous(labels = scales::percent,
-                     limits = c(.0, .15),
-                     breaks = c(0, .05, .1, .15)) +
-  labs(title = "Vacancy Rate",
-       subtitle = "2009-2021 5-Year ACS Estimates",
-       caption = "Variable: B25002_003",
-       color = "",
-       linetype = "",
-       x = "",
-       y = "") +
-  theme_fivethirtyeight()
-```
+
+ggplot() + geom_line(data = vacancy_contextRate, aes(x = year, y = percent, group = NAME, linetype = NAME), color = "black", linewidth = 1, alpha = .4) + geom_line(data = vacancy_placeRate, aes(x = year, y = percent, group = NAME, color = NAME), linewidth = 1.5) + scale_y_continuous(labels = scales::percent, limits = c(.0, .15), breaks = c(0, .05, .1, .15)) + labs(title = "Vacancy Rate", subtitle = "2009-2021 5-Year ACS Estimates", caption = "Variable: B25002_003", color = "", linetype ="", x ="", y ="") + theme_fivethirtyeight()
+
+```         
 
 ### Reason for Vacancy Plot
 

@@ -2,7 +2,7 @@
 title: "Guide: Creating a Demographic Profile"
 subtitle: "Last Week!"
 author: "Kailyn Hogan"
-date: "2023-05-26"
+date: "2023-07-12"
 categories: [Week Nine, Guide, R, Demographic Profile]
 ---
 

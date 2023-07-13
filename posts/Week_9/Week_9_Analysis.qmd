@@ -90,9 +90,7 @@ median_income_1year %>% get_acs(geography = "state",
 
 A full list of geographies for the Decennial Census and ACS can be found [here](https://www.census.gov/programs-surveys/geography/guidance/hierarchy.html){target="_blank"}. The full list of available Census API variable codes can be found [here](https://www.census.gov/data/developers/data-sets/decennial-census.html){target="_blank"}, and the 5-Year ACS API variable codes can be found [here](https://www.census.gov/data/developers/data-sets/acs-5year.html){target="_blank"}. The API variable codes I used for the demographic analysis are located on a different page on my blog. Further modifications can be made to the get_decennial() and `get_acs()` functions. To learn more, check out Kyle Walker's [textbook](https://walker-data.com/census-r/index.html){target="_blank"} on Tidycensus.
 
-TRANSITION SENTENCE INTO READ.CSV() !!!!!!!!!!!!!!!!
-
-I used the **LEHD Origin-Destination Employment Statistics (LODES)** *2020 Workforce Area Characteristics* *(WAC)* and the *2020 Residential Area Characteristics* *(RAC)* data to create more detailed analyses for jobs and the workforce. The WAC and RAC data structure information can be found [here](#0){target="_blank"}.
+The Census and ACS are great data sources, but other sources are often available for specific demographic data. If not pulling data using Tidycensus, you can read data from spreadsheets into R Studio. For example, I used the **LEHD Origin-Destination Employment Statistics (LODES)** *2020 Workforce Area Characteristics* *(WAC)* and the *2020 Residential Area Characteristics* *(RAC)* data to create more detailed analyses for jobs and the workforce. The WAC and RAC data structure information can be found [here](#0){target="_blank"}.
 
 The WAC and RAC data are downloaded as CSV files from their respective locations. To view them in R Studio, you use the function `read.csv()`. The function `read.csv()` takes the argument *file* as a file path to read tabular data.
 
