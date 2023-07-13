@@ -67,7 +67,7 @@ total_population <- get_decennial(geography = "state",
 head(total_population)
 
 # getting median income
-median_income %>% get_acs(geography = "state",
+median_income <- get_acs(geography = "state",
                           variable = "B19013_001",
                           year = 2010)
 head(median_income)
@@ -77,12 +77,12 @@ The `get_acs()` example above is pulling median income data from the 2010 5-Year
 
 ```{r}
 # pulling from 1-Year ACS
-median_income_1year %>% get_acs(geography = "state",
+median_income_1year <- get_acs(geography = "state",
                                 variable = "B19013_001",
                                 year = 2010,
                                 survey = "acs1")
 # pulling from 5-Year ACS
-median_income_1year %>% get_acs(geography = "state",
+median_income_1year <- get_acs(geography = "state",
                                 variable = "B19013_001",
                                 year = 2010,
                                 survey = "acs5")
@@ -306,7 +306,7 @@ You can create dashboards and stories in Tableau like this one with a little mor
 
 ```{r tableau-story, echo = FALSE}
 
-knitr::include_graphics("path/to/your/story.html")
+#knitr::include_graphics("path/to/your/story.html")
 ```
 
 Creating visualizations like the one above aid in the demographic process by allowing you to see the patterns and trends in the data. You can draw conclusions about a specific state, place, or location by visualizing multiple demographics.

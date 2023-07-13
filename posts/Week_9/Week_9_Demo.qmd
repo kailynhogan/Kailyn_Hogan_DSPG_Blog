@@ -68,7 +68,7 @@ Data on housing was very important to me. The WINVEST project's windshield surve
 
 Once you have decided on the demographic data you want, it is time to start the data collection process. Many demographic data can be found via the **United States Decennial Census** or the **American Community Survey (ACS)**. The U.S. census is one of the best places to gather demographic data because it counts every resident in the United States. It has a very low inaccuracy, but the U.S. census is only conducted every ten years. The American Community Survey (ACS) is your best bet for more recent data. The ACS has more detailed demographic data and is conducted every five years for the entirety of the United States and every year for places with a population over 65,000. The ACS does not count every individual resident in the United States and instead relies on surveying a proportion of the population to create estimates of the demographics. Thus, it can be inaccurate and provides a margin of error. It is best used for data on the changing population, housing, and workforce.
 
-To start data collection in R Studio, I installed the *Tidyverse* and *Tidycensus* packages and loaded them with the library() function.
+To start data collection in R Studio, I installed the *Tidyverse* and *Tidycensus* packages and loaded them with the `library()` function.
 
 ```{r, eval = FALSE}
 install.packages("tidyverse")
@@ -274,7 +274,7 @@ install.packages("scales")
 install.packages("ggthemes")
 ```
 
-```{r, message = FALSE}
+```{r, message = FALSE, warning = FALSE}
 library(ggplot2)
 library(scales)
 library(ggthemes)
